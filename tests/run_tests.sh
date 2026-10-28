@@ -20,3 +20,5 @@ run_checked --script res://tests/test_rules.gd
 run_checked --script res://tests/test_car.gd
 
 run_checked --script res://tests/test_kart.gd
+
+run_checked --script res://tests/test_track.gd

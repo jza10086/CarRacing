@@ -2,7 +2,7 @@
 
 ## Included artwork — Kenney, CC0 1.0
 
-Only the models used by the game are included. Original pack licenses are preserved in each asset directory. Thank you, Kenney!
+Selected CC0 source models from the original prototype are retained; the current circuit actively uses the sports car and harbor windbreak trees. Original pack licenses are preserved in each asset directory. Thank you, Kenney!
 
 | Directory | Included models | Original pack | Author's public download |
 |---|---|---|---|
@@ -16,7 +16,7 @@ License: [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)
 - Racing Kit: `103acf8a85a04e94e2d3a9933fbcea12e9422c14d5e364eb013019a882af7f48`
 - Nature Kit: `fa7974a0d342bfe63c38664ba9f8ec1a4aab8ea25f099bdc56870e33588c4d9d`
 
-Racing Kit glTF/BIN files were repackaged as self-contained GLBs, and an `asset_origin` root centers X/Z and grounds Y without changing geometry/materials. Other source models retain their author geometry and materials. In-game scale/orientation and separate wheel animation are applied in code. No brand/logo is used as game branding. The track, terrain, mountains, rails, HUD, handling, and synthesized engine loop are original project work. Chinese UI uses a renamed glyph subset of **Noto Sans CJK SC Regular**, licensed under **SIL Open Font License 1.1**. Source: https://github.com/notofonts/noto-cjk . The subset is named **Ridgeline Interface**; the full installed source package copyright/license is preserved at `assets/fonts/LICENSE.txt`. No proprietary fonts are included.
+Racing Kit glTF/BIN files were repackaged as self-contained GLBs, and an `asset_origin` root centers X/Z and grounds Y without changing geometry/materials. Other source models retain their author geometry and materials. In-game scale/orientation and separate wheel animation are applied in code. No brand/logo is used as game branding. The track, shaped coastline, lighthouse, harbor warehouses, crane, boats, bridge, rails, signs, HUD, handling and synthesized engine loop are original project work. No additional external artwork was needed for Lighthouse Circuit. Chinese UI uses a renamed glyph subset of **Noto Sans CJK SC Regular**, licensed under **SIL Open Font License 1.1**. Source: https://github.com/notofonts/noto-cjk . The subset is named **Ridgeline Interface**; the full installed source package copyright/license is preserved at `assets/fonts/LICENSE.txt`. No proprietary fonts are included.
 
 ## Kart handling update
 
@@ -32,3 +32,7 @@ This is an original small arcade controller, **not** an imported vehicle framewo
 - [Godot Recipes 3D car sphere (MIT)](https://github.com/godotrecipes/3d_car_sphere): separate visual car lean and wheel motion.
 - [Godot Easy Vehicle Physics (MIT)](https://github.com/DAShoe1/Godot-Easy-Vehicle-Physics): speed-dependent steering, grip, countersteer and surface-resistance concepts. Its full raycast-vehicle framework is not included.
 - [art of rally](https://www.artofrally.com/): visual reference for clean road ribbons, restrained HUD and low-poly landscape composition. No screenshots, models, branding, code or other assets from that game are included.
+
+## Designed circuit references
+
+The original Lighthouse Circuit layout and the specific lessons from Nadeo, Nintendo, WRC 7 designer Benoit Gomes, and Luke McMillan’s published analysis are documented in [docs/TRACK_DESIGN.md](docs/TRACK_DESIGN.md). Their games, layouts, screenshots and proprietary assets are not included in this repository.

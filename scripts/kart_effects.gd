@@ -122,8 +122,10 @@ func update_effects(delta: float, drifting: bool, tier: int, boosting: bool, spe
 	var slipping := drifting and speed > 8.0
 	for emitter in smoke:
 		emitter.emitting = slipping
+		emitter.visible = slipping
 	for emitter in sparks:
 		emitter.emitting = slipping and tier > 0
+		emitter.visible = slipping and tier > 0
 		if tier != last_tier:
 			emitter.color = ORANGE if tier >= 2 else BLUE
 	if tier != last_tier:
@@ -140,6 +142,7 @@ func clear() -> void:
 	for emitter in smoke + sparks:
 		emitter.restart()
 		emitter.emitting = false
+		emitter.visible = false
 	for flame in flames:
 		flame.visible = false
 	for source in wheel_glints:

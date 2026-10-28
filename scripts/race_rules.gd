@@ -14,7 +14,6 @@ var finished: bool = false
 var last_safe_distance: float = 0.0
 var gates: Array[Dictionary] = []
 var track_length: float = 1.0
-var gate_half_width: float = 6.8
 var previous_along: float = 3.0
 
 func configure(track: TrackWorld) -> void:
@@ -41,7 +40,7 @@ func tick(delta: float) -> void:
 		total_time += delta
 		lap_time += delta
 
-func observe(from: Vector3, to: Vector3, along: float, lateral: float) -> void:
+func observe(from: Vector3, to: Vector3, along: float, lateral: float, road_half_width: float = 6.0) -> void:
 	if finished or gates.is_empty():
 		return
 	var step := to.distance_to(from)
@@ -50,7 +49,7 @@ func observe(from: Vector3, to: Vector3, along: float, lateral: float) -> void:
 	# Excludes resets/teleports and requires the large majority of a lap on the road.
 	if step > 8.0:
 		return
-	if absf(lateral) <= gate_half_width and advance > 0.0 and advance < 8.0:
+	if absf(lateral) <= road_half_width + 0.8 and advance > 0.0 and advance < 8.0:
 		distance_valid += advance
 	var gate := gates[next_gate]
 	var tangent: Vector3 = gate.tangent
@@ -61,7 +60,7 @@ func observe(from: Vector3, to: Vector3, along: float, lateral: float) -> void:
 		return
 	var crossing := from.lerp(to, -before / (after - before))
 	var right := tangent.cross(Vector3.UP).normalized()
-	if absf((crossing - origin).dot(right)) > gate_half_width or absf(crossing.y - origin.y) > 3.0:
+	if absf((crossing - origin).dot(right)) > float(gate.get("half_width", 6.0)) + 0.8 or absf(crossing.y - origin.y) > 3.0:
 		return
 	if next_gate < gates.size() - 1:
 		last_safe_distance = float(gate.get("distance", float(next_gate + 1) * track_length / float(gates.size())))

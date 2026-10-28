@@ -1,54 +1,83 @@
 class_name TrackWorld
 extends Node3D
-## Original, continuous Catmull-Rom circuit. Road visuals and collision share geometry.
+## Lighthouse Circuit: hand-authored Bezier sections, sampled into one closed road.
+## Geometry, driving surface, map, gates and recovery all use this same layout.
 
-const ROAD_HALF_WIDTH := 6.0
 const TRACK_HEIGHT := 0.12
-const SAMPLE_STEPS := 18
-const GUARD_OFFSET := 8.6
+const GUARD_SHOULDER := 1.8
+const LAYOUT = preload("res://scripts/lighthouse_layout.gd")
 var points := PackedVector3Array()
 var distances := PackedFloat32Array()
+var half_widths := PackedFloat32Array()
+var sector_ids := PackedInt32Array()
+var sectors: Array[Dictionary] = []
+var gate_distances: Array[float] = []
+var map_bounds := Rect2()
 var length := 0.0
-var _rng := RandomNumberGenerator.new()
 var _asphalt: StandardMaterial3D
 var _cream: StandardMaterial3D
 var _orange: StandardMaterial3D
 var _dark: StandardMaterial3D
 
 func _ready() -> void:
-	_rng.seed = 784221
 	_build_curve()
 	_asphalt = _material(Color("35454e"))
 	_cream = _material(Color("f4e9cf"))
 	_orange = _material(Color("ee6b40"))
 	_dark = _material(Color("253943"))
-	_build_ground()
+	# Coast / harbor are hand-built landmarks, independent of road collision.
+	var scenery := preload("res://scripts/harbor_scenery.gd").new()
+	scenery.track = self
+	add_child(scenery)
 	_build_ribbons()
 	_build_rails()
 	_build_start()
 	_build_scenery()
 
 func _build_curve() -> void:
-	var controls: Array[Vector3] = [
-		Vector3(-100, 0, 80), Vector3(-100, 0, -20), Vector3(-85, 0, -85),
-		Vector3(-30, 0, -115), Vector3(45, 0, -100), Vector3(90, 0, -60),
-		Vector3(95, 0, -5), Vector3(45, 0, 25), Vector3(75, 0, 70),
-		Vector3(70, 0, 115), Vector3(0, 0, 130), Vector3(-70, 0, 120)
-	]
-	for i in controls.size():
-		var a := controls[posmod(i - 1, controls.size())]
-		var b := controls[i]
-		var c := controls[(i + 1) % controls.size()]
-		var d := controls[(i + 2) % controls.size()]
-		for step in SAMPLE_STEPS:
-			var t := float(step) / SAMPLE_STEPS
-			var p := 0.5 * ((2.0 * b) + (-a + c) * t + (2.0 * a - 5.0 * b + 4.0 * c - d) * t * t + (-a + 3.0 * b - 3.0 * c + d) * t * t * t)
+	points.clear()
+	distances.clear()
+	half_widths.clear()
+	sector_ids.clear()
+	sectors.clear()
+	gate_distances.clear()
+	length = 0.0
+	var data: Array[Dictionary] = LAYOUT.segments()
+	var last_sector := -1
+	var gate_indices: Array[int] = []
+	for segment in data:
+		var a: Vector3 = segment.a
+		var b: Vector3 = segment.b
+		var c: Vector3 = segment.c
+		var d: Vector3 = segment.d
+		var count := maxi(4, int(ceil((a.distance_to(b) + b.distance_to(c) + c.distance_to(d)) / 3.5)))
+		if int(segment.sector) != last_sector:
+			last_sector = int(segment.sector)
+			sectors.append({"id": last_sector, "name": LAYOUT.NAMES[last_sector], "label": LAYOUT.LABELS[last_sector], "index": points.size()})
+		if bool(segment.gate) and not points.is_empty():
+			gate_indices.append(points.size())
+		for step in count:
+			var t := float(step) / count
+			var p := a.bezier_interpolate(b, c, d, t)
 			p.y = TRACK_HEIGHT
 			points.append(p)
-	length = 0.0
+			half_widths.append(lerpf(float(segment.w0), float(segment.w1), smoothstep(0.0, 1.0, t)))
+			sector_ids.append(last_sector)
+	map_bounds = Rect2(Vector2(points[0].x, points[0].z), Vector2.ZERO)
 	for i in points.size():
 		distances.append(length)
 		length += points[i].distance_to(points[(i + 1) % points.size()])
+		map_bounds = map_bounds.expand(Vector2(points[i].x, points[i].z))
+	for sector in sectors:
+		sector["distance"] = distances[int(sector.index)]
+	for index in gate_indices:
+		gate_distances.append(distances[index])
+
+func rail_offset_at(index: int) -> float:
+	return half_widths[posmod(index, half_widths.size())] + GUARD_SHOULDER
+
+func sector_at(distance: float) -> Dictionary:
+	return sectors[sector_ids[int(sample_distance(distance).index)]]
 
 func sample_distance(distance: float) -> Dictionary:
 	var wrapped := fposmod(distance, length)
@@ -60,13 +89,14 @@ func sample_distance(distance: float) -> Dictionary:
 	var next := (index + 1) % points.size()
 	var segment := points[index].distance_to(points[next])
 	var weight := clampf((wrapped - distances[index]) / maxf(segment, 0.001), 0.0, 1.0)
-	return {"position": points[index].lerp(points[next], weight), "tangent": (points[next] - points[index]).normalized(), "index": index, "distance": wrapped}
+	return {"position": points[index].lerp(points[next], weight), "tangent": (points[next] - points[index]).normalized(), "index": index, "distance": wrapped, "half_width": lerpf(half_widths[index], half_widths[next], weight), "sector": sector_ids[index]}
 
 func nearest(point: Vector3) -> Dictionary:
 	var closest := Vector3.ZERO
 	var best_distance := INF
 	var best_along := 0.0
 	var best_index := 0
+	var best_weight := 0.0
 	var tangent := Vector3.FORWARD
 	var flat := Vector3(point.x, TRACK_HEIGHT, point.z)
 	for i in points.size():
@@ -80,9 +110,10 @@ func nearest(point: Vector3) -> Dictionary:
 			best_distance = square
 			closest = candidate
 			best_index = i
+			best_weight = t
 			best_along = distances[i] + ab.length() * t
 			tangent = ab.normalized()
-	return {"position": closest, "tangent": tangent, "distance": fposmod(best_along, length), "lateral": (flat - closest).dot(tangent.cross(Vector3.UP)), "index": best_index}
+	return {"position": closest, "tangent": tangent, "distance": fposmod(best_along, length), "lateral": (flat - closest).dot(tangent.cross(Vector3.UP)), "index": best_index, "half_width": lerpf(half_widths[best_index], half_widths[(best_index + 1) % points.size()], best_weight), "sector": sector_ids[best_index]}
 
 func start_transform() -> Transform3D:
 	var sample := sample_distance(3.0)
@@ -90,10 +121,8 @@ func start_transform() -> Transform3D:
 	return Transform3D(Basis.looking_at(tangent, Vector3.UP), sample.position + Vector3(0, 0.02, 0))
 
 func checkpoint_samples() -> Array[float]:
-	var result: Array[float] = []
-	for i in range(1, 12):
-		result.append(length * float(i) / 12.0)
-	return result
+	# Gates bracket every deliberate feature; non-uniform spacing is intentional.
+	return gate_distances.duplicate()
 
 func _material(color: Color) -> StandardMaterial3D:
 	var mat := StandardMaterial3D.new()
@@ -119,38 +148,6 @@ func _box(at: Vector3, size: Vector3, material: Material, parent: Node3D = self)
 	parent.add_child(node)
 	return node
 
-func _build_ground() -> void:
-	var ground := _box(Vector3(0, -0.6, 0), Vector3(760, 1.2, 760), _material(Color("527846")))
-	var body := StaticBody3D.new()
-	var shape := CollisionShape3D.new()
-	var box := BoxShape3D.new()
-	box.size = Vector3(760, 1.2, 760)
-	shape.shape = box
-	body.add_child(shape)
-	ground.add_child(body)
-	# The distant faceted ranges close the horizon without texture or postprocessing.
-	var mountain_colors: Array[Color] = [Color("739d83"), Color("81a78a"), Color("67917a"), Color("8fb397")]
-	for i in 26:
-		var angle := TAU * float(i) / 26.0
-		var radius := _rng.randf_range(290, 360)
-		var height := _rng.randf_range(36, 84)
-		var cone := CylinderMesh.new()
-		cone.top_radius = _rng.randf_range(0, 4)
-		cone.bottom_radius = _rng.randf_range(42, 77)
-		cone.height = height
-		cone.radial_segments = 7
-		cone.rings = 1
-		var hill := _mesh_node(cone, _material(mountain_colors[i % mountain_colors.size()]), Vector3(cos(angle) * radius, height * 0.5 - 9.0, sin(angle) * radius))
-		hill.rotation.y = _rng.randf_range(0, TAU)
-	for i in 10:
-		var angle := TAU * float(i) / 10.0 + 0.15
-		var hill := SphereMesh.new()
-		hill.radial_segments = 10
-		hill.rings = 4
-		hill.radius = _rng.randf_range(22, 40)
-		hill.height = hill.radius * 2.0
-		var node := _mesh_node(hill, _material(Color("76a25a")), Vector3(cos(angle) * 220, -17, sin(angle) * 220))
-		node.scale.y = 0.65
 
 func _right(index: int) -> Vector3:
 	return (points[(index + 1) % points.size()] - points[posmod(index - 1, points.size())]).normalized().cross(Vector3.UP)
@@ -161,19 +158,25 @@ func _quad(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, d: Vector3) -> v
 		st.set_normal(Vector3.UP)
 		st.add_vertex(vertex)
 
-func _ribbon(inner: float, outer: float, material: Material, offset_y: float = 0.0, alternating: int = -1) -> MeshInstance3D:
+func _ribbon(inner: float, outer: float, material: Material, offset_y: float = 0.0, alternating: int = -1, side: float = 0.0) -> MeshInstance3D:
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	for i in points.size():
 		if alternating >= 0 and i % 2 != alternating:
 			continue
 		var j := (i + 1) % points.size()
-		var a := points[i] + _right(i) * inner + Vector3.UP * offset_y
-		var b := points[j] + _right(j) * inner + Vector3.UP * offset_y
-		var c := points[j] + _right(j) * outer + Vector3.UP * offset_y
-		var d := points[i] + _right(i) * outer + Vector3.UP * offset_y
+		var wi := half_widths[i]
+		var wj := half_widths[j]
+		var ai := inner * wi if side == 0.0 else side * (wi + inner)
+		var bj := inner * wj if side == 0.0 else side * (wj + inner)
+		var cj := outer * wj if side == 0.0 else side * (wj + outer)
+		var di := outer * wi if side == 0.0 else side * (wi + outer)
+		var a := points[i] + _right(i) * ai + Vector3.UP * offset_y
+		var b := points[j] + _right(j) * bj + Vector3.UP * offset_y
+		var c := points[j] + _right(j) * cj + Vector3.UP * offset_y
+		var d := points[i] + _right(i) * di + Vector3.UP * offset_y
 		# Both positive and negative strips face upward.
-		if outer > inner:
+		if di > ai:
 			_quad(st, a, b, c, d)
 		else:
 			_quad(st, d, c, b, a)
@@ -181,14 +184,17 @@ func _ribbon(inner: float, outer: float, material: Material, offset_y: float = 0
 	return _mesh_node(mesh, material)
 
 func _build_ribbons() -> void:
-	_ribbon(-8.4, 8.4, _material(Color("57743f")), -0.06)
-	var road := _ribbon(-ROAD_HALF_WIDTH, ROAD_HALF_WIDTH, _asphalt)
+	_ribbon(-1.0, 1.0, _material(Color("c6b68d")), -0.06)
+	for side: float in [-1.0, 1.0]:
+		var shoulder := _ribbon(0.0, GUARD_SHOULDER + 0.25, _material(Color("c6b68d")), -0.05, -1, side)
+		shoulder.create_trimesh_collision()
+	var road := _ribbon(-1.0, 1.0, _asphalt)
 	road.name = "ContinuousRoad"
 	road.create_trimesh_collision()
 	for side: float in [-1.0, 1.0]:
-		_ribbon(side * 6.0, side * 6.7, _orange, 0.016, 0)
-		_ribbon(side * 6.0, side * 6.7, _cream, 0.016, 1)
-		_ribbon(side * 5.72, side * 5.83, _cream, 0.018)
+		_ribbon(0.0, 0.65, _orange, 0.016, 0, side)
+		_ribbon(0.0, 0.65, _cream, 0.016, 1, side)
+		_ribbon(-0.28, -0.17, _cream, 0.018, -1, side)
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var dash_count := int(length / 14.0)
@@ -211,16 +217,16 @@ func _build_rails() -> void:
 	for side: float in [-1.0, 1.0]:
 		for i in points.size():
 			var j := (i + 1) % points.size()
-			var a := points[i] + _right(i) * side * GUARD_OFFSET
-			var b := points[j] + _right(j) * side * GUARD_OFFSET
+			var a := points[i] + _right(i) * side * rail_offset_at(i)
+			var b := points[j] + _right(j) * side * rail_offset_at(j)
 			var direction := (b - a).normalized()
 			var basis := Basis.looking_at(direction)
 			var midpoint := (a + b) * 0.5
 			var shape := CollisionShape3D.new()
 			var box := BoxShape3D.new()
-			box.size = Vector3(0.28, 1.35, a.distance_to(b) + 0.18)
+			box.size = Vector3(0.8, 1.8, a.distance_to(b) + 0.35)
 			shape.shape = box
-			shape.transform = Transform3D(basis, midpoint + Vector3.UP * 0.52)
+			shape.transform = Transform3D(basis, midpoint + Vector3.UP * 0.72)
 			collider.add_child(shape)
 			# Merge static rail boxes into one surface; collision remains simple boxes.
 			_append_box(rail_st, Transform3D(basis, midpoint + Vector3.UP * 0.72), Vector3(0.22, 0.33, a.distance_to(b) + 0.1))
@@ -259,26 +265,34 @@ func _build_start() -> void:
 	frame.name = "StartFinish"
 	frame.transform = Transform3D(basis, p)
 	add_child(frame)
-	for x: float in [-8.0, 8.0]:
+	for x: float in [-9.8, 9.8]:
 		_box(Vector3(x, 3.5, 0), Vector3(0.50, 7.0, 0.55), _dark, frame)
 		_box(Vector3(x, 0.45, 0), Vector3(0.9, 0.9, 1.0), _orange, frame)
-	_box(Vector3(0, 6.5, 0), Vector3(16.5, 1.4, 0.50), _orange, frame)
-	_box(Vector3(0, 5.65, 0), Vector3(14.6, 0.30, 0.45), _dark, frame)
+	_box(Vector3(0, 6.5, 0), Vector3(20.1, 1.4, 0.50), _orange, frame)
+	_box(Vector3(0, 5.65, 0), Vector3(18.5, 0.30, 0.45), _dark, frame)
 	var title := Label3D.new()
-	title.text = "S U N R I D G E"
+	title.text = "L I G H T H O U S E"
 	title.font_size = 64
 	title.pixel_size = 0.019
 	title.outline_size = 0
 	title.modulate = Color("fff4d9")
 	title.position = Vector3(0, 6.53, 0.27)
 	frame.add_child(title)
+	var finish := Label3D.new()
+	finish.text = "START / FINISH"
+	finish.font_size = 48
+	finish.pixel_size = 0.012
+	finish.outline_size = 0
+	finish.modulate = Color("fff4d9")
+	finish.position = Vector3(0, 5.65, 0.26)
+	frame.add_child(finish)
 	var stripe := SurfaceTool.new()
 	stripe.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var dark_stripe := SurfaceTool.new()
 	dark_stripe.begin(Mesh.PRIMITIVE_TRIANGLES)
 	for row in 2:
-		for col in 20:
-			var x := -6.0 + col * 0.6
+		for col in 24:
+			var x := -7.2 + col * 0.6
 			var z := -0.6 + row * 0.6
 			var corners: Array[Vector3] = []
 			for local: Vector3 in [Vector3(x, 0.026, z), Vector3(x, 0.026, z - 0.6), Vector3(x + 0.6, 0.026, z - 0.6), Vector3(x + 0.6, 0.026, z)]:
@@ -297,65 +311,37 @@ func _build_start() -> void:
 			box.basis = Basis.looking_at(tangent)
 
 func _build_scenery() -> void:
-	var trees: Array[Array] = [[], [], []]
-	var rocks: Array[Transform3D] = []
-	for i in 360:
-		var p := Vector3(_rng.randf_range(-205, 205), 0, _rng.randf_range(-205, 205))
-		var near := nearest(p)
-		if absf(float(near.lateral)) < 13.5:
-			continue
-		# Keep the start complex clear, with open meadows beside the straight.
-		if p.x < -105 and p.z > 35 and p.z < 125:
-			continue
-		if p.x > -82 and p.x < -38 and p.z > 30 and p.z < 95:
-			continue
-		var s := _rng.randf_range(3.2, 5.8)
-		var transform := Transform3D(Basis(Vector3.UP, _rng.randf_range(0, TAU)).scaled(Vector3.ONE * s), p + Vector3.UP * 0.05 * s)
-		if i % 7 == 0:
-			rocks.append(Transform3D(Basis(Vector3.UP, _rng.randf_range(0, TAU)).scaled(Vector3.ONE * _rng.randf_range(1.2, 2.4)), p))
-		else:
-			trees[i % 3].append(transform)
-	_scatter_scene("res://assets/kenney_nature_kit/tree_pineRoundA.glb", trees[0])
-	_scatter_scene("res://assets/kenney_nature_kit/tree_pineTallA.glb", trees[1])
-	_scatter_scene("res://assets/kenney_nature_kit/tree_oak.glb", trees[2])
-	_scatter_scene("res://assets/kenney_nature_kit/rock_largeA.glb", rocks)
-	_place_scene("res://assets/kenney_racing_kit/grandStandCovered.glb", Vector3(-123, 0, 56), Vector3(9.0, 9.0, 9.0), -PI * 0.5)
-	_place_scene("res://assets/kenney_racing_kit/grandStandCovered.glb", Vector3(-123, 0, 84), Vector3(9.0, 9.0, 9.0), -PI * 0.5)
-	_place_scene("res://assets/kenney_racing_kit/pitsOffice.glb", Vector3(-71, 0, 53), Vector3(12.0, 12.0, 12.0), -PI * 0.5)
-	_place_scene("res://assets/kenney_racing_kit/flagCheckers.glb", Vector3(-113, 0, 80), Vector3.ONE * 3.0, 0)
-	# Roadside directional chevrons are scenery, never checkpoint triggers.
-	for dist: float in [200.0, 280.0, 365.0, 440.0, 500.0, 565.0, 640.0, 730.0]:
-		_build_chevron(dist)
+	# Signs precede decisions. They are not invisible checkpoint triggers.
+	for sector in sectors:
+		var dist: float = sector.distance
+		_build_sign(dist + 8.0, "%02d  %s" % [int(sector.id) + 1, sector.label], _dark)
+	for at: float in [180.0, 225.0, 370.0, 440.0, 510.0, 592.0, 640.0, 705.0, 845.0, 950.0, 1045.0, length - 150.0, length - 95.0]:
+		_build_chevron(at)
+	var hairpin_start: float = sectors[2].distance
+	_build_sign(hairpin_start - 50.0, "HAIRPIN  100", _orange)
+	_build_sign(hairpin_start, "BRAKE  50", _orange)
+	_build_sign(hairpin_start + 17.0, "HAIRPIN  >>", _orange)
+	var bridge_start: float = sectors[4].distance
+	_build_sign(bridge_start + 18.0, "SHIFT  /  NITRO", _material(Color("226d85")))
+	_build_sign(sectors[5].distance - 38.0, "LIFT  /  FINAL TURN", _orange)
 
-func _place_scene(path: String, at: Vector3, size: Vector3, yaw: float) -> void:
-	if not ResourceLoader.exists(path):
-		return
-	var scene := load(path) as PackedScene
-	var node := scene.instantiate() as Node3D
-	add_child(node)
-	node.position = at
-	node.scale = size
-	node.rotation.y = yaw
-
-func _scatter_scene(path: String, placements: Array) -> void:
-	if not ResourceLoader.exists(path):
-		return
-	var scene := load(path) as PackedScene
-	var source := scene.instantiate() as Node3D
-	_scatter_children(source, Transform3D.IDENTITY, placements)
-	source.free()
-
-func _scatter_children(source: Node3D, inherited: Transform3D, placements: Array) -> void:
-	var local := inherited * source.transform
-	if source is MeshInstance3D:
-		var mesh_node := source as MeshInstance3D
-		var combined: Array[Transform3D] = []
-		for placement: Transform3D in placements:
-			combined.append(placement * local)
-		_make_multimesh(mesh_node.mesh, mesh_node.material_override, combined)
-	for child in source.get_children():
-		if child is Node3D:
-			_scatter_children(child as Node3D, local, placements)
+func _build_sign(dist: float, text: String, material: Material) -> void:
+	var sample := sample_distance(dist)
+	var tangent: Vector3 = sample.tangent
+	var board := Node3D.new()
+	board.transform = Transform3D(Basis.looking_at(tangent), sample.position + tangent.cross(Vector3.UP) * (float(sample.half_width) + 3.2))
+	add_child(board)
+	_box(Vector3(0, 2.25, 0), Vector3(6.6, 1.7, 0.22), material, board)
+	for x: float in [-2.6, 2.6]:
+		_box(Vector3(x, 0.8, 0), Vector3(0.16, 1.6, 0.16), _dark, board)
+	var label := Label3D.new()
+	label.text = text
+	label.font_size = 48
+	label.pixel_size = 0.013
+	label.outline_size = 0
+	label.modulate = Color("fff3d6")
+	label.position = Vector3(0, 2.25, 0.13)
+	board.add_child(label)
 
 func _build_chevron(dist: float) -> void:
 	var a := sample_distance(dist)
@@ -365,7 +351,7 @@ func _build_chevron(dist: float) -> void:
 	var side := -1.0 if turn > 0 else 1.0
 	var right := tangent.cross(Vector3.UP)
 	var board := Node3D.new()
-	board.transform = Transform3D(Basis.looking_at(tangent), a.position + right * side * 9.4)
+	board.transform = Transform3D(Basis.looking_at(tangent), a.position + right * side * (float(a.half_width) + 3.0))
 	add_child(board)
 	_box(Vector3(0, 1.4, 0), Vector3(2.6, 1.7, 0.2), _orange, board)
 	_box(Vector3(0, 0.55, 0), Vector3(0.15, 1.1, 0.15), _dark, board)

@@ -74,9 +74,9 @@ func _draw() -> void:
 			draw_rect(Rect2(x, 0, 4, size.y), Color(0.035, 0.085, 0.11, 0.88 * fade))
 		_text("RIDGELINE  /  TIME ATTACK", Vector2(64, size.y * 0.25), 14, ACCENT)
 		_text("山脊竞速", Vector2(60, size.y * 0.25 + 66), 54)
-		_text("晴岭赛道  /  三圈计时挑战", Vector2(64, size.y * 0.25 + 103), 16, Color("b8c9c6"))
+		_text("海崖灯塔环线  /  三圈计时挑战", Vector2(64, size.y * 0.25 + 103), 16, Color("b8c9c6"))
 		if game.state == "menu":
-			_text("找到你的路线，刷新自己的纪录。", Vector2(64, size.y * 0.25 + 150), 20)
+			_text("过发卡，绕灯塔，沿海桥冲向终点。", Vector2(64, size.y * 0.25 + 150), 20)
 		elif game.state == "paused":
 			_text("已暂停", Vector2(64, size.y * 0.25 + 153), 30, ACCENT)
 		else:
@@ -97,7 +97,7 @@ func _draw() -> void:
 	if game.state == "racing" and game.car.boost_active:
 		_draw_boost_streaks()
 	_text("山脊竞速", Vector2(30, 35), 21)
-	_text("晴岭赛道", Vector2(31, 58), 11, Color("cee4db"))
+	_text("海崖灯塔环线", Vector2(31, 58), 11, Color("cee4db"))
 	_text("圈数", Vector2(size.x * 0.45, 29), 11, Color("cee4db"))
 	_text("%d / 3" % game.rules.lap, Vector2(size.x * 0.45, 59), 26)
 	_right("总计  " + game.format_time(game.rules.total_time), Vector2(size.x - 30, 36), 22)
@@ -118,7 +118,7 @@ func _draw() -> void:
 	if game.wrong_way_time > 1.3:
 		_text("逆向行驶", Vector2(size.x * 0.5 - 72, size.y - 55), 19, ACCENT)
 	elif not game.car.on_road:
-		_text("草地减速", Vector2(size.x * 0.5 - 54, size.y - 55), 16, ACCENT)
+		_text("路肩减速", Vector2(size.x * 0.5 - 54, size.y - 55), 16, ACCENT)
 
 func _draw_nitro() -> void:
 	var fill: float = clampf(game.car.nitro, 0.0, 1.0)
@@ -157,8 +157,9 @@ func _draw_boost_streaks() -> void:
 func _draw_map() -> void:
 	if game.track.points.is_empty():
 		return
-	var origin := Vector2(102, size.y - 101)
-	var map_scale := 0.42
+	var bounds: Rect2 = game.track.map_bounds
+	var map_scale: float = minf(148.0 / bounds.size.x, 152.0 / bounds.size.y)
+	var origin := Vector2(102, size.y - 104) - bounds.get_center() * map_scale
 	var path := PackedVector2Array()
 	for point in game.track.points:
 		path.append(origin + Vector2(point.x, point.z) * map_scale)

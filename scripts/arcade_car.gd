@@ -100,7 +100,8 @@ func _physics_process(delta: float) -> void:
 		engine.volume_db = -42.0
 		return
 	if track:
-		on_road = absf(float(track.nearest(global_position).lateral)) <= TrackWorld.ROAD_HALF_WIDTH + 0.5
+		var road_sample := track.nearest(global_position)
+		on_road = absf(float(road_sample.lateral)) <= float(road_sample.half_width) + 0.5
 	var forward := -global_basis.z
 	var old_speed := velocity.dot(forward)
 	var grounded := is_on_floor()
@@ -169,7 +170,8 @@ func _physics_process(delta: float) -> void:
 			velocity *= 0.97
 	# Re-evaluate after motion so crossing onto grass or hitting a rail cannot cash a drift.
 	if track:
-		on_road = absf(float(track.nearest(global_position).lateral)) <= TrackWorld.ROAD_HALF_WIDTH + 0.5
+		var road_sample := track.nearest(global_position)
+		on_road = absf(float(road_sample.lateral)) <= float(road_sample.half_width) + 0.5
 	if wall_hit or not is_on_floor() or not on_road:
 		_cancel_drift()
 		mini_turbo_time = 0.0

@@ -23,7 +23,7 @@ func _ready() -> void:
 	_setup_inputs()
 	_setup_light()
 	track = TrackScript.new()
-	track.name = "SunridgeCircuit"
+	track.name = "LighthouseCircuit"
 	track.process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_child(track)
 	car = CarScript.new()
@@ -48,7 +48,7 @@ func _ready() -> void:
 	layer.add_child(hud)
 	var saved := ConfigFile.new()
 	if saved.load("user://records.cfg") == OK:
-		best_time = float(saved.get_value("sunridge", "best_3_laps", 0.0))
+		best_time = float(saved.get_value("lighthouse_v1", "best_3_laps", 0.0))
 	_update_camera(1.0)
 
 func _setup_inputs() -> void:
@@ -147,12 +147,12 @@ func _physics_process(delta: float) -> void:
 	elif state == "racing":
 		rules.tick(delta)
 		var nearest := track.nearest(car.global_position)
-		rules.observe(car.previous_position, car.global_position, float(nearest.distance), float(nearest.lateral))
+		rules.observe(car.previous_position, car.global_position, float(nearest.distance), float(nearest.lateral), float(nearest.half_width))
 		if car.velocity.dot(nearest.tangent) < -3.0:
 			wrong_way_time += delta
 		else:
 			wrong_way_time = maxf(0.0, wrong_way_time - delta * 3.0)
-		if car.global_position.y < -10 or car.global_position.length() > 420:
+		if car.global_position.y < -10 or car.global_position.length() > 650:
 			reset_car()
 	toast_time = maxf(0.0, toast_time - delta)
 
@@ -204,7 +204,8 @@ func _race_completed() -> void:
 	if not test_mode and (best_time <= 0 or rules.total_time < best_time):
 		best_time = rules.total_time
 		var record := ConfigFile.new()
-		record.set_value("sunridge", "best_3_laps", best_time)
+		record.load("user://records.cfg") # Preserve records belonging to older circuits.
+		record.set_value("lighthouse_v1", "best_3_laps", best_time)
 		record.save("user://records.cfg")
 
 func format_time(value: float) -> String:

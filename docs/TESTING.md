@@ -1,30 +1,55 @@
-# Verification record
+# Verification record — Lighthouse Circuit
 
-Tested 2026-10-28 on the dot cloud computer with **Godot 4.7.2 stable**, Compatibility renderer.
+Tested 2026-10-28 on the **dot cloud computer**, **Godot 4.7.2 stable** (`ed1daf0bf`), Compatibility renderer. This record describes the new 1,650 m circuit, not the previous 786 m prototype.
 
-## Automated targeted checks
+## Automated regression
 
-`tests/run_tests.sh` imports the project in an isolated temporary XDG/user-data directory, runs all three test scripts and fails if Godot prints `ERROR` or `SCRIPT ERROR`, even when the engine process returns zero.
+`GODOT_BIN=/path/to/godot tests/run_tests.sh` imports into isolated temporary XDG/user-data directories and fails on `ERROR` or `SCRIPT ERROR`, even if Godot itself returns zero.
 
-- **27 rules/state checks passed**: continuous closed centerline sampling; expected checkpoint only; forward crossing only; off-corridor crossing rejection; duplicate gates; finish-line oscillation; large-step teleport rejection; checkpoint visits without enough road traversal; off-road shortcut rejection; reset keeps order/time; restart; three valid laps finish exactly once; completed timers freeze; countdown; pause/resume preserves clock and momentum; recovery clears motion; pause freezes nitro/boost/charge; reset keeps bottle level; new race refills and clears drift.
-- **18 real CharacterBody3D physics checks passed** in an isolated flat arena: imported model/four separate wheels, no steering while stationary, 43 m/s road cap, ground stability, wheel spin, braking before bounded −9 m/s reverse, steering sign in forward/reverse, reduced high-speed steering, stable lateral grip/recovery, 17 m/s off-road cap, comparable 30/60/120 Hz acceleration, wall collision without tunneling/explosive velocity, finite state and reset.
-- **39 kart-mechanic physics checks passed**: stationary/reverse/straight/low-speed rejection; fresh-press entry; left/right symmetry; direction commitment and bounded countersteer/slip; near-straight and low-speed full-countersteer charge rejection; early/blue/orange releases and expiry; grass/air/brake/wall/reset cancellation; nitro forward/ground restriction, drain, empty-hold lockout, delayed recharge, reset preservation, new-race refill and disabled-state freeze; shared boost speed cap; 30/60/120 Hz charge/drain consistency; boosted wall impact without tunneling or leaving the floor; same-tick drift release + wall impact cannot award mini-turbo or nitro.
-- Track geometry additionally checked with 1,000 sample/nearest roundtrips (maximum positional error below 0.00001 m), start basis direction and 12 road-collision raycasts at y=0.12. Road mesh and collision share the same surface.
+**103 checks passed:**
 
-These tests exercise a focused arcade-racer scope; they are not an exhaustive physics, accessibility or hardware certification.
+| Suite | Checks | Coverage |
+|---|---:|---|
+| `test_rules.gd` | 27 | Gate order/direction/corridor, duplicate crossings, finish oscillation, teleport and shortcut rejection, required road travel, three laps exactly once, timer freeze, countdown, pause/resume, restart, reset and boost resource preservation. |
+| `test_car.gd` | 18 | Real CharacterBody3D acceleration/braking/reverse, road/off-road speed limits, floor contact, steering sign/speed response, slip recovery, four animated wheels, 30/60/120 Hz consistency, wall collision and reset. |
+| `test_kart.gd` | 39 | Drift entry and countersteer, blue/orange charge/release, grass/air/brake/wall/reset cancellation, no charge farming, nitro drain/recharge/restrictions, shared 54 m/s cap, boosted collisions, same-tick wall/release reward rejection. |
+| `test_track.gd` | 19 | Designed track geometry, per-section widths, feature gates, actual road collision, recovery and high-speed rail integrity, detailed below. |
 
-## Complete driving path
+The final aggregate includes the completed scenery, world signs, separate record key and idle-particle visibility fix. No test errors were ignored. An initial manual import using a reused editor configuration emitted an ObjectDB snapshot-directory error; the isolated aggregate import completed cleanly without an engine workaround.
 
-`tests/drive_laps.gd` steers by **normal `Input.action_press` / `action_release` actions**. It never sets the car transform, velocity, checkpoint or lap count. It follows the same scene, countdown, controller, collision and race rules as a player. It is a QA driver, not an in-game AI opponent.
+### Track-specific evidence
 
-- Headless final scene: **three complete laps passed**, approximately **99.60 s simulated race time**; lap times approximately 33.78 / 32.90 / 32.92 s. Maximum centerline offset stayed below 2.4 m (road half-width 6 m).
-- New `--kart` normal-input headless run: **three complete laps passed**, **81.48 s simulated time**, 15 valid drifts and 15 orange mini-turbos, plus 556 physics ticks of active nitro. Maximum centerline offset **5.40 m**, within the 6 m half-width. No transforms, velocity, laps or gates are overwritten by this driver.
-- Native desktop Compatibility rendering: **three complete kart laps passed**, 81.52 s simulated time, 15 drifts / 15 orange mini-turbos and active nitro, maximum offset 5.59 m. Actual viewport captures verify blue/orange wheel sparks, smoke, short tail flames, the compact nitro gauge, camera response and finish. A 7.56-second / 54-frame GIF follows drift → release mini-turbo → nitro; its playback follows simulated time, not software-renderer wall-clock speed.
-- The two final reward/countersteer edge fixes were applied after that native capture and rechecked in the final 39-check kart suite plus another complete headless three-lap drive. They do not alter the reviewed visual effects. The final aggregate run's first 27 rules + 18 car checks passed; a temporary executor connection loss interrupted its kart stage, which was rerun separately to completion (39/39, no engine errors or warnings).
-- First import, title, countdown, live curved-road driving and finish were observed; rule tests separately cover pause, recovery, repeated restart and return to countdown.
+- **1,649.997 m**, 528 centerline samples; **17 intermediate checkpoints + finish = 18 gates**.
+- Road half-width 5.2–7.8 m; maximum width taper 0.0479 m per travelled metre.
+- No non-adjacent centerline crossing, folded road triangle or overlapping road/rail envelopes. Minimum tested nonlocal envelope clearance **21.19 m**.
+- **1,000** sample/nearest roundtrips retain position and local width.
+- **540** center/near-edge raycasts find actual upward road collision at y = 0.12, maximum measured height error below 0.00001 m. The bridge is intentionally flat, not an untested slope/jump.
+- All **18** gate recovery positions retain the timer/order, point forward, settle onto stable floor, and restart from rest using ordinary throttle.
+- **12** 54 m/s impacts against the actual left/right rail colliders, including segment seams: contact stops the car; no tunnelling, launch or corridor escape. These are explicitly positioned collision fixtures, not claimed as driven laps.
 
-## Limitations
+## Uninterrupted driving
 
-The dot desktop uses **Mesa llvmpipe software rendering** rather than a discrete GPU. Native frame rate is slower than a normal GPU, so the simulated race clock is not a real wall-clock performance benchmark. No claim is made about Windows/macOS/mobile/controller support, audio hardware output, or discrete-GPU performance. The native capture used the Dummy audio driver; synthesized sound generation is present but speaker output was not auditioned.
+`tests/drive_laps.gd` uses normal `Input.action_press` / `action_release` calls. It never assigns the car transform/velocity, changes laps/gates, disables collisions, or invokes recovery while driving. This is an external QA script, not an in-game AI opponent. It shares the normal scene, countdown, controller and rules; `test_mode` only prevents overwriting player records.
 
-There is no existing CI workflow in this initially empty repository; no CI pass is claimed. The repository contains source and selected licensed assets only, not a packaged executable or export.
+- Ordinary headless input drive: **three complete laps, 196.75 s simulated**, laps **66.17 / 65.27 / 65.32 s**, maximum centerline offset **1.12 m**. This initial route run also exercised installed Godot 4.6.3; the release regression uses 4.7.2.
+- Godot 4.7.2 headless `--kart`: **three complete laps, 161.88 s simulated**, laps **55.15 / 53.37 / 53.37 s**, **27** valid orange mini-turbos and **1,166** nitro physics ticks; maximum offset **4.77 m**.
+- Native desktop Godot 4.7.2 `--kart`: **three complete laps passed, 161.88 s simulated**, laps **55.15 / 53.37 / 53.37 s**, **27** orange mini-turbos, **1,166** nitro physics ticks. Of those, **9** mini-turbos occurred in the lighthouse sector and **531** nitro ticks on the bridge. Maximum offset **4.77 m**, **zero wall-contact ticks and zero off-road ticks** in 9,895 physics ticks. The captured moving lighthouse view, orange drift release, bridge nitro and finish are genuine viewport frames with the normal clock/speed; no values were staged.
+
+Reproduction:
+
+```sh
+/path/to/godot --headless --path . --fixed-fps 60 --script res://tests/drive_laps.gd
+/path/to/godot --headless --path . --fixed-fps 60 --script res://tests/drive_laps.gd -- --kart
+# On an available native display:
+/path/to/godot --path . --fixed-fps 10 --audio-driver Dummy \
+  --script res://tests/drive_laps.gd -- --kart --capture-dir=/absolute/output/path
+# Explicit static layout/landmark fixtures; NOT evidence of uninterrupted driving:
+/path/to/godot --path . --script res://tests/capture_track.gd \
+  -- --capture-dir=/absolute/output/path
+```
+
+## Visual / performance limits
+
+Native screenshots are actual Godot viewport readbacks on the existing dot desktop (`DISPLAY=:0`), using **Mesa llvmpipe software rendering**, not a real discrete GPU. The native capture fixes rendering to 10 simulated frames/s while physics remains 60 Hz; the 7.56-second / 54-frame GIF is resampled to 140 ms/frame and follows simulated game time. Its playback and the simulated lap clock are **not** wall-clock GPU performance measurements.
+
+The native driver emits the expected llvmpipe V-Sync warning. Dummy audio was used for capture; generated engine sound exists, but speakers were not auditioned. No Windows/macOS/mobile/controller, exhaustive accessibility or discrete-GPU certification is claimed. There is no existing CI workflow; no CI pass is claimed. Deliverable is the source repository, not a packaged executable or ZIP.

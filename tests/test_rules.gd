@@ -44,7 +44,7 @@ func traverse(rules: RaceRules, start: float, end: float, offset: float = 0.0) -
 func _run() -> void:
 	track = TrackWorld.new()
 	track._build_curve()
-	check(track.length > 600.0 and track.length < 1100.0, "closed curve length is plausible: %.2f m" % track.length)
+	check(track.length > 1350.0 and track.length < 1850.0, "closed curve length is plausible: %.2f m" % track.length)
 	check(track.sample_distance(track.length).position.distance_to(track.sample_distance(0).position) < 0.001, "distance sampling wraps continuously")
 	var rules := fresh()
 	cross(rules, 4)

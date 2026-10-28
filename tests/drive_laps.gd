@@ -25,6 +25,10 @@ var was_mini: bool = false
 var capture_started: bool = false
 var drift_shot: bool = false
 var nitro_shot: bool = false
+var wall_ticks: int = 0
+var offroad_ticks: int = 0
+var bridge_nitro_ticks: int = 0
+var lighthouse_turbos: int = 0
 
 func _initialize() -> void:
 	call_deferred("run")
@@ -56,6 +60,11 @@ func run() -> void:
 		var nearest: Dictionary = game.track.nearest(game.car.global_position)
 		var along: float = nearest.distance
 		var speed: float = absf(game.car.signed_speed)
+		if not game.car.on_road:
+			offroad_ticks += 1
+		for contact in game.car.get_slide_collision_count():
+			if absf(game.car.get_slide_collision(contact).get_normal().y) < 0.5:
+				wall_ticks += 1
 		max_lateral = maxf(max_lateral, absf(float(nearest.lateral)))
 		var lookahead: float = 6.0 + speed * 0.55
 		var aim: Dictionary = game.track.sample_distance(along + lookahead)
@@ -104,6 +113,8 @@ func run() -> void:
 				gas = 1.0
 			if game.car.mini_turbo_time > 0.0 and not was_mini:
 				turbos += 1
+				if int(nearest.sector) == 3:
+					lighthouse_turbos += 1
 				print("KART_MINI_TURBO along=", along, " duration=", game.car.mini_turbo_time)
 			was_mini = game.car.mini_turbo_time > 0.0
 			if turbos > 0 and not game.car.drift_active and turn < 0.25 and speed > 20.0 and absf(nearest.lateral) < 1.5 and game.car.nitro > 0.2:
@@ -113,6 +124,8 @@ func run() -> void:
 				Input.action_release("nitro")
 			if game.car.nitro_active:
 				nitro_ticks += 1
+				if int(nearest.sector) == 4:
+					bridge_nitro_ticks += 1
 		_set_axis("steer_left", "steer_right", steer)
 		_set_axis("accelerate", "brake", gas)
 		if game.rules.lap != last_lap:
@@ -121,19 +134,19 @@ func run() -> void:
 		if frames % 600 == 0:
 			print("DRIVE_PROGRESS sim=", game.rules.total_time, " along=", snappedf(along, 0.1), " speed=", snappedf(speed, 0.1), " gate=", game.rules.next_gate, " lateral=", snappedf(nearest.lateral, 0.1))
 		if native:
-			if not shot_a and along > 140.0 and along < 200.0:
+			if not shot_a and int(nearest.sector) == 3 and along > float(game.track.sectors[3].distance) + 80.0:
 				shot_a = true
 				capture("gameplay.png")
-			if not shot_b and along > 350.0 and along < 430.0:
+			if not shot_b and int(nearest.sector) == 2 and along > float(game.track.sectors[2].distance) + 20.0:
 				shot_b = true
 				capture("corner.png")
-			if kart and not capture_started and game.car.drift_active:
+			if kart and not capture_started and game.car.drift_active and int(nearest.sector) == 3 and along > float(game.track.sectors[4].distance) - 100.0:
 				capture_started = true
 				next_frame_time = game.rules.total_time
-			if kart and game.car.drift_tier == 2 and not drift_shot:
+			if kart and game.car.drift_tier == 2 and not drift_shot and capture_started:
 				drift_shot = true
 				capture("drift.png")
-			if kart and game.car.nitro_active and not nitro_shot:
+			if kart and game.car.nitro_active and not nitro_shot and int(nearest.sector) == 4:
 				nitro_shot = true
 				capture("nitro.png")
 			if frame_index < 54 and (not kart or capture_started) and game.rules.total_time >= next_frame_time:
@@ -143,9 +156,9 @@ func run() -> void:
 	for action in ["accelerate", "brake", "steer_left", "steer_right", "handbrake", "nitro"]:
 		Input.action_release(action)
 	if kart:
-		print("KART_RESULT drifts=", drifts, " turbos=", turbos, " max_tier=", max_tier, " nitro_ticks=", nitro_ticks)
-	if game.state == "finished" and lap_events == 3 and (not kart or (drifts > 0 and turbos > 0 and max_tier == 2 and nitro_ticks > 0)):
-		print("DRIVE_PASS three laps through normal input; total=", game.rules.total_time, " lap_times=", game.rules.lap_times, " max_lateral=", max_lateral, " physics_ticks=", frames)
+		print("KART_RESULT drifts=", drifts, " turbos=", turbos, " max_tier=", max_tier, " nitro_ticks=", nitro_ticks, " lighthouse_turbos=", lighthouse_turbos, " bridge_nitro_ticks=", bridge_nitro_ticks)
+	if game.state == "finished" and lap_events == 3 and (not kart or (drifts > 0 and turbos > 0 and max_tier == 2 and nitro_ticks > 0 and lighthouse_turbos > 0 and bridge_nitro_ticks > 0)):
+		print("DRIVE_PASS three laps through normal input; total=", game.rules.total_time, " lap_times=", game.rules.lap_times, " max_lateral=", max_lateral, " physics_ticks=", frames, " wall_ticks=", wall_ticks, " offroad_ticks=", offroad_ticks)
 		if native:
 			await capture("finish.png")
 		game.car.engine.stop()
