@@ -110,6 +110,12 @@ func _test_pause_and_restart() -> void:
 	game.car.throttle = 1.0
 	for i in 15:
 		await physics_frame
+	game.car.nitro_pressed = true
+	for i in 10:
+		await physics_frame
+	var bottle: float = game.car.nitro
+	var turbo: float = game.car.mini_turbo_time
+	var charge: float = game.car.drift_charge
 	var before: float = game.rules.total_time
 	var position: Vector3 = game.car.global_position
 	var velocity: Vector3 = game.car.velocity
@@ -121,11 +127,14 @@ func _test_pause_and_restart() -> void:
 		await process_frame
 	check(game.state == "paused" and paused, "Escape pauses race tree")
 	check(game.rules.total_time == before and game.car.global_position.is_equal_approx(position), "pause freezes clock and car")
+	check(game.car.nitro == bottle and game.car.mini_turbo_time == turbo and game.car.drift_charge == charge, "pause freezes boost resource and drift timers")
 	game.resume_race()
 	check(game.state == "racing" and not paused and game.car.velocity.is_equal_approx(velocity), "resume preserves state and momentum")
 	game.reset_car()
 	check(game.car.velocity.is_zero_approx() and game.rules.total_time == before, "recovery zeroes velocity without resetting timer")
+	check(game.car.nitro == bottle and not game.car.boost_active and game.car.drift_charge == 0.0, "checkpoint reset clears transient boost but does not refill nitro")
 	game.start_race()
+	check(game.car.nitro == 1.0 and game.car.mini_turbo_time == 0.0 and not game.car.drift_active, "new race refills nitro and clears drift/mini turbo")
 	check(game.state == "countdown" and game.rules.total_time == 0.0 and game.rules.lap == 1, "restart resets timing and returns countdown")
 	game.car.engine.stop()
 	game.car.engine.stream = null

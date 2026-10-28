@@ -18,3 +18,5 @@ run_checked() {
 run_checked --editor --import
 run_checked --script res://tests/test_rules.gd
 run_checked --script res://tests/test_car.gd
+
+run_checked --script res://tests/test_kart.gd

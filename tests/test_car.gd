@@ -94,16 +94,9 @@ func _run() -> void:
 	await reset()
 	car.velocity = Vector3(8, 0, -15)
 	await steps(20)
-	var gripped_lateral := absf(car.velocity.x)
-	await reset()
-	car.velocity = Vector3(8, 0, -15)
-	car.handbrake = true
-	await steps(20)
-	var drift_lateral := absf(car.velocity.x)
-	check(drift_lateral > gripped_lateral * 2.0, "handbrake reduces lateral grip")
-	car.handbrake = false
+	check(absf(car.velocity.x) < 0.6, "ordinary steering retains stable lateral grip")
 	await steps(60)
-	check(absf(car.velocity.x) < 0.02, "released handbrake recovers grip")
+	check(absf(car.velocity.x) < 0.02, "lateral slip naturally recovers")
 	await reset()
 	car.velocity = Vector3(0, 0, -43)
 	car.on_road = false

@@ -18,6 +18,10 @@ License: [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)
 
 Racing Kit glTF/BIN files were repackaged as self-contained GLBs, and an `asset_origin` root centers X/Z and grounds Y without changing geometry/materials. Other source models retain their author geometry and materials. In-game scale/orientation and separate wheel animation are applied in code. No brand/logo is used as game branding. The track, terrain, mountains, rails, HUD, handling, and synthesized engine loop are original project work. Chinese UI uses a renamed glyph subset of **Noto Sans CJK SC Regular**, licensed under **SIL Open Font License 1.1**. Source: https://github.com/notofonts/noto-cjk . The subset is named **Ridgeline Interface**; the full installed source package copyright/license is preserved at `assets/fonts/LICENSE.txt`. No proprietary fonts are included.
 
+## Kart handling update
+
+Drift charging / release mini-turbo is a broad kart-racer inspiration, including Mario Kart; it is not an exact reproduction of any game's tuning. The directional drift model, limited rechargeable nitro, smoke, sparks, low-poly flame geometry and boost HUD are original project code. No Nintendo / Mario characters, art, logos, sounds, item designs or other proprietary assets are included.
+
 ## References studied before implementation
 
 This is an original small arcade controller, **not** an imported vehicle framework or a realistic vehicle simulation. The external example projects below were inspected as references, not shipped or executed as game dependencies.

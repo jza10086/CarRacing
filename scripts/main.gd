@@ -52,7 +52,7 @@ func _ready() -> void:
 	_update_camera(1.0)
 
 func _setup_inputs() -> void:
-	var bindings := {"accelerate": [KEY_W, KEY_UP], "brake": [KEY_S, KEY_DOWN], "steer_left": [KEY_A, KEY_LEFT], "steer_right": [KEY_D, KEY_RIGHT], "handbrake": [KEY_SPACE], "reset_car": [KEY_R], "pause_race": [KEY_ESCAPE], "start_race": [KEY_ENTER]}
+	var bindings := {"accelerate": [KEY_W, KEY_UP], "brake": [KEY_S, KEY_DOWN], "steer_left": [KEY_A, KEY_LEFT], "steer_right": [KEY_D, KEY_RIGHT], "handbrake": [KEY_SPACE], "nitro": [KEY_SHIFT], "reset_car": [KEY_R], "pause_race": [KEY_ESCAPE], "start_race": [KEY_ENTER]}
 	for action in bindings:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -125,6 +125,7 @@ func resume_race() -> void:
 func start_race() -> void:
 	get_tree().paused = false
 	rules.restart()
+	car.reset_for_race()
 	car.reset_to(track.start_transform())
 	car.driving_enabled = false
 	countdown = 3.0
@@ -179,7 +180,7 @@ func _update_camera(delta: float) -> void:
 		camera.global_position = camera.global_position.lerp(desired, 1.0 - exp(-7.5 * delta))
 		camera_target = camera_target.lerp(focus, 1.0 - exp(-9.0 * delta))
 	camera.look_at(camera_target, Vector3.UP)
-	camera.fov = lerpf(camera.fov, lerpf(68.0, 76.0, speed_ratio), 1.0 - exp(-3.0 * delta))
+	camera.fov = lerpf(camera.fov, lerpf(68.0, 76.0, speed_ratio) + (4.0 if car.boost_active else 0.0), 1.0 - exp(-3.0 * delta))
 
 func reset_car() -> void:
 	var safe := rules.last_safe_distance + 3.0
@@ -199,6 +200,7 @@ func _lap_completed(value: float) -> void:
 func _race_completed() -> void:
 	state = "finished"
 	car.driving_enabled = false
+	car.clear_boost_and_drift()
 	if not test_mode and (best_time <= 0 or rules.total_time < best_time):
 		best_time = rules.total_time
 		var record := ConfigFile.new()

@@ -4,9 +4,11 @@ var game: Node
 var font: Font
 var primary: Button
 var secondary: Button
+var boost_phase: float = 0.0
 const INK := Color("182c35")
 const CREAM := Color("fff3d7")
 const ACCENT := Color("ffb34b")
+const NITRO := Color("70dcff")
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -38,9 +40,11 @@ func _button(filled: bool) -> Button:
 	add_child(button)
 	return button
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if not game:
 		return
+	if game.state == "racing":
+		boost_phase = fposmod(boost_phase + delta * 1.8, 1.0)
 	var menu: bool = game.state in ["menu", "paused", "finished"]
 	primary.visible = menu
 	secondary.visible = menu and game.state != "menu"
@@ -82,13 +86,16 @@ func _draw() -> void:
 				values += "%d  %s   " % [i + 1, game.format_time(game.rules.lap_times[i])]
 			_text(values, Vector2(64, size.y * 0.25 + 182), 15)
 		if game.state == "menu":
-			_text("W / ↑  加速       S / ↓  刹车 / 倒车", Vector2(64, size.y - 97), 14, Color("bdcdcb"))
-			_text("A D / ← →  转向       空格  手刹", Vector2(64, size.y - 71), 14, Color("bdcdcb"))
+			_text("W / ↑  加速       S / ↓  刹车 / 倒车", Vector2(64, size.y - 123), 14, Color("bdcdcb"))
+			_text("A D / ← →  转向", Vector2(64, size.y - 97), 14, Color("bdcdcb"))
+			_text("SPACE  DRIFT → TURBO     SHIFT  NITRO", Vector2(64, size.y - 71), 14, NITRO)
 			_text("R  返回检查点       Esc  暂停", Vector2(64, size.y - 45), 14, Color("bdcdcb"))
 		if game.best_time > 0:
 			_right("个人最佳  " + game.format_time(game.best_time), Vector2(size.x - 36, 43), 15)
 		return
 	# One top strip of information, no large dashboard covering the world.
+	if game.state == "racing" and game.car.boost_active:
+		_draw_boost_streaks()
 	_text("山脊竞速", Vector2(30, 35), 21)
 	_text("晴岭赛道", Vector2(31, 58), 11, Color("cee4db"))
 	_text("圈数", Vector2(size.x * 0.45, 29), 11, Color("cee4db"))
@@ -96,9 +103,10 @@ func _draw() -> void:
 	_right("总计  " + game.format_time(game.rules.total_time), Vector2(size.x - 30, 36), 22)
 	_right("本圈  " + game.format_time(game.rules.lap_time), Vector2(size.x - 31, 60), 13, Color("cee4db"))
 	var speed: int = int(round(absf(game.car.signed_speed) * 3.6))
-	draw_rect(Rect2(size.x - 182, size.y - 119, 3, 74), ACCENT)
-	_right("%03d" % speed, Vector2(size.x - 30, size.y - 61), 48)
-	_right("KM/H", Vector2(size.x - 31, size.y - 37), 12, Color("cee4db"))
+	draw_rect(Rect2(size.x - 182, size.y - 141, 3, 72), NITRO if game.car.nitro_active else ACCENT)
+	_right("%03d" % speed, Vector2(size.x - 30, size.y - 83), 48)
+	_right("KM/H", Vector2(size.x - 31, size.y - 60), 12, Color("cee4db"))
+	_draw_nitro()
 	_draw_map()
 	if game.state == "countdown":
 		var count: String = str(int(ceil(game.countdown))) if game.countdown > 0 else "GO"
@@ -111,6 +119,40 @@ func _draw() -> void:
 		_text("逆向行驶", Vector2(size.x * 0.5 - 72, size.y - 55), 19, ACCENT)
 	elif not game.car.on_road:
 		_text("草地减速", Vector2(size.x * 0.5 - 54, size.y - 55), 16, ACCENT)
+
+func _draw_nitro() -> void:
+	var fill: float = clampf(game.car.nitro, 0.0, 1.0)
+	var color: Color = NITRO if game.car.nitro_active else Color("b6d7db")
+	var label := "SHIFT  NITRO"
+	if game.car.nitro_active:
+		label = "NITRO"
+	elif game.car.mini_turbo_time > 0.0:
+		label = "MINI TURBO"
+		color = ACCENT
+	elif fill <= 0.01:
+		label = "NITRO  EMPTY"
+		color = Color("819ca2")
+	_text(label, Vector2(size.x - 175, size.y - 39), 11, color)
+	var bar := Rect2(size.x - 175, size.y - 29, 144, 5)
+	draw_rect(Rect2(bar.position - Vector2(1, 1), bar.size + Vector2(2, 2)), Color(0.06, 0.14, 0.18, 0.75))
+	draw_rect(bar, Color(0.70, 0.86, 0.87, 0.16))
+	if fill > 0.0:
+		draw_rect(Rect2(bar.position, Vector2(bar.size.x * fill, bar.size.y)), color)
+	for part in range(1, 4):
+		var x: float = bar.position.x + bar.size.x * float(part) / 4.0
+		draw_line(Vector2(x, bar.position.y), Vector2(x, bar.end.y), Color(0.07, 0.17, 0.20, 0.65), 1.0)
+
+func _draw_boost_streaks() -> void:
+	# Six quiet edge strokes leave the road and car completely unobscured.
+	var center := size * Vector2(0.5, 0.48)
+	for side in [-1.0, 1.0]:
+		for i in 3:
+			var phase := fposmod(boost_phase + float(i) * 0.31, 1.0)
+			var edge := Vector2(size.x * (0.5 + side * 0.60), size.y * (0.29 + float(i) * 0.20))
+			var start := center.lerp(edge, 0.76 + phase * 0.13)
+			var end := center.lerp(edge, 0.85 + phase * 0.13)
+			var tint := Color(NITRO if game.car.nitro_active else CREAM, 0.11 * sin(phase * PI))
+			draw_line(start, end, tint, 1.5, true)
 
 func _draw_map() -> void:
 	if game.track.points.is_empty():
