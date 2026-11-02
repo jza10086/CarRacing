@@ -222,7 +222,7 @@ func _boat(at: Vector3, yaw: float, material: Material, scale_factor: float = 1.
 
 func _tree(at: Vector3) -> void:
 	# Native Kenney asset, deliberately placed in a small harbor windbreak rather than scattered everywhere.
-	var scene := load("res://assets/kenney_nature_kit/tree_pineRoundA.glb") as PackedScene
+	var scene := load("res://games/minigame/godot_party_default_car_racing/assets/kenney_nature_kit/tree_pineRoundA.glb") as PackedScene
 	var tree := scene.instantiate() as Node3D
 	tree.position = at
 	tree.scale = Vector3.ONE * 4.4

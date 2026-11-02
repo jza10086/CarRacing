@@ -1,5 +1,7 @@
 class_name RaceRules
 extends RefCounted
+
+const TrackWorldScript = preload("res://games/minigame/godot_party_default_car_racing/scripts/track_world.gd")
 ## Ordered directional gates; no lap credit from teleports, reverse or shortcuts.
 signal lap_completed(lap_time: float)
 signal race_completed
@@ -16,7 +18,7 @@ var gates: Array[Dictionary] = []
 var track_length: float = 1.0
 var previous_along: float = 3.0
 
-func configure(track: TrackWorld) -> void:
+func configure(track: TrackWorldScript) -> void:
 	track_length = track.length
 	gates.clear()
 	for at in track.checkpoint_samples():

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cu3q8gndq0f8a"
-path="res://.godot/imported/flagCheckers_checkers.png-858c868ff115e156c1c732301804a0c2.ctex"
+path="res://.godot/imported/flagCheckers_checkers.png-9835e5e4d582968c558c9139ec0f7a15.ctex"
 metadata={
 "vram_texture": false
 }
@@ -13,8 +13,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/kenney_racing_kit/flagCheckers_checkers.png"
-dest_files=["res://.godot/imported/flagCheckers_checkers.png-858c868ff115e156c1c732301804a0c2.ctex"]
+source_file="res://games/minigame/godot_party_default_car_racing/assets/kenney_racing_kit/flagCheckers_checkers.png"
+dest_files=["res://.godot/imported/flagCheckers_checkers.png-9835e5e4d582968c558c9139ec0f7a15.ctex"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c45otkhd57q1q"
-path="res://.godot/imported/flagCheckers.glb-b7c421f1980f25f9b79ca95da9e56b78.scn"
+path="res://.godot/imported/flagCheckers.glb-bf567bc27703de3347ff6c2bceee2db9.scn"
 
 [deps]
 
-source_file="res://assets/kenney_racing_kit/flagCheckers.glb"
-dest_files=["res://.godot/imported/flagCheckers.glb-b7c421f1980f25f9b79ca95da9e56b78.scn"]
+source_file="res://games/minigame/godot_party_default_car_racing/assets/kenney_racing_kit/flagCheckers.glb"
+dest_files=["res://.godot/imported/flagCheckers.glb-bf567bc27703de3347ff6c2bceee2db9.scn"]
 
 [params]
 

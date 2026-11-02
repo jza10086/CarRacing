@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dsplboge4pw0"
-path="res://.godot/imported/pitsOffice.glb-aca2923ebd3131058c936d4f081505d7.scn"
+path="res://.godot/imported/pitsOffice.glb-5ba1151b6680347bcfc012fdd8465db6.scn"
 
 [deps]
 
-source_file="res://assets/kenney_racing_kit/pitsOffice.glb"
-dest_files=["res://.godot/imported/pitsOffice.glb-aca2923ebd3131058c936d4f081505d7.scn"]
+source_file="res://games/minigame/godot_party_default_car_racing/assets/kenney_racing_kit/pitsOffice.glb"
+dest_files=["res://.godot/imported/pitsOffice.glb-5ba1151b6680347bcfc012fdd8465db6.scn"]
 
 [params]
 

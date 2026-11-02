@@ -1,13 +1,16 @@
 extends Node3D
-const CarScript = preload("res://scripts/arcade_car.gd")
-const TrackScript = preload("res://scripts/track_world.gd")
-const RulesScript = preload("res://scripts/race_rules.gd")
-const HUDScript = preload("res://scripts/race_hud.gd")
-var track: TrackWorld
-var car: ArcadeCar
-var rules: RaceRules
+
+signal completed(metrics: Dictionary)
+var personal_best: int = 0
+const CarScript = preload("res://games/minigame/godot_party_default_car_racing/scripts/arcade_car.gd")
+const TrackScript = preload("res://games/minigame/godot_party_default_car_racing/scripts/track_world.gd")
+const RulesScript = preload("res://games/minigame/godot_party_default_car_racing/scripts/race_rules.gd")
+const HUDScript = preload("res://games/minigame/godot_party_default_car_racing/scripts/race_hud.gd")
+var track: TrackScript
+var car: CarScript
+var rules: RulesScript
 var camera: Camera3D
-var hud: RaceHUD
+var hud: HUDScript
 var state: String = "menu"
 var countdown: float = 3.0
 var toast: String = ""
@@ -19,17 +22,17 @@ var test_mode: bool = false
 var camera_snap: bool = true
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
+	process_mode = Node.PROCESS_MODE_INHERIT
 	_setup_inputs()
 	_setup_light()
 	track = TrackScript.new()
 	track.name = "LighthouseCircuit"
-	track.process_mode = Node.PROCESS_MODE_PAUSABLE
+	track.process_mode = Node.PROCESS_MODE_INHERIT
 	add_child(track)
 	car = CarScript.new()
 	car.name = "PlayerCar"
 	car.track = track
-	car.process_mode = Node.PROCESS_MODE_PAUSABLE
+	car.process_mode = Node.PROCESS_MODE_INHERIT
 	add_child(car)
 	car.reset_to(track.start_transform())
 	rules = RulesScript.new()
@@ -46,13 +49,12 @@ func _ready() -> void:
 	hud = HUDScript.new()
 	hud.game = self
 	layer.add_child(hud)
-	var saved := ConfigFile.new()
-	if saved.load("user://records.cfg") == OK:
-		best_time = float(saved.get_value("lighthouse_v1", "best_3_laps", 0.0))
+	best_time = float(personal_best) / 1000.0
 	_update_camera(1.0)
+	start_race()
 
 func _setup_inputs() -> void:
-	var bindings := {"accelerate": [KEY_W, KEY_UP], "brake": [KEY_S, KEY_DOWN], "steer_left": [KEY_A, KEY_LEFT], "steer_right": [KEY_D, KEY_RIGHT], "handbrake": [KEY_SPACE], "nitro": [KEY_SHIFT], "reset_car": [KEY_R], "pause_race": [KEY_ESCAPE], "start_race": [KEY_ENTER]}
+	var bindings := {"car_racing_accelerate": [KEY_W, KEY_UP], "car_racing_brake": [KEY_S, KEY_DOWN], "car_racing_steer_left": [KEY_A, KEY_LEFT], "car_racing_steer_right": [KEY_D, KEY_RIGHT], "car_racing_handbrake": [KEY_SPACE], "car_racing_nitro": [KEY_SHIFT], "car_racing_reset_car": [KEY_R], "car_racing_pause_race": [KEY_ESCAPE], "car_racing_start_race": [KEY_ENTER]}
 	for action in bindings:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -90,16 +92,16 @@ func _setup_light() -> void:
 	add_child(sun)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause_race"):
+	if event.is_action_pressed("car_racing_pause_race"):
 		if state == "racing" or state == "countdown":
 			set_meta("pause_return", state)
 			state = "paused"
-			get_tree().paused = true
+			car.process_mode = Node.PROCESS_MODE_DISABLED
 		elif state == "paused":
 			resume_race()
-	elif event.is_action_pressed("reset_car") and state == "racing":
+	elif event.is_action_pressed("car_racing_reset_car") and state == "racing":
 		reset_car()
-	elif event.is_action_pressed("start_race") and state in ["menu", "finished"]:
+	elif event.is_action_pressed("car_racing_start_race") and state in ["menu", "finished"]:
 		start_race()
 
 func menu_primary() -> void:
@@ -112,7 +114,7 @@ func menu_secondary() -> void:
 	if state == "paused":
 		start_race()
 	else:
-		get_tree().paused = false
+		car.process_mode = Node.PROCESS_MODE_INHERIT
 		state = "menu"
 		car.driving_enabled = false
 		car.reset_to(track.start_transform())
@@ -120,10 +122,10 @@ func menu_secondary() -> void:
 
 func resume_race() -> void:
 	state = str(get_meta("pause_return", "racing"))
-	get_tree().paused = false
+	car.process_mode = Node.PROCESS_MODE_INHERIT
 
 func start_race() -> void:
-	get_tree().paused = false
+	car.process_mode = Node.PROCESS_MODE_INHERIT
 	rules.restart()
 	car.reset_for_race()
 	car.reset_to(track.start_transform())
@@ -162,7 +164,7 @@ func _process(delta: float) -> void:
 
 func _update_camera(delta: float) -> void:
 	var forward := -car.global_basis.z
-	var speed_ratio := clampf(absf(car.signed_speed) / ArcadeCar.MAX_SPEED, 0.0, 1.0)
+	var speed_ratio := clampf(absf(car.signed_speed) / CarScript.MAX_SPEED, 0.0, 1.0)
 	var focus := car.global_position + Vector3.UP * 1.4 + forward * lerpf(3.0, 5.4, speed_ratio)
 	var desired := car.global_position - forward * lerpf(7.2, 8.7, speed_ratio) + Vector3.UP * lerpf(3.8, 4.6, speed_ratio)
 	if state == "menu":
@@ -203,11 +205,13 @@ func _race_completed() -> void:
 	car.clear_boost_and_drift()
 	if not test_mode and (best_time <= 0 or rules.total_time < best_time):
 		best_time = rules.total_time
-		var record := ConfigFile.new()
-		record.load("user://records.cfg") # Preserve records belonging to older circuits.
-		record.set_value("lighthouse_v1", "best_3_laps", best_time)
-		record.save("user://records.cfg")
+
+	completed.emit({"time": roundi(rules.total_time * 1000.0)})
 
 func format_time(value: float) -> String:
 	var ms := int(value * 1000)
 	return "%d:%02d.%03d" % [ms / 60000, (ms / 1000) % 60, ms % 1000]
+
+func _exit_tree() -> void:
+	for action: String in ["car_racing_accelerate", "car_racing_brake", "car_racing_steer_left", "car_racing_steer_right", "car_racing_handbrake", "car_racing_nitro", "car_racing_reset_car", "car_racing_pause_race", "car_racing_start_race"]:
+		InputMap.erase_action(action)

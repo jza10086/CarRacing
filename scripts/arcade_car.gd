@@ -1,5 +1,7 @@
 class_name ArcadeCar
 extends CharacterBody3D
+
+const TrackWorldScript = preload("res://games/minigame/godot_party_default_car_racing/scripts/track_world.gd")
 ## Original kart-inspired arcade handling. Collision stays upright; drift yaw is bounded.
 ## All handling/timing values live here; speed is m/s and charge/timers are seconds.
 const MAX_SPEED: float = 43.0
@@ -18,7 +20,7 @@ const ORANGE_TURBO_DURATION: float = 1.15
 const NITRO_DRAIN: float = 0.25
 const NITRO_RECHARGE: float = 0.10
 const NITRO_RECHARGE_DELAY: float = 0.8
-const EffectsScript = preload("res://scripts/kart_effects.gd")
+const EffectsScript = preload("res://games/minigame/godot_party_default_car_racing/scripts/kart_effects.gd")
 var throttle: float = 0.0
 var steering: float = 0.0
 # Keep the existing action/property name so saved bindings and QA inputs stay compatible.
@@ -45,7 +47,7 @@ var wheel_pivots: Array[Node3D] = []
 var wheel_meshes: Array[Node3D] = []
 var wheel_spin: float = 0.0
 var engine: AudioStreamPlayer
-var track: TrackWorld
+var track: TrackWorldScript
 var external_input: bool = false
 var previous_position: Vector3
 
@@ -62,7 +64,7 @@ func _ready() -> void:
 	add_child(collision)
 	visual = Node3D.new()
 	add_child(visual)
-	model = load("res://assets/kenney_car_kit/sedan-sports.glb").instantiate()
+	model = load("res://games/minigame/godot_party_default_car_racing/assets/kenney_car_kit/sedan-sports.glb").instantiate()
 	model.rotation.y = PI
 	model.scale = Vector3.ONE * 1.5
 	visual.add_child(model)
@@ -87,10 +89,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	previous_position = global_position
 	if not external_input:
-		throttle = Input.get_action_strength("accelerate") - Input.get_action_strength("brake")
-		steering = Input.get_action_strength("steer_left") - Input.get_action_strength("steer_right")
-		handbrake = Input.is_action_pressed("handbrake")
-		nitro_pressed = Input.is_action_pressed("nitro")
+		throttle = Input.get_action_strength("car_racing_accelerate") - Input.get_action_strength("car_racing_brake")
+		steering = Input.get_action_strength("car_racing_steer_left") - Input.get_action_strength("car_racing_steer_right")
+		handbrake = Input.is_action_pressed("car_racing_handbrake")
+		nitro_pressed = Input.is_action_pressed("car_racing_nitro")
 	if not driving_enabled:
 		throttle = 0.0
 		steering = 0.0

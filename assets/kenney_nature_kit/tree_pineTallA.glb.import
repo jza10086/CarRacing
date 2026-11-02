@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c07xxshuoexu0"
-path="res://.godot/imported/tree_pineTallA.glb-8bab5019a869e6df0da8d9fe09cac60a.scn"
+path="res://.godot/imported/tree_pineTallA.glb-cd378ea320a81ad01665d9bf70f7e843.scn"
 
 [deps]
 
-source_file="res://assets/kenney_nature_kit/tree_pineTallA.glb"
-dest_files=["res://.godot/imported/tree_pineTallA.glb-8bab5019a869e6df0da8d9fe09cac60a.scn"]
+source_file="res://games/minigame/godot_party_default_car_racing/assets/kenney_nature_kit/tree_pineTallA.glb"
+dest_files=["res://.godot/imported/tree_pineTallA.glb-cd378ea320a81ad01665d9bf70f7e843.scn"]
 
 [params]
 

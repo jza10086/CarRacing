@@ -13,7 +13,7 @@ const NITRO := Color("70dcff")
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	font = load("res://assets/fonts/RidgelineInterface.otf")
+	font = load("res://games/minigame/godot_party_default_car_racing/assets/fonts/RidgelineInterface.otf")
 	primary = _button(true)
 	secondary = _button(false)
 	primary.pressed.connect(func(): game.menu_primary())

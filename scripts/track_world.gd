@@ -5,7 +5,7 @@ extends Node3D
 
 const TRACK_HEIGHT := 0.12
 const GUARD_SHOULDER := 1.8
-const LAYOUT = preload("res://scripts/lighthouse_layout.gd")
+const LAYOUT = preload("res://games/minigame/godot_party_default_car_racing/scripts/lighthouse_layout.gd")
 var points := PackedVector3Array()
 var distances := PackedFloat32Array()
 var half_widths := PackedFloat32Array()
@@ -26,7 +26,7 @@ func _ready() -> void:
 	_orange = _material(Color("ee6b40"))
 	_dark = _material(Color("253943"))
 	# Coast / harbor are hand-built landmarks, independent of road collision.
-	var scenery := preload("res://scripts/harbor_scenery.gd").new()
+	var scenery := preload("res://games/minigame/godot_party_default_car_racing/scripts/harbor_scenery.gd").new()
 	scenery.track = self
 	add_child(scenery)
 	_build_ribbons()
