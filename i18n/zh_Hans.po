@@ -1,0 +1,11 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: zh_Hans\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "WASD 或方向键驾驶，空格手刹，Shift 加速。沿赛道完成三圈。"
+msgstr "WASD 或方向键驾驶，空格手刹，Shift 加速。沿赛道完成三圈。"
+
+msgid "山脊竞速"
+msgstr "山脊竞速"
