@@ -1,4 +1,55 @@
-[gd_scene load_steps=2 format=3]
-[ext_resource type="Script" path="res://games/minigame/godot_party_default_car_racing/scripts/main.gd" id="1"]
-[node name="Ridgeline" type="Node3D"]
-script = ExtResource("1")
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://games/minigame/godot_party_default_car_racing/scenes/circuit.tscn" id="track"]
+[ext_resource type="PackedScene" path="res://games/minigame/godot_party_default_car_racing/scenes/car.tscn" id="car"]
+[ext_resource type="PackedScene" path="res://games/minigame/godot_party_default_car_racing/scenes/race_hud.tscn" id="hud"]
+
+[ext_resource type="Script" path="res://games/minigame/godot_party_default_car_racing/scripts/main.gd" id="1_s1ju4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sm7hh"]
+sky_top_color = Color(0.3882353, 0.70980394, 0.827451, 1)
+sky_horizon_color = Color(0.78431374, 0.9019608, 0.85882354, 1)
+sky_curve = 0.2
+ground_bottom_color = Color(0.50980395, 0.7137255, 0.57254905, 1)
+ground_horizon_color = Color(0.827451, 0.8980392, 0.79607844, 1)
+
+[sub_resource type="Sky" id="Sky_4kys6"]
+sky_material = SubResource("ProceduralSkyMaterial_sm7hh")
+
+[sub_resource type="Environment" id="Environment_cjaci"]
+background_mode = 2
+sky = SubResource("Sky_4kys6")
+ambient_light_source = 2
+ambient_light_color = Color(0.83137256, 0.8980392, 0.9372549, 1)
+ambient_light_energy = 0.4
+
+[node name="Ridgeline" type="Node3D" unique_id=1130455316]
+script = ExtResource("1_s1ju4")
+
+[node name="WorldEnvironment1" type="WorldEnvironment" parent="." unique_id=507634470]
+environment = SubResource("Environment_cjaci")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=89962397]
+transform = Transform3D(0.8480481, 0.3938068, -0.35458517, 0, 0.66913056, 0.74314487, 0.52991927, -0.63022256, 0.5674549, 0, 0, 0)
+light_color = Color(1, 0.94509804, 0.8, 1)
+light_energy = 0.85
+shadow_enabled = true
+shadow_bias = 0.07
+directional_shadow_max_distance = 110.0
+
+[node name="LighthouseCircuit" parent="." instance=ExtResource("track")]
+
+
+[node name="PlayerCar" parent="." instance=ExtResource("car")]
+
+
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(-240,4,138)
+fov = 68.0
+far = 1200.0
+current = true
+
+[node name="GameHUD" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="RaceHUD" parent="GameHUD" instance=ExtResource("hud")]

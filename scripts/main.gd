@@ -1,4 +1,5 @@
 extends Node3D
+const SoloRound = preload("res://games/protocols/godot_party_default_protocol/solo_round.gd")
 
 signal completed(metrics: Dictionary)
 var personal_best: int = 0
@@ -24,31 +25,19 @@ var camera_snap: bool = true
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_INHERIT
 	_setup_inputs()
-	_setup_light()
-	track = TrackScript.new()
-	track.name = "LighthouseCircuit"
-	track.process_mode = Node.PROCESS_MODE_INHERIT
-	add_child(track)
-	car = CarScript.new()
-	car.name = "PlayerCar"
+	track = $LighthouseCircuit
+	car = $PlayerCar
 	car.track = track
-	car.process_mode = Node.PROCESS_MODE_INHERIT
-	add_child(car)
 	car.reset_to(track.start_transform())
 	rules = RulesScript.new()
 	rules.configure(track)
 	rules.lap_completed.connect(_lap_completed)
 	rules.race_completed.connect(_race_completed)
-	camera = Camera3D.new()
-	camera.fov = 68.0
-	camera.far = 1200.0
-	add_child(camera)
-	camera.current = true
-	var layer := CanvasLayer.new()
-	add_child(layer)
-	hud = HUDScript.new()
+	camera = $Camera
+	hud = $GameHUD/RaceHUD
 	hud.game = self
-	layer.add_child(hud)
+	if get_parent() is SoloRound:
+		hud.i18n = get_parent().api.i18n
 	best_time = float(personal_best) / 1000.0
 	_update_camera(1.0)
 	start_race()
@@ -62,34 +51,6 @@ func _setup_inputs() -> void:
 			var event := InputEventKey.new()
 			event.physical_keycode = key
 			InputMap.action_add_event(action, event)
-
-func _setup_light() -> void:
-	var world := WorldEnvironment.new()
-	var environment := Environment.new()
-	world.environment = environment
-	environment.background_mode = Environment.BG_SKY
-	var sky := Sky.new()
-	var sky_mat := ProceduralSkyMaterial.new()
-	sky_mat.sky_top_color = Color("63b5d3")
-	sky_mat.sky_horizon_color = Color("c8e6db")
-	sky_mat.ground_bottom_color = Color("82b692")
-	sky_mat.ground_horizon_color = Color("d3e5cb")
-	sky_mat.sky_curve = 0.2
-	sky.sky_material = sky_mat
-	environment.sky = sky
-	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	environment.ambient_light_color = Color("d4e5ef")
-	environment.ambient_light_energy = 0.4
-	environment.tonemap_mode = Environment.TONE_MAPPER_LINEAR
-	add_child(world)
-	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-48, -32, 0)
-	sun.light_color = Color("fff1cc")
-	sun.light_energy = 0.85
-	sun.shadow_enabled = true
-	sun.directional_shadow_max_distance = 110.0
-	sun.shadow_bias = 0.07
-	add_child(sun)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("car_racing_pause_race"):

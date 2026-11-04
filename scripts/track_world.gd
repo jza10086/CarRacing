@@ -1,3 +1,4 @@
+@tool
 class_name TrackWorld
 extends Node3D
 ## Lighthouse Circuit: hand-authored Bezier sections, sampled into one closed road.
@@ -5,7 +6,9 @@ extends Node3D
 
 const TRACK_HEIGHT := 0.12
 const GUARD_SHOULDER := 1.8
-const LAYOUT = preload("res://games/minigame/godot_party_default_car_racing/scripts/lighthouse_layout.gd")
+@export var sections: Array[Dictionary] = []
+const NAMES: Array[String] = ["港湾出发","礁岸节奏","船坞发卡","灯塔长弧","防波堤冲刺","归港末弯"]
+const LABELS: Array[String] = ["HARBOR","REEF S","DRYDOCK","LIGHTHOUSE","BREAKWATER","HOME TURN"]
 var points := PackedVector3Array()
 var distances := PackedFloat32Array()
 var half_widths := PackedFloat32Array()
@@ -20,19 +23,20 @@ var _orange: StandardMaterial3D
 var _dark: StandardMaterial3D
 
 func _ready() -> void:
-	_build_curve()
 	_asphalt = _material(Color("35454e"))
 	_cream = _material(Color("f4e9cf"))
 	_orange = _material(Color("ee6b40"))
 	_dark = _material(Color("253943"))
-	# Coast / harbor are hand-built landmarks, independent of road collision.
-	var scenery := preload("res://games/minigame/godot_party_default_car_racing/scripts/harbor_scenery.gd").new()
-	scenery.track = self
-	add_child(scenery)
+	$Route.curve.changed.connect(_refresh_road)
+	_refresh_road()
+
+func _refresh_road() -> void:
+	for child: Node in %RoadGeometry.get_children():
+		%RoadGeometry.remove_child(child)
+		child.queue_free()
+	_build_curve()
 	_build_ribbons()
 	_build_rails()
-	_build_start()
-	_build_scenery()
 
 func _build_curve() -> void:
 	points.clear()
@@ -42,18 +46,20 @@ func _build_curve() -> void:
 	sectors.clear()
 	gate_distances.clear()
 	length = 0.0
-	var data: Array[Dictionary] = LAYOUT.segments()
+	var curve: Curve3D = $Route.curve
 	var last_sector := -1
 	var gate_indices: Array[int] = []
-	for segment in data:
-		var a: Vector3 = segment.a
-		var b: Vector3 = segment.b
-		var c: Vector3 = segment.c
-		var d: Vector3 = segment.d
+	for index: int in curve.point_count:
+		var segment: Dictionary = sections[index]
+		var next: int = (index + 1) % curve.point_count
+		var a: Vector3 = curve.get_point_position(index)
+		var b: Vector3 = a + curve.get_point_out(index)
+		var d: Vector3 = curve.get_point_position(next)
+		var c: Vector3 = d + curve.get_point_in(next)
 		var count := maxi(4, int(ceil((a.distance_to(b) + b.distance_to(c) + c.distance_to(d)) / 3.5)))
 		if int(segment.sector) != last_sector:
 			last_sector = int(segment.sector)
-			sectors.append({"id": last_sector, "name": LAYOUT.NAMES[last_sector], "label": LAYOUT.LABELS[last_sector], "index": points.size()})
+			sectors.append({"id": last_sector, "name": NAMES[last_sector], "label": LABELS[last_sector], "index": points.size()})
 		if bool(segment.gate) and not points.is_empty():
 			gate_indices.append(points.size())
 		for step in count:
@@ -135,7 +141,7 @@ func _mesh_node(mesh: Mesh, material: Material, at: Vector3 = Vector3.ZERO) -> M
 	node.mesh = mesh
 	node.material_override = material
 	node.position = at
-	add_child(node)
+	%RoadGeometry.add_child(node)
 	return node
 
 func _box(at: Vector3, size: Vector3, material: Material, parent: Node3D = self) -> MeshInstance3D:
@@ -212,7 +218,7 @@ func _build_rails() -> void:
 	# Closed collision walls give a forgiving roadside rather than unbounded void.
 	var collider := StaticBody3D.new()
 	collider.name = "Guardrails"
-	add_child(collider)
+	%RoadGeometry.add_child(collider)
 	var posts: Array[Transform3D] = []
 	for side: float in [-1.0, 1.0]:
 		for i in points.size():
@@ -254,112 +260,4 @@ func _make_multimesh(mesh: Mesh, material: Material, placements: Array[Transform
 	var node := MultiMeshInstance3D.new()
 	node.multimesh = multi
 	node.material_override = material
-	add_child(node)
-
-func _build_start() -> void:
-	var sample := sample_distance(0.0)
-	var p: Vector3 = sample.position
-	var t: Vector3 = sample.tangent
-	var basis := Basis.looking_at(t)
-	var frame := Node3D.new()
-	frame.name = "StartFinish"
-	frame.transform = Transform3D(basis, p)
-	add_child(frame)
-	for x: float in [-9.8, 9.8]:
-		_box(Vector3(x, 3.5, 0), Vector3(0.50, 7.0, 0.55), _dark, frame)
-		_box(Vector3(x, 0.45, 0), Vector3(0.9, 0.9, 1.0), _orange, frame)
-	_box(Vector3(0, 6.5, 0), Vector3(20.1, 1.4, 0.50), _orange, frame)
-	_box(Vector3(0, 5.65, 0), Vector3(18.5, 0.30, 0.45), _dark, frame)
-	var title := Label3D.new()
-	title.text = "L I G H T H O U S E"
-	title.font_size = 64
-	title.pixel_size = 0.019
-	title.outline_size = 0
-	title.modulate = Color("fff4d9")
-	title.position = Vector3(0, 6.53, 0.27)
-	frame.add_child(title)
-	var finish := Label3D.new()
-	finish.text = "START / FINISH"
-	finish.font_size = 48
-	finish.pixel_size = 0.012
-	finish.outline_size = 0
-	finish.modulate = Color("fff4d9")
-	finish.position = Vector3(0, 5.65, 0.26)
-	frame.add_child(finish)
-	var stripe := SurfaceTool.new()
-	stripe.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var dark_stripe := SurfaceTool.new()
-	dark_stripe.begin(Mesh.PRIMITIVE_TRIANGLES)
-	for row in 2:
-		for col in 24:
-			var x := -7.2 + col * 0.6
-			var z := -0.6 + row * 0.6
-			var corners: Array[Vector3] = []
-			for local: Vector3 in [Vector3(x, 0.026, z), Vector3(x, 0.026, z - 0.6), Vector3(x + 0.6, 0.026, z - 0.6), Vector3(x + 0.6, 0.026, z)]:
-				corners.append(p + basis * local)
-			_quad(stripe if (row + col) % 2 == 0 else dark_stripe, corners[0], corners[1], corners[2], corners[3])
-	_mesh_node(stripe.commit(), _cream)
-	_mesh_node(dark_stripe.commit(), _dark)
-	# Grid slots ahead of the gantry mark the launch direction without HUD arrows.
-	for dist: float in [5.0, 12.0, 19.0]:
-		var mark := sample_distance(dist)
-		var pos: Vector3 = mark.position + Vector3.UP * 0.03
-		var tangent: Vector3 = mark.tangent
-		var right := tangent.cross(Vector3.UP)
-		for side: float in [-1.0, 1.0]:
-			var box := _box(pos + right * side * 2.7, Vector3(2.0, 0.02, 0.12), _cream)
-			box.basis = Basis.looking_at(tangent)
-
-func _build_scenery() -> void:
-	# Signs precede decisions. They are not invisible checkpoint triggers.
-	for sector in sectors:
-		var dist: float = sector.distance
-		_build_sign(dist + 8.0, "%02d  %s" % [int(sector.id) + 1, sector.label], _dark)
-	for at: float in [180.0, 225.0, 370.0, 440.0, 510.0, 592.0, 640.0, 705.0, 845.0, 950.0, 1045.0, length - 150.0, length - 95.0]:
-		_build_chevron(at)
-	var hairpin_start: float = sectors[2].distance
-	_build_sign(hairpin_start - 50.0, "HAIRPIN  100", _orange)
-	_build_sign(hairpin_start, "BRAKE  50", _orange)
-	_build_sign(hairpin_start + 17.0, "HAIRPIN  >>", _orange)
-	var bridge_start: float = sectors[4].distance
-	_build_sign(bridge_start + 18.0, "SHIFT  /  NITRO", _material(Color("226d85")))
-	_build_sign(sectors[5].distance - 38.0, "LIFT  /  FINAL TURN", _orange)
-
-func _build_sign(dist: float, text: String, material: Material) -> void:
-	var sample := sample_distance(dist)
-	var tangent: Vector3 = sample.tangent
-	var board := Node3D.new()
-	board.transform = Transform3D(Basis.looking_at(tangent), sample.position + tangent.cross(Vector3.UP) * (float(sample.half_width) + 3.2))
-	add_child(board)
-	_box(Vector3(0, 2.25, 0), Vector3(6.6, 1.7, 0.22), material, board)
-	for x: float in [-2.6, 2.6]:
-		_box(Vector3(x, 0.8, 0), Vector3(0.16, 1.6, 0.16), _dark, board)
-	var label := Label3D.new()
-	label.text = text
-	label.font_size = 48
-	label.pixel_size = 0.013
-	label.outline_size = 0
-	label.modulate = Color("fff3d6")
-	label.position = Vector3(0, 2.25, 0.13)
-	board.add_child(label)
-
-func _build_chevron(dist: float) -> void:
-	var a := sample_distance(dist)
-	var b := sample_distance(dist + 18.0)
-	var tangent: Vector3 = a.tangent
-	var turn := tangent.cross(b.tangent).y
-	var side := -1.0 if turn > 0 else 1.0
-	var right := tangent.cross(Vector3.UP)
-	var board := Node3D.new()
-	board.transform = Transform3D(Basis.looking_at(tangent), a.position + right * side * (float(a.half_width) + 3.0))
-	add_child(board)
-	_box(Vector3(0, 1.4, 0), Vector3(2.6, 1.7, 0.2), _orange, board)
-	_box(Vector3(0, 0.55, 0), Vector3(0.15, 1.1, 0.15), _dark, board)
-	var arrow := Label3D.new()
-	arrow.text = ">>" if turn < 0.0 else "<<"
-	arrow.font_size = 60
-	arrow.pixel_size = 0.025
-	arrow.outline_size = 0
-	arrow.modulate = Color("fff3d6")
-	arrow.position = Vector3(0, 1.40, 0.12)
-	board.add_child(arrow)
+	%RoadGeometry.add_child(node)

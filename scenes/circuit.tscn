@@ -1,0 +1,3198 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://games/minigame/godot_party_default_car_racing/scripts/track_world.gd" id="1_hbfdg"]
+[ext_resource type="PackedScene" path="res://games/minigame/godot_party_default_car_racing/assets/kenney_nature_kit/tree_pineRoundA.glb" id="2_sgak6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s18rf"]
+cull_mode = 2
+vertex_color_use_as_albedo = true
+roughness = 0.96
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jbons"]
+_surfaces = [{
+"aabb": AABB(-283, 0, -214, 488, 1e-05, 507),
+"attribute_data": PackedByteArray("gJZs/4CWbP+Almz/i5x0/4ucdP+LnHT/h5hw/4eYcP+HmHD/g5du/4OXbv+Dl27/gJZs/4CWbP+Almz/i5x0/4ucdP+LnHT/h5hw/4eYcP+HmHD/g5du/4OXbv+Dl27/gJZs/4CWbP+Almz/i5x0/4ucdP+LnHT/h5hw/4eYcP+HmHD/g5du/4OXbv+Dl27/gJZs/4CWbP+Almz/i5x0/4ucdP+LnHT/h5hw/4eYcP+HmHD/g5du/4OXbv+Dl27/gJZs/4CWbP+Almz/i5x0/4ucdP+LnHT/h5hw/4eYcP+HmHD/g5du/4OXbv+Dl27/gJZs/4CWbP+Almz/i5x0/4ucdP+LnHT/h5hw/4eYcP+HmHD/g5du/4OXbv+Dl27/gJZs/4CWbP+Almz/i5x0/4ucdP+LnHT/h5hw/4eYcP+HmHD/g5du/4OXbv+Dl27/gJZs/4CWbP+Almz/i5x0/4ucdP+LnHT/h5hw/4eYcP+HmHD/g5du/4OXbv+Dl27/gJZs/4CWbP+Almz/i5x0/4ucdP+LnHT/h5hw/4eYcP+HmHD/"),
+"format": 34359738383,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 105,
+"vertex_data": PackedByteArray("AACHwwAAAAAAAFxDAICKwwAAAAAAAHBCAACMwwAAAAAAABtDAICKwwAAAAAAAHBCAACCwwAAAAAAAObCAICNwwAAAAAAAHDCAACCwwAAAAAAAObCAAAHwwAAAAAAAB/DAABNwwAAAAAAAB7DAAAHwwAAAAAAAB/DAAAMwgAAAAAAAFbDAAC+wgAAAAAAAD/DAAAMwgAAAAAAAFbDAABcQgAAAAAAAD7DAAAgQQAAAAAAAFTDAADIQgAAAAAAACbDAAAmQwAAAAAAAObCAAAMQwAAAAAAABXDAAAmQwAAAAAAAObCAADeQgAAAAAAABzCAAAdQwAAAAAAAILCAACMQgAAAAAAAFxCAAAvQwAAAAAAANxCAAD6QgAAAAAAAJZCAAAvQwAAAAAAANxCAABNQwAAAAAAAFVDAABMQwAAAAAAACNDAABNQwAAAAAAAFVDAADwQgAAAAAAgJJDAAAtQwAAAAAAAIRDAADwQgAAAAAAgJJDAACCQgAAAAAAAIdDAACgQgAAAAAAAJFDAABQQgAAAAAAAHFDAACgwQAAAAAAAE9DAACQQQAAAAAAAGRDAAAGwwAAAAAAAGlDAABPwwAAAAAAgIxDAAAKwwAAAAAAgItDAABPwwAAAAAAgIxDAACHwwAAAAAAAFxDAAB0wwAAAAAAAIJDAACHwwAAAAAAAFxDAACCwwAAAAAAAObCAICKwwAAAAAAAHBCAAAHwwAAAAAAAB/DAABcQgAAAAAAAD7DAAAMwgAAAAAAAFbDAABcQgAAAAAAAD7DAAAmQwAAAAAAAObCAADIQgAAAAAAACbDAAAmQwAAAAAAAObCAACIQgAAAAAAACDCAADeQgAAAAAAABzCAACMQgAAAAAAAFxCAABNQwAAAAAAAFVDAAAvQwAAAAAAANxCAABNQwAAAAAAAFVDAACCQgAAAAAAAIdDAADwQgAAAAAAgJJDAADcwgAAAAAAAE9DAABPwwAAAAAAgIxDAAAGwwAAAAAAAGlDAABPwwAAAAAAgIxDAACCwwAAAAAAAObCAACHwwAAAAAAAFxDAACCwwAAAAAAAObCAABcQgAAAAAAAD7DAAAHwwAAAAAAAB/DAABcQgAAAAAAAD7DAACIQgAAAAAAACDCAAAmQwAAAAAAAObCAACMQgAAAAAAAFxCAACCQgAAAAAAAIdDAABNQwAAAAAAAFVDAADcwgAAAAAAAE9DAACCwwAAAAAAAObCAABPwwAAAAAAgIxDAACCwwAAAAAAAObCAACIQgAAAAAAACDCAABcQgAAAAAAAD7DAAA0QgAAAAAAAKBBAACCQgAAAAAAAIdDAACMQgAAAAAAAFxCAAB8wgAAAAAAAERDAACCwwAAAAAAAObCAADcwgAAAAAAAE9DAACCwwAAAAAAAObCAAA0QgAAAAAAAKDBAACIQgAAAAAAACDCAAA0QgAAAAAAAKBBAABQQgAAAAAAAHFDAACCQgAAAAAAAIdDAACgwQAAAAAAAE9DAACCwwAAAAAAAObCAAB8wgAAAAAAAERDAACCwwAAAAAAAObCAAA0QgAAAAAAAKBBAAA0QgAAAAAAAKDBAAA0QgAAAAAAAKBBAACgwQAAAAAAAE9DAABQQgAAAAAAAHFDAACgwQAAAAAAAE9DAAA0QgAAAAAAAKBBAACCwwAAAAAAAObC/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/")
+}]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q6xpe"]
+data = PackedVector3Array(-270, 0, 220, -277, 0, 60, -280, 0, 155, -277, 0, 60, -260, 0, -115, -283, 0, -60, -260, 0, -115, -135, 0, -159, -205, 0, -158, -135, 0, -159, -35, 0, -214, -95, 0, -191, -35, 0, -214, 55, 0, -190, 10, 0, -212, 100, 0, -166, 166, 0, -115, 140, 0, -149, 166, 0, -115, 111, 0, -39, 157, 0, -65, 70, 0, 55, 175, 0, 110, 125, 0, 75, 175, 0, 110, 205, 0, 213, 204, 0, 163, 205, 0, 213, 120, 0, 293, 173, 0, 264, 120, 0, 293, 65, 0, 270, 80, 0, 290, 52, 0, 241, -20, 0, 207, 18, 0, 228, -134, 0, 233, -207, 0, 281, -138, 0, 279, -207, 0, 281, -270, 0, 220, -244, 0, 260, -270, 0, 220, -260, 0, -115, -277, 0, 60, -135, 0, -159, 55, 0, -190, -35, 0, -214, 55, 0, -190, 166, 0, -115, 100, 0, -166, 166, 0, -115, 68, 0, -40, 111, 0, -39, 70, 0, 55, 205, 0, 213, 175, 0, 110, 205, 0, 213, 65, 0, 270, 120, 0, 293, -110, 0, 207, -207, 0, 281, -134, 0, 233, -207, 0, 281, -260, 0, -115, -270, 0, 220, -260, 0, -115, 55, 0, -190, -135, 0, -159, 55, 0, -190, 68, 0, -40, 166, 0, -115, 70, 0, 55, 65, 0, 270, 205, 0, 213, -110, 0, 207, -260, 0, -115, -207, 0, 281, -260, 0, -115, 68, 0, -40, 55, 0, -190, 45, 0, 20, 65, 0, 270, 70, 0, 55, -63, 0, 196, -260, 0, -115, -110, 0, 207, -260, 0, -115, 45, 0, -20, 68, 0, -40, 45, 0, 20, 52, 0, 241, 65, 0, 270, -20, 0, 207, -260, 0, -115, -63, 0, 196, -260, 0, -115, 45, 0, 20, 45, 0, -20, 45, 0, 20, -20, 0, 207, 52, 0, 241, -20, 0, 207, 45, 0, 20, -260, 0, -115)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aiuj0"]
+cull_mode = 2
+vertex_color_use_as_albedo = true
+roughness = 0.96
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8gubc"]
+_surfaces = [{
+"aabb": AABB(-285.99625, -9.03, -216.99704, 493.99567, 9, 512.98865),
+"attribute_data": PackedByteArray("tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/oZx8/6GcfP+hnHz/lI9y/5SPcv+Uj3L/tq2J/7atif+2rYn/p59+/6effv+nn37/"),
+"format": 34359738383,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 222,
+"vertex_data": PackedByteArray("AACMw4/C9bwAABtDAICKw4/C9bwAAHBCz/+Lw+F6AMEKn29CAACMw4/C9bwAABtDz/+Lw+F6AMEKn29Cz3+Nw8P14MDC5xpDAICKw4/C9bwAAHBCAICNw4/C9bwAAHDChf+Ow+F6EMGXZm/CAICKw4/C9bwAAHBChf+Ow+F6EMGXZm/Chf+Lw+F6AMFpmXBCAICNw4/C9bwAAHDCAACCw4/C9bwAAObCRWKDw8P14MCZUOjCAICNw4/C9bwAAHDCRWKDw8P14MCZUOjCReKOw+F6EMEyoXTCAACCw4/C9bwAAObCAABNw4/C9bwAAB7DB9lOw+F6AMEJXSDDAACCw4/C9bwAAObCB9lOw+F6AMEJXSDDhOyCw8P14MASuurCAABNw4/C9bwAAB7DAAAHw4/C9bwAAB/D+AoHw+F6EMHs/yHDAABNw4/C9bwAAB7D+AoHw+F6EMHs/yHD+ApNw+F6AMHs/yDDAAAHw4/C9bwAAB/DAAC+wo/C9bwAAD/DiL/BwsP14MC1V0HDAAAHw4/C9bwAAB/DiL/BwsP14MC1V0HDxN8Iw+F6EMG1VyHDAAC+wo/C9bwAAD/DAAAMwo/C9bwAAFbDlEsQwuF6AMEezVjDAAC+wo/C9bwAAD/DlEsQwuF6AMEezVjDyiXAwsP14MAezUHDAAAMwo/C9bwAAFbDAAAgQY/C9bwAAFTDmCEiQeF6EME+/1bDAAAMwo/C9bwAAFbDmCEiQeF6EME+/1bDmncLwuF6AME+/1jDAAAgQY/C9bwAAFTDAABcQo/C9bwAAD7DQUVhQsP14MD2sUDDAAAgQY/C9bwAAFTDQUVhQsP14MD2sUDDBBU1QeF6EMH2sVbDAABcQo/C9bwAAD7DAADIQo/C9bwAACbD09LKQuF6AMGmpSjDAABcQo/C9bwAAD7D09LKQuF6AMGmpSjDpqVhQsP14MCmpUDDAADIQo/C9bwAACbDAAAMQ4/C9bwAABXDZSwNQ+F6EMHQwhfDAADIQo/C9bwAACbDZSwNQ+F6EMHQwhfDy1jKQuF6AMHQwijDAAAMQ4/C9bwAABXDAAAmQ4/C9bwAAObCEWIoQ8P14MALpenCAAAMQ4/C9bwAABXDEWIoQ8P14MALpenCEWIOQ+F6EMGG0hbDAAAmQ4/C9bwAAObCAAAdQ4/C9bwAAILC2vMfQ+F6AMHl74DCAAAmQ4/C9bwAAObC2vMfQ+F6AMHl74DC2vMoQ8P14MDl7+TCAAAdQ4/C9bwAAILCAADeQo/C9bwAABzCzfPgQuF6EMGijRHCAAAdQ4/C9bwAAILCzfPgQuF6EMGijRHC5nkeQ+F6AMGijXnCAADeQo/C9bwAABzCAACIQo/C9bwAACDCStyHQsP14MDVABTCAADeQo/C9bwAABzCStyHQsP14MDVABTCStzdQuF6EMHVABDCAACIQo/C9bwAACDCAAA0Qo/C9bwAAKDByN87QuF6AMG0443BAACIQo/C9bwAACDCyN87QuF6AMG0443B5O+LQsP14MDa8RbCAAA0Qo/C9bwAAKDBAAA0Qo/C9bwAAKBBAABAQuF6EMEAAKBBAAA0Qo/C9bwAAKDBAABAQuF6EMEAAKBBAABAQuF6AMEAAKDBAAA0Qo/C9bwAAKBBAACMQo/C9bwAAFxC5eGQQsP14MBwBlVCAAA0Qo/C9bwAAKBB5eGQQsP14MBwBlVCysM9QuF6EMHfDJJBAACMQo/C9bwAAFxCAAD6Qo/C9bwAAJZC6wz8QuF6AMF6XJBCAACMQo/C9bwAAFxC6wz8QuF6AMF6XJBC6wyOQsP14MD0uFBCAAD6Qo/C9bwAAJZCAAAvQ4/C9bwAANxCa7gwQ+F6EMGpFddCAAD6Qo/C9bwAAJZCa7gwQ+F6EMGpFddC13D9QuF6AMGpFZFCAAAvQ4/C9bwAANxCAABMQ4/C9bwAACNDvaFOQ8P14MBajyFDAAAvQ4/C9bwAANxCvaFOQ8P14MBajyFDvaExQ+F6EMG0HtlCAABMQ4/C9bwAACNDAABNQ4/C9bwAAFVD2f9PQ+F6AMGl8FRDAABMQ4/C9bwAACND2f9PQ+F6AMGl8FRD2f9OQ8P14MCl8CJDAABNQ4/C9bwAAFVDAAAtQ4/C9bwAAIRDjIovQ+F6EMEYzIRDAABNQ4/C9bwAAFVDjIovQ+F6EMEYzIRDjIpPQ+F6AMEvmFZDAAAtQ4/C9bwAAIRDAADwQo/C9bwAgJJDTOHyQsP14MDe0JNDAAAtQ4/C9bwAAIRDTOHyQsP14MDe0JNDpnAuQ+F6EMHeUIVDAADwQo/C9bwAgJJDAACgQo/C9bwAAJFDH42fQuF6AMHtfpJDAADwQo/C9bwAgJJDH42fQuF6AMHtfpJDH43vQsP14MDt/pNDAACgQo/C9bwAAJFDAACCQo/C9bwAAIdDZmZ6QuF6EMFm5odDAACgQo/C9bwAAJFDZmZ6QuF6EMFm5odDMzObQuF6AMFm5pFDAACCQo/C9bwAAIdDAABQQo/C9bwAAHFDxgxFQsP14MAoOnJDAACCQo/C9bwAAIdDxgxFQsP14MAoOnJDxgx5QuF6EMEUnYdDAABQQo/C9bwAAHFDAACQQY/C9bwAAGRDv22HQeF6AMFazWZDAABQQo/C9bwAAHFDv22HQeF6AMFazWZD4LZLQsP14MBazXNDAACQQY/C9bwAAGRDAACgwY/C9bwAAE9DxJurweF6EMEvoFFDAACQQY/C9bwAAGRDxJurweF6EMEvoFFDPGSEQeF6AMEvoGZDAACgwY/C9bwAAE9DAAB8wo/C9bwAAERDWPl+wsP14MAK6EZDAACgwY/C9bwAAE9DWPl+wsP14MAK6EZDsPKlweF6EMEK6FFDAAB8wo/C9bwAAERDAADcwo/C9bwAAE9D+KHawuF6AMHL61FDAAB8wo/C9bwAAERD+KHawuF6AMHL61FD8EN5wsP14MDL60ZDAADcwo/C9bwAAE9DAAAGw4/C9bwAAGlDrMsDw+F6EMHrCGtDAADcwo/C9bwAAE9DrMsDw+F6EMHrCGtDWJfXwuF6AMHrCFFDAAAGw4/C9bwAAGlDAAAKw4/C9bwAgItD4wIHw8P14MBEoYtDAAAGw4/C9bwAAGlD4wIHw8P14MBEoYtD4wIDw+F6EMGIQmlDAAAKw4/C9bwAgItDAABPw4/C9bwAgIxDwOlOw+F6AMHX/41DAAAKw4/C9bwAgItDwOlOw+F6AMHX/41DwOkJw8P14MDX/4xDAABPw4/C9bwAgIxDAAB0w4/C9bwAAIJDF3t1w+F6EMH2TYNDAABPw4/C9bwAgIxDF3t1w+F6EMH2TYNDF3tQw+F6AMH2zY1DAAB0w4/C9bwAAIJDAACHw4/C9bwAAFxD9kGIw8P14MCNol1DAAB0w4/C9bwAAIJD9kGIw8P14MCNol1D7YN2w+F6EMFH0YJDAACHw4/C9bwAAFxDAACMw4/C9bwAABtDiXuNw+F6AMHIdBtDAACHw4/C9bwAAFxDiXuNw+F6AMHIdBtDiXuIw8P14MDIdFxDAADqgxV8778AAOqDFXzvvwAA6oMVfO+/AADqgxV8778AAOqDFXzvvwAA6oMVfO+/GAb/fxSG2L8YBv9/FIbYvxgG/38Uhti/GAb/fxSG2L8YBv9/FIbYvxgG/38Uhti/AAC9pWVe+LgAAL2lZV74uAAAvaVlXvi4AAC9pWVe+LgAAL2lZV74uAAAvaVlXvi4AADVxy5WQKUAANXHLlZApQAA1ccuVkClAADVxy5WQKUAANXHLlZApQAA1ccuVkClAAAx/jJ+6YAAADH+Mn7pgAAAMf4yfumAAAAx/jJ+6YAAADH+Mn7pgAAAMf4yfumAAAAbxwhWxKUAABvHCFbEpQAAG8cIVsSlAAAbxwhWxKUAABvHCFbEpQAAG8cIVsSlAACG3O9fLJYAAIbc718slgAAhtzvXyyWAACG3O9fLJYAAIbc718slgAAhtzvXyyW//+M+m+F1oL//4z6b4XWgv//jPpvhdaC//+M+m+F1oL//4z6b4XWgv//jPpvhdaC///31Tak9Zr///fVNqT1mv//99U2pPWa///31Tak9Zr///fVNqT1mv//99U2pPWa//95042lypz//3nTjaXKnP//edONpcqc//95042lypz//3nTjaXKnP//edONpcqc///S2eChI5j//9LZ4KEjmP//0tngoSOY///S2eChI5j//9LZ4KEjmP//0tngoSOY//92t6ipEbD//3a3qKkRsP//dreoqRGw//92t6ipEbD//3a3qKkRsP//dreoqRGweOz/f/5sSb547P9//mxJvnjs/3/+bEm+eOz/f/5sSb547P9//mxJvnjs/3/+bEm+OK7/f5xZCp44rv9/nFkKnjiu/3+cWQqeOK7/f5xZCp44rv9/nFkKnjiu/3+cWQqeFn3/f+eCfIEWff9/54J8gRZ9/3/ngnyBFn3/f+eCfIEWff9/54J8gRZ9/3/ngnyBiLv/f5tVn6eIu/9/m1Wfp4i7/3+bVZ+niLv/f5tVn6eIu/9/m1Wfp4i7/3+bVZ+n////f/9//7////9//3//v////3//f/+/////f/9//7////9//3//v////3//f/+///9UtRmpUbH//1S1GalRsf//VLUZqVGx//9UtRmpUbH//1S1GalRsf//VLUZqVGx///d3R2fNpX//93dHZ82lf//3d0dnzaV///d3R2fNpX//93dHZ82lf//3d0dnzaV//9Ky+moxqL//0rL6ajGov//SsvpqMai//9Ky+moxqL//0rL6ajGov//SsvpqMai//9Ere2lnrX//0St7aWetf//RK3tpZ61//9Ere2lnrX//0St7aWetf//RK3tpZ61//+CgoGC+L///4KCgYL4v///goKBgvi///+CgoGC+L///4KCgYL4v///goKBgvi/pc7/f0NYh7Olzv9/Q1iHs6XO/39DWIezpc7/f0NYh7Olzv9/Q1iHs6XO/39DWIezRK3/fxFaVp1Erf9/EVpWnUSt/38RWladRK3/fxFaVp1Erf9/EVpWnUSt/38RWladEXf/f+GIxYQRd/9/4YjFhBF3/3/hiMWEEXf/f+GIxYQRd/9/4YjFhBF3/3/hiMWE2zb/f4KpbrDbNv9/gqlusNs2/3+CqW6w2zb/f4KpbrDbNv9/gqlusNs2/3+CqW6wnif/f8qiMrieJ/9/yqIyuJ4n/3/KojK4nif/f8qiMrieJ/9/yqIyuJ4n/3/KojK4mFz/fwSgIJaYXP9/BKAglphc/38EoCCWmFz/fwSgIJaYXP9/BKAglphc/38EoCCWcFL/fxGmjZ1wUv9/EaaNnXBS/38Rpo2dcFL/fxGmjZ1wUv9/EaaNnXBS/38Rpo2d7GX/f8eYj4/sZf9/x5iPj+xl/3/HmI+P7GX/f8eYj4/sZf9/x5iPj+xl/3/HmI+PRpj/f8FoV45GmP9/wWhXjkaY/3/BaFeORpj/f8FoV45GmP9/wWhXjkaY/3/BaFeOjsL/f2xVWKyOwv9/bFVYrI7C/39sVVisjsL/f2xVWKyOwv9/bFVYrI7C/39sVViswfX/f9R1jr/B9f9/1HWOv8H1/3/UdY6/wfX/f9R1jr/B9f9/1HWOv8H1/3/UdY6/moP/f2V82oGag/9/ZXzagZqD/39lfNqBmoP/f2V82oGag/9/ZXzagZqD/39lfNqBp1H/f3GmIZ6nUf9/caYhnqdR/39xpiGep1H/f3GmIZ6nUf9/caYhnqdR/39xpiGebDL/fySo87JsMv9/JKjzsmwy/38kqPOybDL/fySo87JsMv9/JKjzsmwy/38kqPOyERH/f7iQtb4REf9/uJC1vhER/3+4kLW+ERH/f7iQtb4REf9/uJC1vhER/3+4kLW+")
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4hgr"]
+albedo_color = Color(0.24705882, 0.5764706, 0.61960787, 1)
+roughness = 0.96
+
+[sub_resource type="BoxMesh" id="BoxMesh_hhc4p"]
+size = Vector3(1800, 0.6, 1800)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b78d4"]
+albedo_color = Color(0.63529414, 0.83137256, 0.77254903, 1)
+roughness = 0.96
+
+[sub_resource type="BoxMesh" id="BoxMesh_rn6va"]
+size = Vector3(1.1, 0.035, 57.02841)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o1vkv"]
+size = Vector3(1.1, 0.035, 35.76926)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4nfg5"]
+size = Vector3(1.1, 0.035, 42.004284)
+
+[sub_resource type="BoxMesh" id="BoxMesh_68dt8"]
+size = Vector3(1.1, 0.035, 38.554375)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6dqyf"]
+size = Vector3(1.1, 0.035, 30.053951)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mnl78"]
+size = Vector3(1.1, 0.035, 26.077576)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1k4i2"]
+size = Vector3(1.1, 0.035, 30.482126)
+
+[sub_resource type="BoxMesh" id="BoxMesh_de8mb"]
+size = Vector3(1.1, 0.035, 25.806976)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5piso"]
+size = Vector3(1.1, 0.035, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_30dnp"]
+size = Vector3(1.1, 0.035, 35.114098)
+
+[sub_resource type="BoxMesh" id="BoxMesh_32i4u"]
+size = Vector3(1.1, 0.035, 36.249138)
+
+[sub_resource type="BoxMesh" id="BoxMesh_467qn"]
+size = Vector3(1.1, 0.035, 36.124783)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4fh6q"]
+size = Vector3(1.1, 0.035, 24.067406)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fw0fo"]
+size = Vector3(1.1, 0.035, 19.068298)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o02tw"]
+size = Vector3(1.1, 0.035, 26.049953)
+
+[sub_resource type="BoxMesh" id="BoxMesh_otg34"]
+size = Vector3(1.1, 0.035, 28.962044)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eg0cl"]
+size = Vector3(1.1, 0.035, 27.704151)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hdwsm"]
+size = Vector3(1.1, 0.035, 25.526457)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ko5j"]
+size = Vector3(1.1, 0.035, 39.45884)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fquay"]
+albedo_color = Color(0.91764706, 0.8745098, 0.75686276, 1)
+roughness = 0.96
+
+[sub_resource type="BoxMesh" id="BoxMesh_4iuqi"]
+size = Vector3(29, 9, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57tal"]
+albedo_color = Color(0.7058824, 0.6862745, 0.54509807, 1)
+roughness = 0.96
+
+[sub_resource type="BoxMesh" id="BoxMesh_t5qbc"]
+size = Vector3(29.4, 1.2, 25.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts1rq"]
+albedo_color = Color(0.8509804, 0.40784314, 0.2627451, 1)
+roughness = 0.96
+
+[sub_resource type="PrismMesh" id="PrismMesh_ottb8"]
+size = Vector3(30.6, 4.4, 26.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3i3c"]
+albedo_color = Color(0.14117648, 0.2901961, 0.34901962, 1)
+roughness = 0.96
+
+[sub_resource type="BoxMesh" id="BoxMesh_6olp2"]
+size = Vector3(7.54, 6.84, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yar5f"]
+albedo_color = Color(0.47843137, 0.7490196, 0.7607843, 1)
+roughness = 0.96
+
+[sub_resource type="BoxMesh" id="BoxMesh_gnasr"]
+size = Vector3(6.96, 1.62, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y6m44"]
+size = Vector3(7.54, 6.84, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qpxt2"]
+size = Vector3(6.96, 1.62, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oy78q"]
+size = Vector3(22.62, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0prqw"]
+size = Vector3(26, 8, 22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3npyb"]
+size = Vector3(26.4, 1.2, 22.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fw4jj"]
+albedo_color = Color(0.27058825, 0.54509807, 0.5294118, 1)
+roughness = 0.96
+
+[sub_resource type="PrismMesh" id="PrismMesh_muu7l"]
+size = Vector3(27.6, 4.4, 23.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8nfgf"]
+size = Vector3(6.76, 6.08, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vs81b"]
+size = Vector3(6.24, 1.44, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0j36i"]
+size = Vector3(6.76, 6.08, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2t0ik"]
+size = Vector3(6.24, 1.44, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o0dv6"]
+size = Vector3(20.28, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3kdjw"]
+size = Vector3(33, 10, 23)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v14ll"]
+size = Vector3(33.4, 1.2, 23.4)
+
+[sub_resource type="PrismMesh" id="PrismMesh_qnvfq"]
+size = Vector3(34.6, 4.4, 24.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wsyvm"]
+size = Vector3(8.58, 7.6, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_57wdu"]
+size = Vector3(7.92, 1.8, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tydhi"]
+size = Vector3(8.58, 7.6, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bobvo"]
+size = Vector3(7.92, 1.8, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u4vi4"]
+size = Vector3(25.74, 1.7, 0.22)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tcse"]
+albedo_color = Color(0.70980394, 0.7019608, 0.5921569, 1)
+roughness = 0.96
+
+[sub_resource type="BoxMesh" id="BoxMesh_fubos"]
+size = Vector3(33, 0.05, 137)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bihqv"]
+size = Vector3(9, 3, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nnphx"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0v42v"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lcg4c"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h5thk"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t13o4"]
+size = Vector3(9, 3, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lgbsu"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_idxe6"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3lk01"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c6og3"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hx6pm"]
+size = Vector3(9, 3, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dan0s"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j72xw"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qdqhg"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jer52"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v5p5n"]
+size = Vector3(9, 3, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cks2g"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_08qxe"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wif1t"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ccr8"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kj8qw"]
+size = Vector3(9, 3, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_idch5"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wapff"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hverd"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vv864"]
+size = Vector3(0.13, 2.6, 0.11)
+
+[sub_resource type="BoxMesh" id="BoxMesh_std6g"]
+size = Vector3(48, 2, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fto1q"]
+size = Vector3(9, 2, 43)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hn28m"]
+height = 0.9
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8mrp6"]
+height = 0.9
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5f33q"]
+height = 0.9
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2usql"]
+height = 0.9
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cw8t5"]
+height = 0.9
+radial_segments = 8
+rings = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_o8p0l"]
+size = Vector3(0.9, 0.9, 24.101187)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5u6ul"]
+size = Vector3(0.9, 0.9, 24.101187)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mttdn"]
+size = Vector3(0.9, 0.9, 24.101187)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l8pqn"]
+size = Vector3(0.9, 0.9, 24.101187)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fi431"]
+size = Vector3(0.5, 0.5, 7.359348)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jp5ny"]
+size = Vector3(0.5, 0.5, 7.359348)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2mgo5"]
+size = Vector3(0.5, 0.5, 7.359348)
+
+[sub_resource type="BoxMesh" id="BoxMesh_usi1j"]
+size = Vector3(0.5, 0.5, 7.359348)
+
+[sub_resource type="BoxMesh" id="BoxMesh_snl7p"]
+size = Vector3(0.5, 0.5, 7.359348)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mfcxq"]
+size = Vector3(0.5, 0.5, 7.359348)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wppcu"]
+size = Vector3(39, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ui3kw"]
+size = Vector3(5, 4, 4.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ssdpb"]
+size = Vector3(3.7, 1.5, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_64nhh"]
+size = Vector3(0.12, 0.12, 19.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sgbq8"]
+size = Vector3(1.3, 0.7, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oh2oi"]
+size = Vector3(0.2, 0.2, 32.075535)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsisf"]
+cull_mode = 2
+albedo_color = Color(0.8509804, 0.40784314, 0.2627451, 1)
+roughness = 0.96
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r675w"]
+_surfaces = [{
+"aabb": AABB(-3.4, 0, -10, 6.8, 2.4, 17.5),
+"attribute_data": PackedByteArray("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"),
+"format": 34359738383,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 45,
+"vertex_data": PackedByteArray("mplZwAAAAAAAAPBAmplZQAAAAAAAAPBAUI0nQJqZGUAAAMxAmplZwAAAAAAAAPBAUI0nQJqZGUAAAMxAUI0nwJqZGUAAAMxAAAAAAJqZGUAAAAAAUI0nwJqZGUAAAMxAUI0nQJqZGUAAAMxAmplZQAAAAAAAAPBAmplZQAAAAAAAAIDAUI0nQJqZGUCamVnAmplZQAAAAAAAAPBAUI0nQJqZGUCamVnAUI0nQJqZGUAAAMxAAAAAAJqZGUAAAAAAUI0nQJqZGUAAAMxAUI0nQJqZGUCamVnAmplZQAAAAAAAAIDAAAAAAAAAAAAAACDBAAAAAJqZGUAAAAjBmplZQAAAAAAAAIDAAAAAAJqZGUAAAAjBUI0nQJqZGUCamVnAAAAAAJqZGUAAAAAAUI0nQJqZGUCamVnAAAAAAJqZGUAAAAjBAAAAAAAAAAAAACDBmplZwAAAAAAAAIDAUI0nwJqZGUCamVnAAAAAAAAAAAAAACDBUI0nwJqZGUCamVnAAAAAAJqZGUAAAAjBAAAAAJqZGUAAAAAAAAAAAJqZGUAAAAjBUI0nwJqZGUCamVnAmplZwAAAAAAAAIDAmplZwAAAAAAAAPBAUI0nwJqZGUAAAMxAmplZwAAAAAAAAIDAUI0nwJqZGUAAAMxAUI0nwJqZGUCamVnAAAAAAJqZGUAAAAAAUI0nwJqZGUCamVnAUI0nwJqZGUAAAMxA/3/ZqFdvF5r/f9moV28Xmv9/2ahXbxea/3/ZqFdvF5r/f9moV28Xmv9/2ahXbxea/3///wAA/7//f///AAD/v/9///8AAP+/iuB0n4J2j86K4HSfgnaPzorgdJ+Cdo/OiuB0n4J2j86K4HSfgnaPzorgdJ+Cdo/O/3///wAA/7//f///AAD/v/9///8AAP+/lOISwTyknceU4hLBPKSdx5TiEsE8pJ3HlOISwTyknceU4hLBPKSdx5TiEsE8pJ3H/3///wAA/7//f///AAD/v/9///8AAP+/mRdbvRxXDayZF1u9HFcNrJkXW70cVw2smRdbvRxXDayZF1u9HFcNrJkXW70cVw2s/3///wAA/7//f///AAD/v/9///8AAP+/dB90n4J2b7F0H3SfgnZvsXQfdJ+Cdm+xdB90n4J2b7F0H3SfgnZvsXQfdJ+Cdm+x/3///wAA/7//f///AAD/v/9///8AAP+/")
+}]
+
+[sub_resource type="BoxMesh" id="BoxMesh_47ofb"]
+size = Vector3(4.3, 2.8, 4.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wbr7a"]
+size = Vector3(4.8, 0.3, 5.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0dbyt"]
+size = Vector3(3.2, 1, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nnpem"]
+top_radius = 0.48
+bottom_radius = 0.48
+height = 1.8
+radial_segments = 8
+rings = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_mjlhf"]
+size = Vector3(0.13, 0.13, 3.4999995)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2b6uh"]
+cull_mode = 2
+albedo_color = Color(0.27058825, 0.54509807, 0.5294118, 1)
+roughness = 0.96
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_72b4m"]
+_surfaces = [{
+"aabb": AABB(-3.4, 0, -10, 6.8, 2.4, 17.5),
+"attribute_data": PackedByteArray("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"),
+"format": 34359738383,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 45,
+"vertex_data": PackedByteArray("mplZwAAAAAAAAPBAmplZQAAAAAAAAPBAUI0nQJqZGUAAAMxAmplZwAAAAAAAAPBAUI0nQJqZGUAAAMxAUI0nwJqZGUAAAMxAAAAAAJqZGUAAAAAAUI0nwJqZGUAAAMxAUI0nQJqZGUAAAMxAmplZQAAAAAAAAPBAmplZQAAAAAAAAIDAUI0nQJqZGUCamVnAmplZQAAAAAAAAPBAUI0nQJqZGUCamVnAUI0nQJqZGUAAAMxAAAAAAJqZGUAAAAAAUI0nQJqZGUAAAMxAUI0nQJqZGUCamVnAmplZQAAAAAAAAIDAAAAAAAAAAAAAACDBAAAAAJqZGUAAAAjBmplZQAAAAAAAAIDAAAAAAJqZGUAAAAjBUI0nQJqZGUCamVnAAAAAAJqZGUAAAAAAUI0nQJqZGUCamVnAAAAAAJqZGUAAAAjBAAAAAAAAAAAAACDBmplZwAAAAAAAAIDAUI0nwJqZGUCamVnAAAAAAAAAAAAAACDBUI0nwJqZGUCamVnAAAAAAJqZGUAAAAjBAAAAAJqZGUAAAAAAAAAAAJqZGUAAAAjBUI0nwJqZGUCamVnAmplZwAAAAAAAAIDAmplZwAAAAAAAAPBAUI0nwJqZGUAAAMxAmplZwAAAAAAAAIDAUI0nwJqZGUAAAMxAUI0nwJqZGUCamVnAAAAAAJqZGUAAAAAAUI0nwJqZGUCamVnAUI0nwJqZGUAAAMxA/3/ZqFdvF5r/f9moV28Xmv9/2ahXbxea/3/ZqFdvF5r/f9moV28Xmv9/2ahXbxea/3///wAA/7//f///AAD/v/9///8AAP+/iuB0n4J2j86K4HSfgnaPzorgdJ+Cdo/OiuB0n4J2j86K4HSfgnaPzorgdJ+Cdo/O/3///wAA/7//f///AAD/v/9///8AAP+/lOISwTyknceU4hLBPKSdx5TiEsE8pJ3HlOISwTyknceU4hLBPKSdx5TiEsE8pJ3H/3///wAA/7//f///AAD/v/9///8AAP+/mRdbvRxXDayZF1u9HFcNrJkXW70cVw2smRdbvRxXDayZF1u9HFcNrJkXW70cVw2s/3///wAA/7//f///AAD/v/9///8AAP+/dB90n4J2b7F0H3SfgnZvsXQfdJ+Cdm+xdB90n4J2b7F0H3SfgnZvsXQfdJ+Cdm+x/3///wAA/7//f///AAD/v/9///8AAP+/")
+}]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tlk24"]
+size = Vector3(4.3, 2.8, 4.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_va7r3"]
+size = Vector3(4.8, 0.3, 5.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6e1ii"]
+size = Vector3(3.2, 1, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tuwcf"]
+top_radius = 0.48
+bottom_radius = 0.48
+height = 1.8
+radial_segments = 8
+rings = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_y3vwy"]
+size = Vector3(0.13, 0.13, 3.4999995)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d65ur"]
+albedo_color = Color(0.7647059, 0.73333335, 0.58431375, 1)
+roughness = 0.96
+
+[sub_resource type="BoxMesh" id="BoxMesh_n8l41"]
+size = Vector3(34, 0.05, 27)
+
+[sub_resource type="BoxMesh" id="BoxMesh_txgb2"]
+size = Vector3(15, 7, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1rsgr"]
+size = Vector3(15.4, 1.2, 12.4)
+
+[sub_resource type="PrismMesh" id="PrismMesh_u4ohe"]
+size = Vector3(16.6, 4.4, 13.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ppq1q"]
+size = Vector3(3.9, 5.32, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rawmf"]
+size = Vector3(3.6, 1.26, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4nbul"]
+size = Vector3(3.9, 5.32, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vp14n"]
+size = Vector3(3.6, 1.26, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oxh85"]
+size = Vector3(11.7, 1.7, 0.22)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87o7v"]
+cull_mode = 2
+albedo_color = Color(0.8509804, 0.40784314, 0.2627451, 1)
+roughness = 0.96
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xna5p"]
+_surfaces = [{
+"aabb": AABB(-3.4, 0, -10, 6.8, 2.4, 17.5),
+"attribute_data": PackedByteArray("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////"),
+"format": 34359738383,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 45,
+"vertex_data": PackedByteArray("mplZwAAAAAAAAPBAmplZQAAAAAAAAPBAUI0nQJqZGUAAAMxAmplZwAAAAAAAAPBAUI0nQJqZGUAAAMxAUI0nwJqZGUAAAMxAAAAAAJqZGUAAAAAAUI0nwJqZGUAAAMxAUI0nQJqZGUAAAMxAmplZQAAAAAAAAPBAmplZQAAAAAAAAIDAUI0nQJqZGUCamVnAmplZQAAAAAAAAPBAUI0nQJqZGUCamVnAUI0nQJqZGUAAAMxAAAAAAJqZGUAAAAAAUI0nQJqZGUAAAMxAUI0nQJqZGUCamVnAmplZQAAAAAAAAIDAAAAAAAAAAAAAACDBAAAAAJqZGUAAAAjBmplZQAAAAAAAAIDAAAAAAJqZGUAAAAjBUI0nQJqZGUCamVnAAAAAAJqZGUAAAAAAUI0nQJqZGUCamVnAAAAAAJqZGUAAAAjBAAAAAAAAAAAAACDBmplZwAAAAAAAAIDAUI0nwJqZGUCamVnAAAAAAAAAAAAAACDBUI0nwJqZGUCamVnAAAAAAJqZGUAAAAjBAAAAAJqZGUAAAAAAAAAAAJqZGUAAAAjBUI0nwJqZGUCamVnAmplZwAAAAAAAAIDAmplZwAAAAAAAAPBAUI0nwJqZGUAAAMxAmplZwAAAAAAAAIDAUI0nwJqZGUAAAMxAUI0nwJqZGUCamVnAAAAAAJqZGUAAAAAAUI0nwJqZGUCamVnAUI0nwJqZGUAAAMxA/3/ZqFdvF5r/f9moV28Xmv9/2ahXbxea/3/ZqFdvF5r/f9moV28Xmv9/2ahXbxea/3///wAA/7//f///AAD/v/9///8AAP+/iuB0n4J2j86K4HSfgnaPzorgdJ+Cdo/OiuB0n4J2j86K4HSfgnaPzorgdJ+Cdo/O/3///wAA/7//f///AAD/v/9///8AAP+/lOISwTyknceU4hLBPKSdx5TiEsE8pJ3HlOISwTyknceU4hLBPKSdx5TiEsE8pJ3H/3///wAA/7//f///AAD/v/9///8AAP+/mRdbvRxXDayZF1u9HFcNrJkXW70cVw2smRdbvRxXDayZF1u9HFcNrJkXW70cVw2s/3///wAA/7//f///AAD/v/9///8AAP+/dB90n4J2b7F0H3SfgnZvsXQfdJ+Cdm+xdB90n4J2b7F0H3SfgnZvsXQfdJ+Cdm+x/3///wAA/7//f///AAD/v/9///8AAP+/")
+}]
+
+[sub_resource type="BoxMesh" id="BoxMesh_12wr6"]
+size = Vector3(4.3, 2.8, 4.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_51kfy"]
+size = Vector3(4.8, 0.3, 5.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xwysm"]
+size = Vector3(3.2, 1, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p86g4"]
+top_radius = 0.48
+bottom_radius = 0.48
+height = 1.8
+radial_segments = 8
+rings = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_s2gkf"]
+size = Vector3(0.13, 0.13, 3.4999995)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rgjw1"]
+size = Vector3(6, 1.5, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fy0kl"]
+size = Vector3(6, 1.5, 0.6)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bnjah"]
+top_radius = 0.85
+bottom_radius = 0.85
+height = 1.6
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_akyau"]
+top_radius = 0.85
+bottom_radius = 0.85
+height = 1.6
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_upv4d"]
+top_radius = 0.85
+bottom_radius = 0.85
+height = 1.6
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l72e8"]
+top_radius = 12.0
+bottom_radius = 13.0
+height = 1.6
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tiy7n"]
+top_radius = 7.0
+bottom_radius = 7.5
+height = 1.8
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qiyqo"]
+top_radius = 5.12
+bottom_radius = 5.4
+height = 5.0
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_may2r"]
+top_radius = 4.84
+bottom_radius = 5.12
+height = 5.0
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_epnf3"]
+top_radius = 4.56
+bottom_radius = 4.84
+height = 5.0
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n3bkq"]
+top_radius = 4.28
+bottom_radius = 4.56
+height = 5.0
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ha5ue"]
+top_radius = 4.0
+bottom_radius = 4.28
+height = 5.0
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uauu7"]
+top_radius = 3.72
+bottom_radius = 4.0
+height = 5.0
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j6byj"]
+top_radius = 6.5
+bottom_radius = 6.5
+height = 1.0
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8lq04"]
+top_radius = 5.5
+bottom_radius = 5.5
+height = 0.45
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ihejs"]
+top_radius = 4.0
+bottom_radius = 4.0
+height = 4.4
+radial_segments = 12
+rings = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_nwfj1"]
+size = Vector3(0.3, 4.7, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uxyep"]
+size = Vector3(0.3, 4.7, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3yir6"]
+size = Vector3(0.3, 4.7, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_62vgm"]
+size = Vector3(0.3, 4.7, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o6yge"]
+size = Vector3(0.3, 4.7, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w3mou"]
+size = Vector3(0.3, 4.7, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p3kn8"]
+size = Vector3(0.3, 4.7, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fski1"]
+size = Vector3(0.3, 4.7, 0.3)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1fwt8"]
+top_radius = 0.0
+bottom_radius = 5.6
+height = 3.4
+radial_segments = 12
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4yhpp"]
+top_radius = 0.12
+bottom_radius = 0.22
+height = 2.4
+radial_segments = 8
+rings = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_k8bt4"]
+size = Vector3(2.5, 4.3, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d7c1j"]
+size = Vector3(1, 2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ujljy"]
+size = Vector3(0.2, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x7rsy"]
+size = Vector3(15, 6, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ebmod"]
+size = Vector3(15.4, 1.2, 12.4)
+
+[sub_resource type="PrismMesh" id="PrismMesh_7hmcf"]
+size = Vector3(16.6, 4.4, 13.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4qjpo"]
+size = Vector3(3.9, 4.56, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w5nx6"]
+size = Vector3(3.6, 1.08, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1i7an"]
+size = Vector3(3.9, 4.56, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sootf"]
+size = Vector3(3.6, 1.08, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ev1am"]
+size = Vector3(11.7, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_du61m"]
+size = Vector3(26, 0.09, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gn0b2"]
+size = Vector3(17, 1.3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fk8vx"]
+size = Vector3(5, 0.3, 1.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_myxl6"]
+size = Vector3(244, 1.1, 26)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c5n3r"]
+size = Vector3(244, 0.55, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4hb62"]
+size = Vector3(244, 0.75, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w1s1l"]
+size = Vector3(3.8, 7.6, 3.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7qcrm"]
+size = Vector3(3.8, 7.6, 3.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vmru6"]
+size = Vector3(3.8, 7.6, 3.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j7yng"]
+size = Vector3(3.8, 7.6, 3.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jwi28"]
+size = Vector3(3.8, 7.6, 3.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ue6gn"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xfopi"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0o0mo"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m3xv4"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a4vkf"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_prcrn"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_htlq3"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ae1lw"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_57pfa"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kjxqv"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mpx08"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2kv22"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pglq7"]
+size = Vector3(244, 0.55, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gu6pr"]
+size = Vector3(244, 0.75, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_77nc5"]
+size = Vector3(3.8, 7.6, 3.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ni8g"]
+size = Vector3(3.8, 7.6, 3.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b8bxx"]
+size = Vector3(3.8, 7.6, 3.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ofavy"]
+size = Vector3(3.8, 7.6, 3.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7hxt1"]
+size = Vector3(3.8, 7.6, 3.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ug2ml"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ni0rl"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0uy3j"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ypaw3"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1snpc"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o8ym2"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qe0gm"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_55uig"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5fwp0"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pgwn2"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_83y0b"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lw12i"]
+size = Vector3(0.55, 0.55, 20.131815)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qyp32"]
+size = Vector3(2.1, 16, 2.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x3kro"]
+size = Vector3(3.5, 1.2, 3.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n8jj3"]
+size = Vector3(0.16, 0.16, 47.709538)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i1kxl"]
+size = Vector3(0.16, 0.16, 47.709538)
+
+[sub_resource type="BoxMesh" id="BoxMesh_16daq"]
+size = Vector3(1.6, 2.7, 1.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_camr1"]
+size = Vector3(1.6, 2.7, 1.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kj1tm"]
+size = Vector3(2.1, 16, 2.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2e4fr"]
+size = Vector3(3.5, 1.2, 3.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f2mkh"]
+size = Vector3(0.16, 0.16, 47.709538)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i0xdh"]
+size = Vector3(0.16, 0.16, 47.709538)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j3gtg"]
+size = Vector3(1.6, 2.7, 1.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u162c"]
+size = Vector3(1.6, 2.7, 1.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_22s40"]
+size = Vector3(2.1, 1.8, 30.9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qjc5l"]
+size = Vector3(1, 0.6, 26.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rpvxb"]
+size = Vector3(2.1, 16, 2.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7cxlh"]
+size = Vector3(3.5, 1.2, 3.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ajjkf"]
+size = Vector3(0.16, 0.16, 47.709538)
+
+[sub_resource type="BoxMesh" id="BoxMesh_01y0x"]
+size = Vector3(0.16, 0.16, 47.709538)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3c0ea"]
+size = Vector3(1.6, 2.7, 1.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_24bnr"]
+size = Vector3(1.6, 2.7, 1.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qo57k"]
+size = Vector3(2.1, 16, 2.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b1yo5"]
+size = Vector3(3.5, 1.2, 3.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hgv2a"]
+size = Vector3(0.16, 0.16, 47.709538)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ujmi5"]
+size = Vector3(0.16, 0.16, 47.709538)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hkyrf"]
+size = Vector3(1.6, 2.7, 1.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v56rg"]
+size = Vector3(1.6, 2.7, 1.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7vytq"]
+size = Vector3(2.1, 1.8, 30.9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rsbw6"]
+size = Vector3(1, 0.6, 26.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5avet"]
+albedo_color = Color(0.5294118, 0.77254903, 0.7372549, 1)
+roughness = 0.96
+
+[sub_resource type="BoxMesh" id="BoxMesh_jsjy2"]
+size = Vector3(16, 0.025, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_csq18"]
+size = Vector3(16, 0.025, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fcoav"]
+size = Vector3(16, 0.025, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4qejr"]
+size = Vector3(16, 0.025, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lo3sq"]
+albedo_color = Color(0.5137255, 0.6039216, 0.5647059, 1)
+roughness = 0.96
+
+[sub_resource type="SphereMesh" id="SphereMesh_wdvrr"]
+radius = 7.5
+height = 12.0
+radial_segments = 6
+rings = 3
+
+[sub_resource type="SphereMesh" id="SphereMesh_taevc"]
+radius = 7.5
+height = 12.0
+radial_segments = 6
+rings = 3
+
+[sub_resource type="SphereMesh" id="SphereMesh_xsdmb"]
+radius = 7.5
+height = 12.0
+radial_segments = 6
+rings = 3
+
+[sub_resource type="SphereMesh" id="SphereMesh_oh177"]
+radius = 7.5
+height = 12.0
+radial_segments = 6
+rings = 3
+
+[sub_resource type="SphereMesh" id="SphereMesh_dms08"]
+radius = 7.5
+height = 12.0
+radial_segments = 6
+rings = 3
+
+[sub_resource type="SphereMesh" id="SphereMesh_kohkb"]
+radius = 7.5
+height = 12.0
+radial_segments = 6
+rings = 3
+
+[sub_resource type="SphereMesh" id="SphereMesh_8h56w"]
+radius = 7.5
+height = 12.0
+radial_segments = 6
+rings = 3
+
+[sub_resource type="SphereMesh" id="SphereMesh_53lel"]
+radius = 7.5
+height = 12.0
+radial_segments = 6
+rings = 3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xttw4"]
+top_radius = 3.0
+bottom_radius = 5.0
+height = 10.0
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vo37w"]
+top_radius = 1.1
+bottom_radius = 1.7
+height = 5.0
+radial_segments = 8
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4ft6v"]
+top_radius = 0.0
+bottom_radius = 1.5
+height = 1.0
+radial_segments = 8
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkdi4"]
+albedo_color = Color(0.14509805, 0.22352941, 0.2627451, 1)
+roughness = 0.94
+
+[sub_resource type="BoxMesh" id="BoxMesh_w1aem"]
+size = Vector3(0.5, 7, 0.55)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0g8o"]
+albedo_color = Color(0.93333334, 0.41960785, 0.2509804, 1)
+roughness = 0.94
+
+[sub_resource type="BoxMesh" id="BoxMesh_wmcho"]
+size = Vector3(0.9, 0.9, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fk5oe"]
+size = Vector3(0.5, 7, 0.55)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ywvmx"]
+size = Vector3(0.9, 0.9, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_furfg"]
+size = Vector3(20.1, 1.4, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wft50"]
+size = Vector3(18.5, 0.3, 0.45)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edpxd"]
+albedo_color = Color(0.95686275, 0.9137255, 0.8117647, 1)
+roughness = 0.94
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uk1n0"]
+_surfaces = [{
+"aabb": AABB(-247.2, 0.146, 128.8, 14.399994, 1e-05, 1.199997),
+"format": 34359738375,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 144,
+"vertex_data": PackedByteArray("MzN3wwaBFT5mZgFDMzN3wwaBFT7NzABDmpl2wwaBFT7NzABDMzN3wwaBFT5mZgFDmpl2wwaBFT7NzABDmpl2wwaBFT5mZgFDAAB2wwaBFT5mZgFDAAB2wwaBFT7NzABDZmZ1wwaBFT7NzABDAAB2wwaBFT5mZgFDZmZ1wwaBFT7NzABDZmZ1wwaBFT5mZgFDzcx0wwaBFT5mZgFDzcx0wwaBFT7NzABDMzN0wwaBFT7NzABDzcx0wwaBFT5mZgFDMzN0wwaBFT7NzABDMzN0wwaBFT5mZgFDmplzwwaBFT5mZgFDmplzwwaBFT7NzABDAABzwwaBFT7NzABDmplzwwaBFT5mZgFDAABzwwaBFT7NzABDAABzwwaBFT5mZgFDZmZywwaBFT5mZgFDZmZywwaBFT7NzABDzcxxwwaBFT7NzABDZmZywwaBFT5mZgFDzcxxwwaBFT7NzABDzcxxwwaBFT5mZgFDMzNxwwaBFT5mZgFDMzNxwwaBFT7NzABDmplwwwaBFT7NzABDMzNxwwaBFT5mZgFDmplwwwaBFT7NzABDmplwwwaBFT5mZgFDAABwwwaBFT5mZgFDAABwwwaBFT7NzABDZmZvwwaBFT7NzABDAABwwwaBFT5mZgFDZmZvwwaBFT7NzABDZmZvwwaBFT5mZgFDzcxuwwaBFT5mZgFDzcxuwwaBFT7NzABDMzNuwwaBFT7NzABDzcxuwwaBFT5mZgFDMzNuwwaBFT7NzABDMzNuwwaBFT5mZgFDmpltwwaBFT5mZgFDmpltwwaBFT7NzABDAABtwwaBFT7NzABDmpltwwaBFT5mZgFDAABtwwaBFT7NzABDAABtwwaBFT5mZgFDZmZswwaBFT5mZgFDZmZswwaBFT7NzABDzcxrwwaBFT7NzABDZmZswwaBFT5mZgFDzcxrwwaBFT7NzABDzcxrwwaBFT5mZgFDMzNrwwaBFT5mZgFDMzNrwwaBFT7NzABDmplqwwaBFT7NzABDMzNrwwaBFT5mZgFDmplqwwaBFT7NzABDmplqwwaBFT5mZgFDAABqwwaBFT5mZgFDAABqwwaBFT7NzABDZmZpwwaBFT7NzABDAABqwwaBFT5mZgFDZmZpwwaBFT7NzABDZmZpwwaBFT5mZgFDmpl2wwaBFT4AAAJDmpl2wwaBFT5mZgFDAAB2wwaBFT5mZgFDmpl2wwaBFT4AAAJDAAB2wwaBFT5mZgFDAAB2wwaBFT4AAAJDZmZ1wwaBFT4AAAJDZmZ1wwaBFT5mZgFDzcx0wwaBFT5mZgFDZmZ1wwaBFT4AAAJDzcx0wwaBFT5mZgFDzcx0wwaBFT4AAAJDMzN0wwaBFT4AAAJDMzN0wwaBFT5mZgFDmplzwwaBFT5mZgFDMzN0wwaBFT4AAAJDmplzwwaBFT5mZgFDmplzwwaBFT4AAAJDAABzwwaBFT4AAAJDAABzwwaBFT5mZgFDZmZywwaBFT5mZgFDAABzwwaBFT4AAAJDZmZywwaBFT5mZgFDZmZywwaBFT4AAAJDzcxxwwaBFT4AAAJDzcxxwwaBFT5mZgFDMzNxwwaBFT5mZgFDzcxxwwaBFT4AAAJDMzNxwwaBFT5mZgFDMzNxwwaBFT4AAAJDmplwwwaBFT4AAAJDmplwwwaBFT5mZgFDAABwwwaBFT5mZgFDmplwwwaBFT4AAAJDAABwwwaBFT5mZgFDAABwwwaBFT4AAAJDZmZvwwaBFT4AAAJDZmZvwwaBFT5mZgFDzcxuwwaBFT5mZgFDZmZvwwaBFT4AAAJDzcxuwwaBFT5mZgFDzcxuwwaBFT4AAAJDMzNuwwaBFT4AAAJDMzNuwwaBFT5mZgFDmpltwwaBFT5mZgFDMzNuwwaBFT4AAAJDmpltwwaBFT5mZgFDmpltwwaBFT4AAAJDAABtwwaBFT4AAAJDAABtwwaBFT5mZgFDZmZswwaBFT5mZgFDAABtwwaBFT4AAAJDZmZswwaBFT5mZgFDZmZswwaBFT4AAAJDzcxrwwaBFT4AAAJDzcxrwwaBFT5mZgFDMzNrwwaBFT5mZgFDzcxrwwaBFT4AAAJDMzNrwwaBFT5mZgFDMzNrwwaBFT4AAAJDmplqwwaBFT4AAAJDmplqwwaBFT5mZgFDAABqwwaBFT5mZgFDmplqwwaBFT4AAAJDAABqwwaBFT5mZgFDAABqwwaBFT4AAAJDZmZpwwaBFT4AAAJDZmZpwwaBFT5mZgFDzcxowwaBFT5mZgFDZmZpwwaBFT4AAAJDzcxowwaBFT5mZgFDzcxowwaBFT4AAAJD/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/")
+}]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kgsk0"]
+_surfaces = [{
+"aabb": AABB(-247.2, 0.146, 128.8, 14.399994, 1e-05, 1.199997),
+"format": 34359738375,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 144,
+"vertex_data": PackedByteArray("mpl2wwaBFT5mZgFDmpl2wwaBFT7NzABDAAB2wwaBFT7NzABDmpl2wwaBFT5mZgFDAAB2wwaBFT7NzABDAAB2wwaBFT5mZgFDZmZ1wwaBFT5mZgFDZmZ1wwaBFT7NzABDzcx0wwaBFT7NzABDZmZ1wwaBFT5mZgFDzcx0wwaBFT7NzABDzcx0wwaBFT5mZgFDMzN0wwaBFT5mZgFDMzN0wwaBFT7NzABDmplzwwaBFT7NzABDMzN0wwaBFT5mZgFDmplzwwaBFT7NzABDmplzwwaBFT5mZgFDAABzwwaBFT5mZgFDAABzwwaBFT7NzABDZmZywwaBFT7NzABDAABzwwaBFT5mZgFDZmZywwaBFT7NzABDZmZywwaBFT5mZgFDzcxxwwaBFT5mZgFDzcxxwwaBFT7NzABDMzNxwwaBFT7NzABDzcxxwwaBFT5mZgFDMzNxwwaBFT7NzABDMzNxwwaBFT5mZgFDmplwwwaBFT5mZgFDmplwwwaBFT7NzABDAABwwwaBFT7NzABDmplwwwaBFT5mZgFDAABwwwaBFT7NzABDAABwwwaBFT5mZgFDZmZvwwaBFT5mZgFDZmZvwwaBFT7NzABDzcxuwwaBFT7NzABDZmZvwwaBFT5mZgFDzcxuwwaBFT7NzABDzcxuwwaBFT5mZgFDMzNuwwaBFT5mZgFDMzNuwwaBFT7NzABDmpltwwaBFT7NzABDMzNuwwaBFT5mZgFDmpltwwaBFT7NzABDmpltwwaBFT5mZgFDAABtwwaBFT5mZgFDAABtwwaBFT7NzABDZmZswwaBFT7NzABDAABtwwaBFT5mZgFDZmZswwaBFT7NzABDZmZswwaBFT5mZgFDzcxrwwaBFT5mZgFDzcxrwwaBFT7NzABDMzNrwwaBFT7NzABDzcxrwwaBFT5mZgFDMzNrwwaBFT7NzABDMzNrwwaBFT5mZgFDmplqwwaBFT5mZgFDmplqwwaBFT7NzABDAABqwwaBFT7NzABDmplqwwaBFT5mZgFDAABqwwaBFT7NzABDAABqwwaBFT5mZgFDZmZpwwaBFT5mZgFDZmZpwwaBFT7NzABDzcxowwaBFT7NzABDZmZpwwaBFT5mZgFDzcxowwaBFT7NzABDzcxowwaBFT5mZgFDMzN3wwaBFT4AAAJDMzN3wwaBFT5mZgFDmpl2wwaBFT5mZgFDMzN3wwaBFT4AAAJDmpl2wwaBFT5mZgFDmpl2wwaBFT4AAAJDAAB2wwaBFT4AAAJDAAB2wwaBFT5mZgFDZmZ1wwaBFT5mZgFDAAB2wwaBFT4AAAJDZmZ1wwaBFT5mZgFDZmZ1wwaBFT4AAAJDzcx0wwaBFT4AAAJDzcx0wwaBFT5mZgFDMzN0wwaBFT5mZgFDzcx0wwaBFT4AAAJDMzN0wwaBFT5mZgFDMzN0wwaBFT4AAAJDmplzwwaBFT4AAAJDmplzwwaBFT5mZgFDAABzwwaBFT5mZgFDmplzwwaBFT4AAAJDAABzwwaBFT5mZgFDAABzwwaBFT4AAAJDZmZywwaBFT4AAAJDZmZywwaBFT5mZgFDzcxxwwaBFT5mZgFDZmZywwaBFT4AAAJDzcxxwwaBFT5mZgFDzcxxwwaBFT4AAAJDMzNxwwaBFT4AAAJDMzNxwwaBFT5mZgFDmplwwwaBFT5mZgFDMzNxwwaBFT4AAAJDmplwwwaBFT5mZgFDmplwwwaBFT4AAAJDAABwwwaBFT4AAAJDAABwwwaBFT5mZgFDZmZvwwaBFT5mZgFDAABwwwaBFT4AAAJDZmZvwwaBFT5mZgFDZmZvwwaBFT4AAAJDzcxuwwaBFT4AAAJDzcxuwwaBFT5mZgFDMzNuwwaBFT5mZgFDzcxuwwaBFT4AAAJDMzNuwwaBFT5mZgFDMzNuwwaBFT4AAAJDmpltwwaBFT4AAAJDmpltwwaBFT5mZgFDAABtwwaBFT5mZgFDmpltwwaBFT4AAAJDAABtwwaBFT5mZgFDAABtwwaBFT4AAAJDZmZswwaBFT4AAAJDZmZswwaBFT5mZgFDzcxrwwaBFT5mZgFDZmZswwaBFT4AAAJDzcxrwwaBFT5mZgFDzcxrwwaBFT4AAAJDMzNrwwaBFT4AAAJDMzNrwwaBFT5mZgFDmplqwwaBFT5mZgFDMzNrwwaBFT4AAAJDmplqwwaBFT5mZgFDmplqwwaBFT4AAAJDAABqwwaBFT4AAAJDAABqwwaBFT5mZgFDZmZpwwaBFT5mZgFDAABqwwaBFT4AAAJDZmZpwwaBFT5mZgFDZmZpwwaBFT4AAAJD/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/v/9///8AAP+/")
+}]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wnp57"]
+size = Vector3(2, 0.02, 0.12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y7sfa"]
+size = Vector3(2, 0.02, 0.12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h4g1g"]
+size = Vector3(2, 0.02, 0.12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j7cin"]
+size = Vector3(2, 0.02, 0.12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f41j4"]
+size = Vector3(2, 0.02, 0.12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pid6b"]
+size = Vector3(2, 0.02, 0.12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4ifx1"]
+size = Vector3(6.6, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ydph"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wm5hx"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mh8tk"]
+size = Vector3(6.6, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gbr3u"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1mwfc"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5qfn8"]
+size = Vector3(6.6, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m24yq"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kp3iv"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lc1pl"]
+size = Vector3(6.6, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_upeuc"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xhgfy"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hlxqd"]
+size = Vector3(6.6, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bhnfw"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2y4fh"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k0esp"]
+size = Vector3(6.6, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a7qa6"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qtbl3"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ts55r"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ae3xi"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jq1en"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qtxa0"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_usfxq"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g0pjv"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ljj6v"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jj87a"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_81bti"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7o50p"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cbv8u"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gfvqs"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ynld1"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jnour"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2wady"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_43xmr"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nq3kv"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_03jn6"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_74bxa"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fs43w"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a6km4"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_38hmv"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cia8t"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q3qc8"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2fbj3"]
+size = Vector3(2.6, 1.7, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qcni3"]
+size = Vector3(0.15, 1.1, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pe4q7"]
+size = Vector3(6.6, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e6p5v"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_olhq5"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o3k6c"]
+size = Vector3(6.6, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ktubm"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ocufb"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_op46j"]
+size = Vector3(6.6, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gbs47"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8xam5"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wy3a7"]
+albedo_color = Color(0.13333334, 0.42745098, 0.52156866, 1)
+roughness = 0.94
+
+[sub_resource type="BoxMesh" id="BoxMesh_jxbt1"]
+size = Vector3(6.6, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4kala"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mn5d1"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8872c"]
+size = Vector3(6.6, 1.7, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ev6qb"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_enri1"]
+size = Vector3(0.16, 1.6, 0.16)
+
+[sub_resource type="Curve3D" id="Curve3D_aog7i"]
+_data = {
+"points": PackedVector3Array(0, 0, 14.666672, 0, 0, -60, -240, 0, 130, 0, 0, 60, 0, 0, -44.182777, -240, 0, -50, -44.182785, 0, 0, 13.333328, 0, 0, -160, 0, -130, -13.333328, 0, 0, 45, 0, 0, -120, 0, -130, -45, 0, 0, 45, 0, 0, -40, 0, -180, -45, 0, 0, 16.666668, 0, 0, 40, 0, -130, -16.666664, 0, 0, 17.673111, 0, 0, 90, 0, -130, 0, 0, -17.673111, 0, 0, 17.673111, 122, 0, -98, 17.673111, 0, 0, -13.333336, 0, 0, 90, 0, -66, 13.333332, 0, 0, -22.09139, 0, 0, 50, 0, -66, 0, 0, -22.091389, 0, 0, 16.666668, 10, 0, -26, 0, 0, -16.666664, 0, 0, 44.182777, 10, 0, 24, -44.18278, 0, 0, 44.182785, 0, 0, 90, 0, 104, 0, 0, -44.182785, 0, 0, 44.182785, 170, 0, 184, 44.182785, 0, 0, -18.333336, 0, 0, 90, 0, 264, 18.333332, 0, 0, -43.333336, 0, 0, 35, 0, 264, 43.33333, 0, 0, -18.333336, 0, 0, -95, 0, 264, 18.333328, 0, 0, -49.705627, 0, 0, -150, 0, 264, 0, 0, 49.705627, 0, 0, -14.666672, -240, 0, 174),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 19
+
+[node name="LighthouseCircuit" type="Node3D" unique_id=1440806041]
+script = ExtResource("1_hbfdg")
+sections = Array[Dictionary]([{"w0":7.2,"w1":7.2,"sector":0,"gate":false}, {"w0":7.2,"w1":7.2,"sector":0,"gate":true}, {"w0":7.2,"w1":6.2,"sector":0,"gate":true}, {"w0":6.2,"w1":6.2,"sector":1,"gate":true}, {"w0":6.2,"w1":6.2,"sector":1,"gate":true}, {"w0":6.2,"w1":7.8,"sector":2,"gate":true}, {"w0":7.8,"w1":7.8,"sector":2,"gate":true}, {"w0":7.8,"w1":7.8,"sector":2,"gate":true}, {"w0":7.8,"w1":6.8,"sector":2,"gate":true}, {"w0":6.8,"w1":6.8,"sector":2,"gate":false}, {"w0":6.8,"w1":7.0,"sector":3,"gate":true}, {"w0":7.0,"w1":7.0,"sector":3,"gate":true}, {"w0":7.0,"w1":7.0,"sector":3,"gate":true}, {"w0":7.0,"w1":7.0,"sector":3,"gate":true}, {"w0":7.0,"w1":6.3,"sector":4,"gate":true}, {"w0":6.3,"w1":6.3,"sector":4,"gate":true}, {"w0":6.3,"w1":5.2,"sector":4,"gate":true}, {"w0":5.2,"w1":6.2,"sector":5,"gate":true}, {"w0":6.2,"w1":7.2,"sector":5,"gate":true}])
+
+[node name="LighthouseHarborScenery" type="Node3D" parent="." unique_id=435686012]
+
+[node name="ShapedCoastalPlateau" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1190400094]
+material_override = SubResource("StandardMaterial3D_s18rf")
+mesh = SubResource("ArrayMesh_jbons")
+
+[node name="ShapedCoastalPlateau_col" type="StaticBody3D" parent="LighthouseHarborScenery/ShapedCoastalPlateau" unique_id=1770986514]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LighthouseHarborScenery/ShapedCoastalPlateau/ShapedCoastalPlateau_col" unique_id=1663388867]
+shape = SubResource("ConcavePolygonShape3D_q6xpe")
+
+[node name="FacetedCoastalCliffs" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1045942029]
+material_override = SubResource("StandardMaterial3D_aiuj0")
+mesh = SubResource("ArrayMesh_8gubc")
+
+[node name="HarborSea" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=350712917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -5.7, 40)
+material_override = SubResource("StandardMaterial3D_a4hgr")
+mesh = SubResource("BoxMesh_hhc4p")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1403062441]
+transform = Transform3D(0.99950176, 0, -0.031563215, 0, 1, 0, 0.031563215, 0, 0.99950176, -284.497, -5.35, 107.31062)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_rn6va")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1564617314]
+transform = Transform3D(0.9225799, 0, -0.38580614, 0, 1, 0, 0.38580614, 0, 0.9225799, -277.0355, -5.35, -89.814835)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_o1vkv")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1434137157]
+transform = Transform3D(0.014284257, 0, -0.999898, 0, 1.0000001, 0, 0.999898, 0, 0.014284257, -170.08571, -5.35, -164.49939)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_4nfg5")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1056031172]
+transform = Transform3D(0.35793602, 0, -0.93374616, 0, 1.0000001, 0, 0.93374616, 0, 0.35793602, -67.14761, -5.35, -208.10248)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_68dt8")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=762873588]
+transform = Transform3D(-0.43921015, 0, -0.8983844, 0, 1.0000001, 0, 0.8983844, 0, -0.43921015, 35.13526, -5.35, -206.3903)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_6dqyf")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=605608936]
+transform = Transform3D(-0.39114064, 0, -0.92033094, 0, 1, 0, 0.92033094, 0, -0.39114064, 122.34685, -5.35, -163.02199)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_mnl78")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1146377804]
+transform = Transform3D(-0.9841834, 0, 0.177153, 0, 1.0000001, 0, -0.177153, 0, -0.9841834, 167.4051, -5.35, -88.93708)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_1k4i2")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1235205197]
+transform = Transform3D(0.023249527, 0, 0.9997297, 0, 1, 0, -0.9997297, 0, 0.023249527, 89.360504, -5.35, -33.50162)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_de8mb")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1617828636]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 51, -5.35, 0)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_5piso")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=208398343]
+transform = Transform3D(-0.34174308, 0, -0.93979347, 0, 1.0000001, 0, 0.93979347, 0, -0.34174308, 99.55046, -5.35, 59.36124)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_30dnp")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1501793883]
+transform = Transform3D(-0.8772623, 0, -0.48001143, 0, 1.0000001, 0, 0.48001143, 0, -0.8772623, 194.76358, -5.35, 133.61993)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_32i4u")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=621611980]
+transform = Transform3D(-0.8470639, 0, 0.53149104, 0, 1, 0, -0.53149104, 0, -0.8470639, 194.08238, -5.35, 241.68895)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_467qn")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=375491062]
+transform = Transform3D(0.07478995, 0, 0.9971993, 0, 1, 0, -0.9971993, 0, 0.07478995, 99.55126, -5.35, 297.4832)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_4fh6q")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1661439014]
+transform = Transform3D(0.9125093, 0, 0.40905592, 0, 1, 0, -0.40905592, 0, 0.9125093, 53.024944, -5.35, 257.95435)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_fw0fo")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=473065573]
+transform = Transform3D(0.48368612, 0, 0.8752416, 0, 1.0000001, 0, -0.8752416, 0, 0.48368612, -3.9021165, -5.35, 222.75145)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_o02tw")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1546594790]
+transform = Transform3D(-0.22788447, 0, 0.9736882, 0, 1, 0, -0.9736882, 0, -0.22788447, -85.13269, -5.35, 207.34213)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_otg34")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=414729616]
+transform = Transform3D(-0.9962406, 0, 0.08662962, 0, 1, 0, -0.08662962, 0, -0.9962406, -130.02255, -5.35, 256.51978)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_eg0cl")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1605880747]
+transform = Transform3D(0.49360552, 0, 0.86968595, 0, 1.0000001, 0, -0.86968595, 0, 0.49360552, -228.46164, -5.35, 275.7181)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_hdwsm")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1163758075]
+transform = Transform3D(0.9883717, 0, 0.15205719, 0, 1, 0, -0.15205719, 0, 0.9883717, -280.93024, -5.35, 188.41234)
+material_override = SubResource("StandardMaterial3D_b78d4")
+mesh = SubResource("BoxMesh_7ko5j")
+
+[node name="Node3D23" type="Node3D" parent="LighthouseHarborScenery" unique_id=2076329802]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -191, 0, 104)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D23" unique_id=258840458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_4iuqi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D23" unique_id=805383186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_t5qbc")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D23" unique_id=577042474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.8, 0)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("PrismMesh_ottb8")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D23" unique_id=367613464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.83, 4.14, 12.54)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_6olp2")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D23" unique_id=93563784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.83, 6.48, -12.54)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_gnasr")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D23" unique_id=76621185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.83, 4.14, 12.54)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_y6m44")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D23" unique_id=1343922126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.83, 6.48, -12.54)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_qpxt2")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D23" unique_id=1108699148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.3, 12.7)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_oy78q")
+
+[node name="Label3D9" type="Label3D" parent="LighthouseHarborScenery/Node3D23" unique_id=1599487427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.34, 12.84)
+pixel_size = 0.035
+modulate = Color(1, 0.9411765, 0.80784315, 1)
+text = "HARBOR 01"
+font_size = 40
+outline_size = 0
+
+[node name="Node3D24" type="Node3D" parent="LighthouseHarborScenery" unique_id=1798909621]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -186, 0, 52)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D24" unique_id=1254042129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_0prqw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D24" unique_id=1617453668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_3npyb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D24" unique_id=1702593960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.8, 0)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("PrismMesh_muu7l")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D24" unique_id=356371773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02, 3.68, 11.04)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_8nfgf")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D24" unique_id=1254494684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02, 5.76, -11.04)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_vs81b")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D24" unique_id=883605009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.02, 3.68, 11.04)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_0j36i")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D24" unique_id=383140271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.02, 5.76, -11.04)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_2t0ik")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D24" unique_id=1472382698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.3, 11.2)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_o0dv6")
+
+[node name="Label3D9" type="Label3D" parent="LighthouseHarborScenery/Node3D24" unique_id=1146945622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.34, 11.34)
+pixel_size = 0.035
+modulate = Color(1, 0.9411765, 0.80784315, 1)
+text = "COAST SERVICE"
+font_size = 40
+outline_size = 0
+
+[node name="Node3D25" type="Node3D" parent="LighthouseHarborScenery" unique_id=1465840385]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -184, 0, 153)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D25" unique_id=1161410457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_3kdjw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D25" unique_id=845952482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_v14ll")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D25" unique_id=918731514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.8, 0)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("PrismMesh_qnvfq")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D25" unique_id=1304637298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91, 4.6, 11.54)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_wsyvm")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D25" unique_id=2000534909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91, 7.2, -11.54)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_57wdu")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D25" unique_id=1037070819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.91, 4.6, 11.54)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_tydhi")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D25" unique_id=1103415474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.91, 7.2, -11.54)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_bobvo")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D25" unique_id=60145143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.3, 11.7)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_u4vi4")
+
+[node name="Label3D9" type="Label3D" parent="LighthouseHarborScenery/Node3D25" unique_id=166145845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.34, 11.84)
+pixel_size = 0.035
+modulate = Color(1, 0.9411765, 0.80784315, 1)
+text = "SEABREAK"
+font_size = 40
+outline_size = 0
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1630678225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -208, 0.025, 101)
+material_override = SubResource("StandardMaterial3D_3tcse")
+mesh = SubResource("BoxMesh_fubos")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=744805106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153, 1.5, 65)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("BoxMesh_bihqv")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1009379456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156.4, 1.5, 67.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_nnphx")
+
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1598900707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.2, 1.5, 67.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_0v42v")
+
+[node name="MeshInstance3D30" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1082205304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152, 1.5, 67.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_lcg4c")
+
+[node name="MeshInstance3D31" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1506397969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.8, 1.5, 67.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_h5thk")
+
+[node name="MeshInstance3D32" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=2138284510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141, 1.5, 65)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("BoxMesh_t13o4")
+
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1394177366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.4, 1.5, 67.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_lgbsu")
+
+[node name="MeshInstance3D34" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=115479691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -142.2, 1.5, 67.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_idxe6")
+
+[node name="MeshInstance3D35" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1387955400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -140, 1.5, 67.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_3lk01")
+
+[node name="MeshInstance3D36" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1571555101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.8, 1.5, 67.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_c6og3")
+
+[node name="MeshInstance3D37" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1196902600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153, 1.5, 75.5)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("BoxMesh_hx6pm")
+
+[node name="MeshInstance3D38" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1115409170]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156.4, 1.5, 78.03)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_dan0s")
+
+[node name="MeshInstance3D39" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=708166766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.2, 1.5, 78.03)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_j72xw")
+
+[node name="MeshInstance3D40" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=587129152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152, 1.5, 78.03)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_qdqhg")
+
+[node name="MeshInstance3D41" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=217806421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.8, 1.5, 78.03)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_jer52")
+
+[node name="MeshInstance3D42" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=127684893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141, 1.5, 75.5)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("BoxMesh_v5p5n")
+
+[node name="MeshInstance3D43" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=943540918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.4, 1.5, 78.03)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_cks2g")
+
+[node name="MeshInstance3D44" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1915694454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -142.2, 1.5, 78.03)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_08qxe")
+
+[node name="MeshInstance3D45" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=939981386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -140, 1.5, 78.03)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_wif1t")
+
+[node name="MeshInstance3D46" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=102112989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.8, 1.5, 78.03)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_1ccr8")
+
+[node name="MeshInstance3D47" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1441499040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153, 1.5, 86)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("BoxMesh_kj8qw")
+
+[node name="MeshInstance3D48" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=484391667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156.4, 1.5, 88.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_idch5")
+
+[node name="MeshInstance3D49" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1357108920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.2, 1.5, 88.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_wapff")
+
+[node name="MeshInstance3D50" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=2003925596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152, 1.5, 88.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_hverd")
+
+[node name="MeshInstance3D51" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=555688590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.8, 1.5, 88.53)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_vv864")
+
+[node name="MeshInstance3D52" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=25516214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -296, -1, 77)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_std6g")
+
+[node name="MeshInstance3D53" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1493952966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -317, -1, 116)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_fto1q")
+
+[node name="MeshInstance3D54" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=337821004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -320, 0.45, 61)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("CylinderMesh_hn28m")
+
+[node name="MeshInstance3D55" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1004348216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -320, 0.45, 78)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("CylinderMesh_8mrp6")
+
+[node name="MeshInstance3D56" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=98818547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -320, 0.45, 95)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("CylinderMesh_5f33q")
+
+[node name="MeshInstance3D57" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1517415939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -320, 0.45, 111)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("CylinderMesh_2usql")
+
+[node name="MeshInstance3D58" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1857810670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -320, 0.45, 129)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("CylinderMesh_cw8t5")
+
+[node name="Node3D59" type="Node3D" parent="LighthouseHarborScenery" unique_id=1945329209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -284, 0, 70)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=1794190051]
+transform = Transform3D(0, 0.9979029, -0.0647271, 0.064863116, -0.0645908, -0.99580157, -0.99789417, -0.0041984012, -0.0647271, -2.22, 12, -2.22)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_o8p0l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=568919861]
+transform = Transform3D(0, 0.9979029, -0.0647271, -0.064863116, -0.0645908, -0.99580157, -0.99789417, 0.0041984012, 0.0647271, -2.22, 12, 2.22)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_5u6ul")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=1329846371]
+transform = Transform3D(0, 0.9979029, 0.0647271, 0.064863116, 0.0645908, -0.99580157, -0.99789417, 0.0041984012, -0.0647271, 2.22, 12, -2.22)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_mttdn")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=1618563920]
+transform = Transform3D(0, 0.9979029, 0.0647271, -0.064863116, 0.0645908, -0.99580157, -0.99789417, -0.0041984012, 0.0647271, 2.22, 12, 2.22)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_l8pqn")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=1741690565]
+transform = Transform3D(0, -0.6794081, -0.7337607, 0, 0.7337607, -0.6794081, 1, 0, 0, 0, 7.5, -2.7)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("BoxMesh_fi431")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=1931636247]
+transform = Transform3D(0, -0.6794081, -0.7337607, 0, 0.7337607, -0.6794081, 1, 0, 0, 0, 7.5, 2.7)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("BoxMesh_jp5ny")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=145588687]
+transform = Transform3D(0, -0.6794081, -0.7337607, 0, 0.7337607, -0.6794081, 1, 0, 0, 0, 14.5, -2.7)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("BoxMesh_2mgo5")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=1470876782]
+transform = Transform3D(0, -0.6794081, -0.7337607, 0, 0.7337607, -0.6794081, 1, 0, 0, 0, 14.5, 2.7)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("BoxMesh_usi1j")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=569059351]
+transform = Transform3D(0, -0.6794081, -0.7337607, 0, 0.7337607, -0.6794081, 1, 0, 0, 0, 21.5, -2.7)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("BoxMesh_snl7p")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=503872736]
+transform = Transform3D(0, -0.6794081, -0.7337607, 0, 0.7337607, -0.6794081, 1, 0, 0, 0, 21.5, 2.7)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("BoxMesh_mfcxq")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=1478329146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 25, 0)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("BoxMesh_wppcu")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=414591694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 23.6, 0)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_ui3kw")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=125947325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 24.1, 2.3)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_ssdpb")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=2053514505]
+transform = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, -28, 14.25, 0)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_64nhh")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=573624845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 4.2, 0)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("BoxMesh_sgbq8")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D59" unique_id=1723665435]
+transform = Transform3D(0, -0.06858812, 0.9976451, 0, 0.9976451, 0.06858812, -1, 0, 0, -13, 26.9, 0)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_oh2oi")
+
+[node name="Node3D60" type="Node3D" parent="LighthouseHarborScenery" unique_id=252006827]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, -313, -4.2, 34)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D60" unique_id=538062489]
+material_override = SubResource("StandardMaterial3D_wsisf")
+mesh = SubResource("ArrayMesh_r675w")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D60" unique_id=1669922617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 2.4)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_47ofb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D60" unique_id=1271548459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 2.4)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_wbr7a")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D60" unique_id=200215175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_0dbyt")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D60" unique_id=769080266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 5.4, 3.8)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("CylinderMesh_nnpem")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D60" unique_id=2048272719]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -0.8, 6.6499996, 3)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_mjlhf")
+
+[node name="Node3D61" type="Node3D" parent="LighthouseHarborScenery" unique_id=680037686]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -340, -4.2, 117)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D61" unique_id=1126777953]
+material_override = SubResource("StandardMaterial3D_2b6uh")
+mesh = SubResource("ArrayMesh_72b4m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D61" unique_id=1270767445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 2.4)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_tlk24")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D61" unique_id=1484788703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 2.4)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_va7r3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D61" unique_id=1244549691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_6e1ii")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D61" unique_id=500066166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 5.4, 3.8)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("CylinderMesh_tuwcf")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D61" unique_id=303860376]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -0.8, 6.6499996, 3)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_y3vwy")
+
+[node name="tree_pineRoundA2" type="Node3D" parent="LighthouseHarborScenery" unique_id=429368321 instance=ExtResource("2_sgak6")]
+transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, -212, 0, -22)
+
+[node name="Node3D63" type="Node3D" parent="LighthouseHarborScenery" unique_id=463327416 instance=ExtResource("2_sgak6")]
+transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, -194, 0, -48)
+
+[node name="Node3D64" type="Node3D" parent="LighthouseHarborScenery" unique_id=987481464 instance=ExtResource("2_sgak6")]
+transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, -167, 0, -67)
+
+[node name="Node3D65" type="Node3D" parent="LighthouseHarborScenery" unique_id=1602337184 instance=ExtResource("2_sgak6")]
+transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, -130, 0, 160)
+
+[node name="Node3D66" type="Node3D" parent="LighthouseHarborScenery" unique_id=1612086303 instance=ExtResource("2_sgak6")]
+transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, -116, 0, 139)
+
+[node name="Node3D67" type="Node3D" parent="LighthouseHarborScenery" unique_id=95923739 instance=ExtResource("2_sgak6")]
+transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, -105, 0, 112)
+
+[node name="MeshInstance3D68" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=567615621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88, 0.025, -98)
+material_override = SubResource("StandardMaterial3D_d65ur")
+mesh = SubResource("BoxMesh_n8l41")
+
+[node name="Node3D69" type="Node3D" parent="LighthouseHarborScenery" unique_id=1472146022]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 91, 0, -100)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D69" unique_id=685758694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_txgb2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D69" unique_id=1051539649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_1rsgr")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D69" unique_id=970498985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.8, 0)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("PrismMesh_u4ohe")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D69" unique_id=1935749730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05, 3.22, 6.04)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_ppq1q")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D69" unique_id=695751837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05, 5.04, -6.04)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_rawmf")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D69" unique_id=1836821572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 3.22, 6.04)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_4nbul")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D69" unique_id=2048797769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 5.04, -6.04)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_vp14n")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D69" unique_id=617507450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.3, 6.2)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_oxh85")
+
+[node name="Label3D9" type="Label3D" parent="LighthouseHarborScenery/Node3D69" unique_id=1521969941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.34, 6.34)
+pixel_size = 0.035
+modulate = Color(1, 0.9411765, 0.80784315, 1)
+text = "DRY DOCK"
+font_size = 40
+outline_size = 0
+
+[node name="BoatyardHullOnCradle" type="Node3D" parent="LighthouseHarborScenery" unique_id=1067124161]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 72, 1.1, -98)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="LighthouseHarborScenery/BoatyardHullOnCradle" unique_id=846246139]
+material_override = SubResource("StandardMaterial3D_87o7v")
+mesh = SubResource("ArrayMesh_xna5p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LighthouseHarborScenery/BoatyardHullOnCradle" unique_id=1805570398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 2.4)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_12wr6")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LighthouseHarborScenery/BoatyardHullOnCradle" unique_id=1022318797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 2.4)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_51kfy")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery/BoatyardHullOnCradle" unique_id=310272979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_xwysm")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery/BoatyardHullOnCradle" unique_id=295688785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 5.4, 3.8)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("CylinderMesh_p86g4")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery/BoatyardHullOnCradle" unique_id=1855467754]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -0.8, 6.6499996, 3)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_s2gkf")
+
+[node name="MeshInstance3D71" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1239198878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0.75, -101.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_rgjw1")
+
+[node name="MeshInstance3D72" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1115558391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 0.75, -94.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_fy0kl")
+
+[node name="MeshInstance3D73" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=634507545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0.8, -108)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("CylinderMesh_bnjah")
+
+[node name="MeshInstance3D74" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1863312299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0.8, -105)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("CylinderMesh_akyau")
+
+[node name="MeshInstance3D75" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=785202034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105, 0.8, -102)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("CylinderMesh_upv4d")
+
+[node name="CapeLighthouse" type="Node3D" parent="LighthouseHarborScenery" unique_id=862387684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 184)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=322105451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("CylinderMesh_l72e8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1852251172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("CylinderMesh_tiy7n")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1665986253]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("CylinderMesh_qiyqo")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1682603763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, 0)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("CylinderMesh_may2r")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=889465096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.5, 0)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("CylinderMesh_epnf3")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1051689049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.5, 0)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("CylinderMesh_n3bkq")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1265251910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.5, 0)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("CylinderMesh_ha5ue")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1011762272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.5, 0)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("CylinderMesh_uauu7")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1144851671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.2, 0)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("CylinderMesh_j6byj")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1010561485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.2, 0)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("CylinderMesh_8lq04")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=959537983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.5, 0)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("CylinderMesh_ihejs")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=232033116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 36.5, 0)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_nwfj1")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1107042431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8991377, 36.5, 2.8991377)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_uxyep")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=2114444623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.510443e-16, 36.5, 4.1)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_3yir6")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=8876431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8991377, 36.5, 2.8991377)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_62vgm")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1272256037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1, 36.5, 5.020886e-16)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_o6yge")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=2104292145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8991377, 36.5, -2.8991377)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_w3mou")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1371526756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.531329e-16, 36.5, -4.1)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_p3kn8")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=355705163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8991377, 36.5, -2.8991377)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_fski1")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1880567479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.7, 0)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("CylinderMesh_1fwt8")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=2076095208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 42, 0)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("CylinderMesh_4yhpp")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=252705653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -5.15)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_k8bt4")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=1294167698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.5, -4.67)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_d7c1j")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="LighthouseHarborScenery/CapeLighthouse" unique_id=62300067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 23.5, 0)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_ujljy")
+
+[node name="Node3D77" type="Node3D" parent="LighthouseHarborScenery" unique_id=835328585]
+transform = Transform3D(0.9553365, 0, -0.29552022, 0, 1, 0, 0.29552022, 0, 0.9553365, 63, 0, 186)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D77" unique_id=1142090873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_x7rsy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D77" unique_id=1544552587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_ebmod")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D77" unique_id=1606682182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.8, 0)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("PrismMesh_7hmcf")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D77" unique_id=1467143068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05, 2.76, 6.04)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_4qjpo")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D77" unique_id=104247299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05, 4.32, -6.04)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_w5nx6")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D77" unique_id=1924417563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 2.76, 6.04)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_1i7an")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D77" unique_id=1062577083]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.05, 4.32, -6.04)
+material_override = SubResource("StandardMaterial3D_yar5f")
+mesh = SubResource("BoxMesh_sootf")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="LighthouseHarborScenery/Node3D77" unique_id=1639683619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3, 6.2)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_ev1am")
+
+[node name="Label3D9" type="Label3D" parent="LighthouseHarborScenery/Node3D77" unique_id=1425989811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.34, 6.34)
+pixel_size = 0.035
+modulate = Color(1, 0.9411765, 0.80784315, 1)
+text = "BEACON 07"
+font_size = 40
+outline_size = 0
+
+[node name="MeshInstance3D78" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1568570992]
+transform = Transform3D(0.8869949, 0, 0.46177918, 0, 1, 0, -0.46177918, 0, 0.8869949, 75, 0.045, 164)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_du61m")
+
+[node name="MeshInstance3D79" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1149250317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103, 0.65, 209)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_gn0b2")
+
+[node name="MeshInstance3D80" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1854673168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 0.65, 208)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_fk8vx")
+
+[node name="BreakwaterBoostBridge" type="Node3D" parent="LighthouseHarborScenery" unique_id=171329870]
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1943063019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.55, 264)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_myxl6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1269574553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.1, 251.7)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("BoxMesh_c5n3r")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=2112516520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -1.8, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_4hb62")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1452258122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130, -4.4, 256)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_w1s1l")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=153157076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, -4.4, 256)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_7qcrm")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1115714068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -4.4, 256)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_vmru6")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1904083147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -4.4, 256)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_j7yng")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=497178530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, -4.4, 256)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_jwi28")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=215334499]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -140, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_ue6gn")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=189603574]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -120, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_xfopi")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=2135912433]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -100, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_0o0mo")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=606455407]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -80, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_m3xv4")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1978621297]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -60, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_a4vkf")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=949281710]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -40, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_prcrn")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=2128480097]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -20, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_htlq3")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=425436923]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, 0, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_ae1lw")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=871085932]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, 20, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_57pfa")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=961984190]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, 40, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_kjxqv")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=646394076]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, 60, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_mpx08")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1220270736]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, 80, -1.85, 252.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_2kv22")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=154038035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.1, 276.3)
+material_override = SubResource("StandardMaterial3D_fw4jj")
+mesh = SubResource("BoxMesh_pglq7")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1952439275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -1.8, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_gu6pr")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=339514742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130, -4.4, 272)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_77nc5")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=719235204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, -4.4, 272)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_1ni8g")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=96390089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -4.4, 272)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_b8bxx")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=872157519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -4.4, 272)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_ofavy")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1255369447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, -4.4, 272)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_7hxt1")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=452092119]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -140, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_ug2ml")
+
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=2008246181]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -120, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_ni0rl")
+
+[node name="MeshInstance3D30" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=773428765]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -100, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_0uy3j")
+
+[node name="MeshInstance3D31" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1202307604]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -80, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_ypaw3")
+
+[node name="MeshInstance3D32" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1932725198]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -60, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_1snpc")
+
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=60218380]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -40, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_o8ym2")
+
+[node name="MeshInstance3D34" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1031079150]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, -20, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_qe0gm")
+
+[node name="MeshInstance3D35" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1946223020]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, 0, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_55uig")
+
+[node name="MeshInstance3D36" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1797903813]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, 20, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_5fwp0")
+
+[node name="MeshInstance3D37" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1729894862]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, 40, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_pgwn2")
+
+[node name="MeshInstance3D38" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1705602067]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, 60, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_83y0b")
+
+[node name="MeshInstance3D39" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=28792915]
+transform = Transform3D(0, 0.114247024, -0.9934524, 0, 0.9934524, 0.114247024, 1, 0, 0, 80, -1.85, 275.5)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_lw12i")
+
+[node name="MeshInstance3D40" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=646822168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 7.4, 249.6)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("BoxMesh_qyp32")
+
+[node name="MeshInstance3D41" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1312225031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0.6, 249.6)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_x3kro")
+
+[node name="MeshInstance3D42" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=76482375]
+transform = Transform3D(-0.026078017, -0.2640083, 0.96416783, 0, 0.9644958, 0.26409814, -0.9996599, 0.006887156, -0.02515214, -108, 8.9, 250.20001)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_n8jj3")
+
+[node name="MeshInstance3D43" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1551320788]
+transform = Transform3D(-0.026078017, 0.2640083, -0.96416783, 0, 0.9644958, 0.26409814, 0.9996599, 0.006887156, -0.02515214, -62, 8.9, 250.20001)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_i1kxl")
+
+[node name="MeshInstance3D44" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=151980508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131, 1.25, 250.8)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_16daq")
+
+[node name="MeshInstance3D45" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=959365575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 1.25, 250.8)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_camr1")
+
+[node name="MeshInstance3D46" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1160141607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 7.4, 278.4)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("BoxMesh_kj1tm")
+
+[node name="MeshInstance3D47" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1165494711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 0.6, 278.4)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_2e4fr")
+
+[node name="MeshInstance3D48" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1263507966]
+transform = Transform3D(0.026077686, -0.2640083, 0.96416783, 0, 0.9644958, 0.26409814, -0.9996599, -0.0068870685, 0.025151819, -108, 8.9, 277.8)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_f2mkh")
+
+[node name="MeshInstance3D49" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=523206708]
+transform = Transform3D(0.026077686, 0.2640083, -0.96416783, 0, 0.9644958, 0.26409814, 0.9996599, -0.0068870685, 0.025151819, -62, 8.9, 277.8)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_i0xdh")
+
+[node name="MeshInstance3D50" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1494923466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131, 1.25, 277.2)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_j3gtg")
+
+[node name="MeshInstance3D51" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=155839637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 1.25, 277.2)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_u162c")
+
+[node name="MeshInstance3D52" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=385325268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 14.8, 264)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("BoxMesh_22s40")
+
+[node name="MeshInstance3D53" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1044610684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85, 13.3, 264)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_qjc5l")
+
+[node name="MeshInstance3D54" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=453175617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 7.4, 249.6)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("BoxMesh_rpvxb")
+
+[node name="MeshInstance3D55" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1649999021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.6, 249.6)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_7cxlh")
+
+[node name="MeshInstance3D56" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1254226437]
+transform = Transform3D(-0.026078017, -0.2640083, 0.96416783, 0, 0.9644958, 0.26409814, -0.9996599, 0.006887156, -0.02515214, 12, 8.9, 250.20001)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_ajjkf")
+
+[node name="MeshInstance3D57" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1446001362]
+transform = Transform3D(-0.026078017, 0.2640083, -0.96416783, 0, 0.9644958, 0.26409814, 0.9996599, 0.006887156, -0.02515214, 58, 8.9, 250.20001)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_01y0x")
+
+[node name="MeshInstance3D58" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=81092079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.25, 250.8)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_3c0ea")
+
+[node name="MeshInstance3D59" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1698126930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 1.25, 250.8)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_24bnr")
+
+[node name="MeshInstance3D60" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1087922586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 7.4, 278.4)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("BoxMesh_qo57k")
+
+[node name="MeshInstance3D61" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1725286705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0.6, 278.4)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_b1yo5")
+
+[node name="MeshInstance3D62" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=900036238]
+transform = Transform3D(0.026077686, -0.2640083, 0.96416783, 0, 0.9644958, 0.26409814, -0.9996599, -0.0068870685, 0.025151819, 12, 8.9, 277.8)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_hgv2a")
+
+[node name="MeshInstance3D63" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=2083532405]
+transform = Transform3D(0.026077686, 0.2640083, -0.96416783, 0, 0.9644958, 0.26409814, 0.9996599, -0.0068870685, 0.025151819, 58, 8.9, 277.8)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("BoxMesh_ujmi5")
+
+[node name="MeshInstance3D64" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=88078775]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.25, 277.2)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_hkyrf")
+
+[node name="MeshInstance3D65" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=937162834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 1.25, 277.2)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("BoxMesh_v56rg")
+
+[node name="MeshInstance3D66" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=1392611806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 14.8, 264)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("BoxMesh_7vytq")
+
+[node name="MeshInstance3D67" type="MeshInstance3D" parent="LighthouseHarborScenery/BreakwaterBoostBridge" unique_id=40919263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 13.3, 264)
+material_override = SubResource("StandardMaterial3D_d3i3c")
+mesh = SubResource("BoxMesh_rsbw6")
+
+[node name="MeshInstance3D82" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1722370848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120, -5.36, 296)
+material_override = SubResource("StandardMaterial3D_5avet")
+mesh = SubResource("BoxMesh_jsjy2")
+
+[node name="MeshInstance3D83" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=878763202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -5.36, 238)
+material_override = SubResource("StandardMaterial3D_5avet")
+mesh = SubResource("BoxMesh_csq18")
+
+[node name="MeshInstance3D84" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1860843049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -5.36, 307)
+material_override = SubResource("StandardMaterial3D_5avet")
+mesh = SubResource("BoxMesh_fcoav")
+
+[node name="MeshInstance3D85" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=380544755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -5.36, 285)
+material_override = SubResource("StandardMaterial3D_5avet")
+mesh = SubResource("BoxMesh_4qejr")
+
+[node name="MeshInstance3D86" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1929077232]
+transform = Transform3D(-1.4215826, 0, -0.2871882, 0, 0.85, 0, 0.478647, 0, -0.8529495, -91, -5, -224)
+material_override = SubResource("StandardMaterial3D_lo3sq")
+mesh = SubResource("SphereMesh_wdvrr")
+
+[node name="MeshInstance3D87" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=100939260]
+transform = Transform3D(1.1308534, 0, -0.5912879, 0, 0.85, 0, 0.9854799, 0, 0.67851204, -70, -4.3, -235)
+material_override = SubResource("StandardMaterial3D_lo3sq")
+mesh = SubResource("SphereMesh_taevc")
+
+[node name="MeshInstance3D88" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1628855239]
+transform = Transform3D(-0.9804654, 0, 0.68112224, 0, 0.85, 0, -1.1352037, 0, -0.58827925, -40, -5.1, -237)
+material_override = SubResource("StandardMaterial3D_lo3sq")
+mesh = SubResource("SphereMesh_xsdmb")
+
+[node name="MeshInstance3D89" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1149120452]
+transform = Transform3D(-0.62422025, 0, 0.81836766, 0, 0.85, 0, -1.3639461, 0, -0.37453216, 20, -4, -246)
+material_override = SubResource("StandardMaterial3D_lo3sq")
+mesh = SubResource("SphereMesh_oh177")
+
+[node name="MeshInstance3D90" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=101652559]
+transform = Transform3D(1.4092873, 0, -0.30823255, 0, 0.85, 0, 0.5137209, 0, 0.84557235, 185, -4.1, -115)
+material_override = SubResource("StandardMaterial3D_lo3sq")
+mesh = SubResource("SphereMesh_dms08")
+
+[node name="MeshInstance3D91" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=1517345150]
+transform = Transform3D(-0.5311396, 0, -0.8416891, 0, 0.85, 0, 1.4028152, 0, -0.31868377, 232, -4.5, 132)
+material_override = SubResource("StandardMaterial3D_lo3sq")
+mesh = SubResource("SphereMesh_kohkb")
+
+[node name="MeshInstance3D92" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=637029844]
+transform = Transform3D(-0.79924953, 0, -0.76159835, 0, 0.85, 0, 1.2693306, 0, -0.47954974, 230, -4.8, 218)
+material_override = SubResource("StandardMaterial3D_lo3sq")
+mesh = SubResource("SphereMesh_8h56w")
+
+[node name="MeshInstance3D93" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=985593310]
+transform = Transform3D(0.03052684, 0, 0.8998136, 0, 0.85, 0, -1.4996893, 0, 0.018316103, 204, -4.1, 263)
+material_override = SubResource("StandardMaterial3D_lo3sq")
+mesh = SubResource("SphereMesh_53lel")
+
+[node name="MeshInstance3D94" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=879793949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -219, -0.5, 307)
+material_override = SubResource("StandardMaterial3D_57tal")
+mesh = SubResource("CylinderMesh_xttw4")
+
+[node name="MeshInstance3D95" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=2070392738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -219, 6.6, 307)
+material_override = SubResource("StandardMaterial3D_ts1rq")
+mesh = SubResource("CylinderMesh_vo37w")
+
+[node name="MeshInstance3D96" type="MeshInstance3D" parent="LighthouseHarborScenery" unique_id=827916706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -219, 9.4, 307)
+material_override = SubResource("StandardMaterial3D_fquay")
+mesh = SubResource("CylinderMesh_4ft6v")
+
+[node name="StartFinish" type="Node3D" parent="." unique_id=262678247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -240, 0.12, 130)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="StartFinish" unique_id=1978662972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8, 3.5, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_w1aem")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StartFinish" unique_id=1389308716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8, 0.45, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_wmcho")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StartFinish" unique_id=96038911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8, 3.5, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_fk5oe")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="StartFinish" unique_id=1091256982]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8, 0.45, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_ywvmx")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="StartFinish" unique_id=969941311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_furfg")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="StartFinish" unique_id=1361566172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.65, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_wft50")
+
+[node name="Label3D7" type="Label3D" parent="StartFinish" unique_id=1431268771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.53, 0.27)
+pixel_size = 0.019
+modulate = Color(1, 0.95686275, 0.8509804, 1)
+text = "L I G H T H O U S E"
+font_size = 64
+outline_size = 0
+
+[node name="Label3D8" type="Label3D" parent="StartFinish" unique_id=446136867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.65, 0.26)
+pixel_size = 0.012
+modulate = Color(1, 0.95686275, 0.8509804, 1)
+text = "START / FINISH"
+font_size = 48
+outline_size = 0
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1834763970]
+material_override = SubResource("StandardMaterial3D_edpxd")
+mesh = SubResource("ArrayMesh_uk1n0")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1480113527]
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("ArrayMesh_kgsk0")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=508349686]
+transform = Transform3D(1, 0, -8.816165e-06, 0, 1, 0, 8.816165e-06, 0, 1, -242.69998, 0.14999999, 124.99998)
+material_override = SubResource("StandardMaterial3D_edpxd")
+mesh = SubResource("BoxMesh_wnp57")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=1707716386]
+transform = Transform3D(1, 0, -8.816165e-06, 0, 1, 0, 8.816165e-06, 0, 1, -237.29999, 0.14999999, 125.00002)
+material_override = SubResource("StandardMaterial3D_edpxd")
+mesh = SubResource("BoxMesh_y7sfa")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="." unique_id=465231851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -242.7, 0.14999999, 118)
+material_override = SubResource("StandardMaterial3D_edpxd")
+mesh = SubResource("BoxMesh_h4g1g")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="." unique_id=1705120957]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -237.3, 0.14999999, 118)
+material_override = SubResource("StandardMaterial3D_edpxd")
+mesh = SubResource("BoxMesh_j7cin")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="." unique_id=614615955]
+transform = Transform3D(1, 0, -4.4080634e-06, 0, 1, 0, 4.4080634e-06, 0, 1, -242.7, 0.14999999, 110.999985)
+material_override = SubResource("StandardMaterial3D_edpxd")
+mesh = SubResource("BoxMesh_f41j4")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="." unique_id=276529167]
+transform = Transform3D(1, 0, -4.4080634e-06, 0, 1, 0, 4.4080634e-06, 0, 1, -237.3, 0.14999999, 111.000015)
+material_override = SubResource("StandardMaterial3D_edpxd")
+mesh = SubResource("BoxMesh_pid6b")
+
+[node name="Node3D11" type="Node3D" parent="." unique_id=429478598]
+transform = Transform3D(1, 0, 8.816262e-06, 0, 1, 0, -8.816262e-06, 0, 1, -229.59999, 0.12, 121.99991)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D11" unique_id=717265450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_4ifx1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D11" unique_id=1551894901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_1ydph")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D11" unique_id=527850476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_wm5hx")
+
+[node name="Label3D4" type="Label3D" parent="Node3D11" unique_id=519818729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.13)
+pixel_size = 0.013
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "01  HARBOR"
+font_size = 48
+outline_size = 0
+
+[node name="Node3D12" type="Node3D" parent="." unique_id=367102926]
+transform = Transform3D(0.14620851, 0, -0.9892538, 0, 1, 0, 0.9892538, 0, 0.14620851, -110.65699, 0.12, -121.30692)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D12" unique_id=1426943109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_mh8tk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D12" unique_id=143151732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_gbr3u")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D12" unique_id=1227843214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_1mwfc")
+
+[node name="Label3D4" type="Label3D" parent="Node3D12" unique_id=1734555353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.13)
+pixel_size = 0.013
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "02  REEF S"
+font_size = 48
+outline_size = 0
+
+[node name="Node3D13" type="Node3D" parent="." unique_id=295997993]
+transform = Transform3D(-4.577628e-06, 0, -1, 0, 1, 0, 1, 0, -4.577628e-06, 47.99994, 0.12, -120.48681)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D13" unique_id=268476121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_5qfn8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D13" unique_id=2049806074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_m24yq")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D13" unique_id=1235478469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_kp3iv")
+
+[node name="Label3D4" type="Label3D" parent="Node3D13" unique_id=2000294308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.13)
+pixel_size = 0.013
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "03  DRYDOCK"
+font_size = 48
+outline_size = 0
+
+[node name="Node3D14" type="Node3D" parent="." unique_id=1221052940]
+transform = Transform3D(-1, 0, -2.8610216e-07, 0, 1, 0, 2.8610216e-07, 0, -1, -0.014151573, 0.12, -17.999956)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D14" unique_id=1958751926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_lc1pl")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D14" unique_id=1135741170]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_upeuc")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D14" unique_id=1241639207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_xhgfy")
+
+[node name="Label3D4" type="Label3D" parent="Node3D14" unique_id=1746638450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.13)
+pixel_size = 0.013
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "04  LIGHTHOUSE"
+font_size = 48
+outline_size = 0
+
+[node name="Node3D15" type="Node3D" parent="." unique_id=461930036]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 82, 0.12, 253.84137)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D15" unique_id=6269251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_hlxqd")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D15" unique_id=872705644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_bhnfw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D15" unique_id=2119964553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_2y4fh")
+
+[node name="Label3D4" type="Label3D" parent="Node3D15" unique_id=2072145732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.13)
+pixel_size = 0.013
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "05  BREAKWATER"
+font_size = 48
+outline_size = 0
+
+[node name="Node3D16" type="Node3D" parent="." unique_id=1779690324]
+transform = Transform3D(0.0898429, 0, 0.995956, 0, 1.0000001, 0, -0.995956, 0, 0.0898429, -157.23346, 0.12, 255.26105)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D16" unique_id=132261891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_k0esp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D16" unique_id=920686449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_a7qa6")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D16" unique_id=1606885448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_qtbl3")
+
+[node name="Label3D4" type="Label3D" parent="Node3D16" unique_id=937757798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.13)
+pixel_size = 0.013
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "06  HOME TURN"
+font_size = 48
+outline_size = 0
+
+[node name="Node3D17" type="Node3D" parent="." unique_id=503633950]
+transform = Transform3D(0.99979544, 0, -0.020226182, 0, 1, 0, 0.020226182, 0, 0.99979544, -229.8021, 0.12, -49.793694)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D17" unique_id=910039582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_ts55r")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D17" unique_id=21438425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_ae3xi")
+
+[node name="Label3D3" type="Label3D" parent="Node3D17" unique_id=1456936166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = ">>"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D18" type="Node3D" parent="." unique_id=1519095789]
+transform = Transform3D(0.83924764, 0, -0.5437494, 0, 1, 0, 0.5437494, 0, 0.83924764, -219.11707, 0.12, -87.1141)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D18" unique_id=1693532867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_jq1en")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D18" unique_id=1375174599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_qtxa0")
+
+[node name="Label3D3" type="Label3D" parent="Node3D18" unique_id=631849092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = ">>"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D19" type="Node3D" parent="." unique_id=84551363]
+transform = Transform3D(0.57347995, 0, -0.81921965, 0, 1.0000001, 0, 0.81921965, 0, 0.57347995, -102.16959, 0.12, -143.88849)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D19" unique_id=252922231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_usfxq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D19" unique_id=2130418035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_g0pjv")
+
+[node name="Label3D3" type="Label3D" parent="Node3D19" unique_id=890490397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "<<"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D20" type="Node3D" parent="." unique_id=741392517]
+transform = Transform3D(0.08526627, 0, -0.9963582, 0, 1.0000001, 0, 0.9963582, 0, 0.08526627, -44.176647, 0.12, -170.59468)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D20" unique_id=1361588255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_ljj6v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D20" unique_id=1159574176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_jj87a")
+
+[node name="Label3D3" type="Label3D" parent="Node3D20" unique_id=1801943329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = ">>"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D21" type="Node3D" parent="." unique_id=713982219]
+transform = Transform3D(-0.7293398, 0, -0.6841517, 0, 1.0000001, 0, 0.6841517, 0, -0.7293398, 16.103132, 0.12, -149.12895)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D21" unique_id=1858248235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_81bti")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D21" unique_id=1556205819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_7o50p")
+
+[node name="Label3D3" type="Label3D" parent="Node3D21" unique_id=813841915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "<<"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D22" type="Node3D" parent="." unique_id=332816904]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 87.735756, 0.12, -119.213844)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D22" unique_id=1438681361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_cbv8u")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D22" unique_id=1916621723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_gfvqs")
+
+[node name="Label3D3" type="Label3D" parent="Node3D22" unique_id=1373799989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = ">>"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D23" type="Node3D" parent="." unique_id=1249125617]
+transform = Transform3D(-0.9885533, 0, -0.15087214, 0, 1, 0, 0.15087214, 0, -0.9885533, 110.97124, 0.12, -100.868774)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D23" unique_id=870174769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_ynld1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D23" unique_id=350225666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_jnour")
+
+[node name="Label3D3" type="Label3D" parent="Node3D23" unique_id=303500126]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = ">>"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D24" type="Node3D" parent="." unique_id=1197613588]
+transform = Transform3D(-2.2888114e-06, 0, 1, 0, 1, 0, -1, 0, -2.2888114e-06, 79.76884, 0.12, -76.636604)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D24" unique_id=711380956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_2wady")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D24" unique_id=972279698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_43xmr")
+
+[node name="Label3D3" type="Label3D" parent="Node3D24" unique_id=321383578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = ">>"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D25" type="Node3D" parent="." unique_id=1856661927]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 19.998016, 0.12, 21.406658)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D25" unique_id=833368340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_nq3kv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D25" unique_id=1037073310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_03jn6")
+
+[node name="Label3D3" type="Label3D" parent="Node3D25" unique_id=1702764638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "<<"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D26" type="Node3D" parent="." unique_id=1969263352]
+transform = Transform3D(-0.29697683, 0, -0.9548847, 0, 1, 0, 0.9548847, 0, -0.29697683, 70.028244, 0.12, 91.10191)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D26" unique_id=695986961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_74bxa")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D26" unique_id=860193215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_fs43w")
+
+[node name="Label3D3" type="Label3D" parent="Node3D26" unique_id=1130151697]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "<<"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D27" type="Node3D" parent="." unique_id=1832735644]
+transform = Transform3D(-0.77127105, 0, -0.6365069, 0, 1, 0, 0.6365069, 0, -0.77127105, 144.78275, 0.12, 140.42593)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D27" unique_id=671645631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_a6km4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D27" unique_id=1952614552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_38hmv")
+
+[node name="Label3D3" type="Label3D" parent="Node3D27" unique_id=890181971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = ">>"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D28" type="Node3D" parent="." unique_id=1283905587]
+transform = Transform3D(0.3975335, 0, 0.9175877, 0, 1, 0, -0.9175877, 0, 0.3975335, -181.16388, 0.12, 249.49045)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D28" unique_id=916450687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_cia8t")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D28" unique_id=1096085391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_q3qc8")
+
+[node name="Label3D3" type="Label3D" parent="Node3D28" unique_id=213053359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = ">>"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D29" type="Node3D" parent="." unique_id=1532585141]
+transform = Transform3D(0.83573216, 0, 0.5491373, 0, 1, 0, -0.5491373, 0, 0.83573216, -218.49725, 0.12, 217.42073)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D29" unique_id=1076218322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_2fbj3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D29" unique_id=1028739991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_qcni3")
+
+[node name="Label3D3" type="Label3D" parent="Node3D29" unique_id=1621248780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.12)
+pixel_size = 0.025
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = ">>"
+font_size = 60
+outline_size = 0
+
+[node name="Node3D30" type="Node3D" parent="." unique_id=393289836]
+transform = Transform3D(-0.81909454, 0, -0.57365865, 0, 1.0000001, 0, 0.57365865, 0, -0.81909454, -7.901581, 0.12, -149.89615)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D30" unique_id=1664515945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_pe4q7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D30" unique_id=1911568746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_e6p5v")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D30" unique_id=1531710929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_olhq5")
+
+[node name="Label3D4" type="Label3D" parent="Node3D30" unique_id=1155562835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.13)
+pixel_size = 0.013
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "HAIRPIN  100"
+font_size = 48
+outline_size = 0
+
+[node name="Node3D31" type="Node3D" parent="." unique_id=1985302693]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 40, 0.12, -120.6)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D31" unique_id=458664279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_o3k6c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D31" unique_id=1355836531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_ktubm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D31" unique_id=1781935664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_ocufb")
+
+[node name="Label3D4" type="Label3D" parent="Node3D31" unique_id=1469439441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.13)
+pixel_size = 0.013
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "BRAKE  50"
+font_size = 48
+outline_size = 0
+
+[node name="Node3D32" type="Node3D" parent="." unique_id=290218695]
+transform = Transform3D(4.577623e-06, 0, -1, 0, 1, 0, 1, 0, 4.577623e-06, 57.000023, 0.12, -120.17035)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D32" unique_id=40700631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_op46j")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D32" unique_id=851701847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_gbs47")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D32" unique_id=993617936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_8xam5")
+
+[node name="Label3D4" type="Label3D" parent="Node3D32" unique_id=1505886238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.13)
+pixel_size = 0.013
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "HAIRPIN  >>"
+font_size = 48
+outline_size = 0
+
+[node name="Node3D33" type="Node3D" parent="." unique_id=937099904]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 72, 0.12, 253.97633)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D33" unique_id=550755528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+material_override = SubResource("StandardMaterial3D_wy3a7")
+mesh = SubResource("BoxMesh_jxbt1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D33" unique_id=1947303675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_4kala")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D33" unique_id=793601674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_mn5d1")
+
+[node name="Label3D4" type="Label3D" parent="Node3D33" unique_id=273307196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.13)
+pixel_size = 0.013
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "SHIFT  /  NITRO"
+font_size = 48
+outline_size = 0
+
+[node name="Node3D34" type="Node3D" parent="." unique_id=786775532]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -112, 0.12, 254.75058)
+
+[node name="MeshInstance3D1" type="MeshInstance3D" parent="Node3D34" unique_id=172193417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+material_override = SubResource("StandardMaterial3D_t0g8o")
+mesh = SubResource("BoxMesh_8872c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D34" unique_id=799836319]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_ev6qb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D34" unique_id=965135888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.8, 0)
+material_override = SubResource("StandardMaterial3D_kkdi4")
+mesh = SubResource("BoxMesh_enri1")
+
+[node name="Label3D4" type="Label3D" parent="Node3D34" unique_id=1021911339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.13)
+pixel_size = 0.013
+modulate = Color(1, 0.9529412, 0.8392157, 1)
+text = "LIFT  /  FINAL TURN"
+font_size = 48
+outline_size = 0
+
+[node name="Route" type="Path3D" parent="." unique_id=1257032642]
+curve = SubResource("Curve3D_aog7i")
+
+[node name="RoadGeometry" type="Node3D" parent="."]
+unique_name_in_owner = true

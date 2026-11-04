@@ -56,18 +56,8 @@ func _ready() -> void:
 	collision_mask = 1
 	floor_snap_length = 0.6
 	floor_stop_on_slope = true
-	var collision := CollisionShape3D.new()
-	var shape := BoxShape3D.new()
-	shape.size = Vector3(1.8, 1.3, 3.5)
-	collision.shape = shape
-	collision.position.y = 0.65
-	add_child(collision)
-	visual = Node3D.new()
-	add_child(visual)
-	model = load("res://games/minigame/godot_party_default_car_racing/assets/kenney_car_kit/sedan-sports.glb").instantiate()
-	model.rotation.y = PI
-	model.scale = Vector3.ONE * 1.5
-	visual.add_child(model)
+	visual = $Visual
+	model = $Visual/Sedan
 	for node_name in ["wheel-front-left", "wheel-front-right", "wheel-back-left", "wheel-back-right"]:
 		var wheel := model.find_child(node_name, true, false) as Node3D
 		if wheel:

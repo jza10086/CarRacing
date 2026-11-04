@@ -10,35 +10,20 @@ const CREAM := Color("fff3d7")
 const ACCENT := Color("ffb34b")
 const NITRO := Color("70dcff")
 
+const DefaultText: Translation = preload("res://games/minigame/godot_party_default_car_racing/i18n/zh_Hans.po")
+var i18n: RefCounted
+
+func hud_text(key: StringName, values: Dictionary) -> String:
+	return DefaultText.get_message(key).format(values) if i18n == null else i18n.text(key, values)
+
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	font = load("res://games/minigame/godot_party_default_car_racing/assets/fonts/RidgelineInterface.otf")
-	primary = _button(true)
-	secondary = _button(false)
+	primary = $Primary
+	secondary = $Secondary
 	primary.pressed.connect(func(): game.menu_primary())
 	secondary.pressed.connect(func(): game.menu_secondary())
-
-func _button(filled: bool) -> Button:
-	var button := Button.new()
-	button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-	button.add_theme_font_size_override("font_size", 19)
-	button.add_theme_font_override("font", font)
-	var normal := StyleBoxFlat.new()
-	normal.bg_color = ACCENT if filled else Color(0.06, 0.13, 0.17, 0.78)
-	normal.set_corner_radius_all(5)
-	normal.content_margin_left = 20
-	normal.content_margin_right = 20
-	var hover := normal.duplicate()
-	hover.bg_color = Color("ffd386") if filled else Color("364f59")
-	button.add_theme_stylebox_override("normal", normal)
-	button.add_theme_stylebox_override("hover", hover)
-	button.add_theme_stylebox_override("pressed", hover)
-	button.add_theme_color_override("font_color", INK if filled else CREAM)
-	button.add_theme_color_override("font_hover_color", INK if filled else Color.WHITE)
-	button.add_theme_color_override("font_pressed_color", INK if filled else Color.WHITE)
-	add_child(button)
-	return button
 
 func _process(delta: float) -> void:
 	if not game:
@@ -48,99 +33,42 @@ func _process(delta: float) -> void:
 	var menu: bool = game.state in ["menu", "paused", "finished"]
 	primary.visible = menu
 	secondary.visible = menu and game.state != "menu"
-	primary.position = Vector2(64, size.y * 0.63)
-	primary.size = Vector2(290, 52)
-	secondary.position = primary.position + Vector2(0, 65)
-	secondary.size = Vector2(290, 44)
 	primary.text = "开始驾驶  →" if game.state == "menu" else ("继续比赛  →" if game.state == "paused" else "再跑一次  →")
 	secondary.text = "重新开始" if game.state == "paused" else "返回主界面"
+	%Driving.visible = not menu
+	%Menu.visible = menu
+	if menu:
+		%Best.visible = game.best_time > 0
+		%Best.text = hud_text(&"hud.best", {"time":game.format_time(game.best_time)})
+		%Guide.visible = game.state == "menu"
+		%SplitTimes.visible = game.state == "finished"
+		%MenuStatus.text = "过发卡，绕灯塔，沿海桥冲向终点。" if game.state == "menu" else ("已暂停" if game.state == "paused" else hud_text(&"hud.finished", {"time": game.format_time(game.rules.total_time)}))
+		if game.state == "finished":
+			var laps: PackedStringArray = []
+			for index: int in game.rules.lap_times.size():
+				laps.append(hud_text(&"hud.split", {"lap":index + 1, "time":game.format_time(game.rules.lap_times[index])}))
+			%SplitTimes.text = "   ".join(laps)
+	else:
+		%Lap.text = hud_text(&"hud.lap", {"lap":game.rules.lap})
+		%TotalTime.text = hud_text(&"hud.total", {"time":game.format_time(game.rules.total_time)})
+		%LapTime.text = hud_text(&"hud.current", {"time":game.format_time(game.rules.lap_time)})
+		%Speed.text = "%03d" % roundi(absf(game.car.signed_speed) * 3.6)
+		%NitroBar.value = game.car.nitro
+		%Nitro.text = "NITRO" if game.car.nitro_active else ("MINI TURBO" if game.car.mini_turbo_time > 0 else ("NITRO  EMPTY" if game.car.nitro <= 0.01 else "SHIFT  NITRO"))
+		%Countdown.visible = game.state == "countdown"
+		%Countdown.text = str(ceili(game.countdown)) if game.countdown > 0 else "GO"
+		%Toast.visible = game.state != "countdown" and game.toast_time > 0
+		%Toast.text = game.toast
+		%RoadHint.visible = game.wrong_way_time > 1.3 or not game.car.on_road
+		%RoadHint.text = "逆向行驶" if game.wrong_way_time > 1.3 else "路肩减速"
 	queue_redraw()
 
-func _text(value: String, at: Vector2, size_px: int, color: Color = CREAM) -> void:
-	draw_string(font, at + Vector2(1, 2), value, HORIZONTAL_ALIGNMENT_LEFT, -1, size_px, Color(0.03, 0.08, 0.10, 0.45))
-	draw_string(font, at, value, HORIZONTAL_ALIGNMENT_LEFT, -1, size_px, color)
-
-func _right(value: String, at: Vector2, size_px: int, color: Color = CREAM) -> void:
-	_text(value, Vector2(at.x - font.get_string_size(value, HORIZONTAL_ALIGNMENT_LEFT, -1, size_px).x, at.y), size_px, color)
-
 func _draw() -> void:
-	if not game or not font:
+	if not game or game.state in ["menu", "finished", "paused"]:
 		return
-	var menu: bool = game.state in ["menu", "paused", "finished"]
-	if menu:
-		# A quiet left column leaves the actual 3D car and circuit in view.
-		for x in range(0, int(size.x * 0.6), 4):
-			var fade := 1.0 - smoothstep(size.x * 0.23, size.x * 0.6, float(x))
-			draw_rect(Rect2(x, 0, 4, size.y), Color(0.035, 0.085, 0.11, 0.88 * fade))
-		_text("RIDGELINE  /  TIME ATTACK", Vector2(64, size.y * 0.25), 14, ACCENT)
-		_text("山脊竞速", Vector2(60, size.y * 0.25 + 66), 54)
-		_text("海崖灯塔环线  /  三圈计时挑战", Vector2(64, size.y * 0.25 + 103), 16, Color("b8c9c6"))
-		if game.state == "menu":
-			_text("过发卡，绕灯塔，沿海桥冲向终点。", Vector2(64, size.y * 0.25 + 150), 20)
-		elif game.state == "paused":
-			_text("已暂停", Vector2(64, size.y * 0.25 + 153), 30, ACCENT)
-		else:
-			_text("完赛  " + game.format_time(game.rules.total_time), Vector2(64, size.y * 0.25 + 149), 28, ACCENT)
-			var values: String = ""
-			for i in game.rules.lap_times.size():
-				values += "%d  %s   " % [i + 1, game.format_time(game.rules.lap_times[i])]
-			_text(values, Vector2(64, size.y * 0.25 + 182), 15)
-		if game.state == "menu":
-			_text("W / ↑  加速       S / ↓  刹车 / 倒车", Vector2(64, size.y - 123), 14, Color("bdcdcb"))
-			_text("A D / ← →  转向", Vector2(64, size.y - 97), 14, Color("bdcdcb"))
-			_text("SPACE  DRIFT → TURBO     SHIFT  NITRO", Vector2(64, size.y - 71), 14, NITRO)
-			_text("R  返回检查点       Esc  暂停", Vector2(64, size.y - 45), 14, Color("bdcdcb"))
-		if game.best_time > 0:
-			_right("个人最佳  " + game.format_time(game.best_time), Vector2(size.x - 36, 43), 15)
-		return
-	# One top strip of information, no large dashboard covering the world.
 	if game.state == "racing" and game.car.boost_active:
 		_draw_boost_streaks()
-	_text("山脊竞速", Vector2(30, 35), 21)
-	_text("海崖灯塔环线", Vector2(31, 58), 11, Color("cee4db"))
-	_text("圈数", Vector2(size.x * 0.45, 29), 11, Color("cee4db"))
-	_text("%d / 3" % game.rules.lap, Vector2(size.x * 0.45, 59), 26)
-	_right("总计  " + game.format_time(game.rules.total_time), Vector2(size.x - 30, 36), 22)
-	_right("本圈  " + game.format_time(game.rules.lap_time), Vector2(size.x - 31, 60), 13, Color("cee4db"))
-	var speed: int = int(round(absf(game.car.signed_speed) * 3.6))
-	draw_rect(Rect2(size.x - 182, size.y - 141, 3, 72), NITRO if game.car.nitro_active else ACCENT)
-	_right("%03d" % speed, Vector2(size.x - 30, size.y - 83), 48)
-	_right("KM/H", Vector2(size.x - 31, size.y - 60), 12, Color("cee4db"))
-	_draw_nitro()
 	_draw_map()
-	if game.state == "countdown":
-		var count: String = str(int(ceil(game.countdown))) if game.countdown > 0 else "GO"
-		var width := font.get_string_size(count, HORIZONTAL_ALIGNMENT_LEFT, -1, 98).x
-		_text(count, Vector2((size.x - width) * 0.5, size.y * 0.43), 98, ACCENT)
-	elif game.toast_time > 0:
-		var width := font.get_string_size(game.toast, HORIZONTAL_ALIGNMENT_LEFT, -1, 28).x
-		_text(game.toast, Vector2((size.x - width) * 0.5, size.y * 0.24), 28, ACCENT)
-	if game.wrong_way_time > 1.3:
-		_text("逆向行驶", Vector2(size.x * 0.5 - 72, size.y - 55), 19, ACCENT)
-	elif not game.car.on_road:
-		_text("路肩减速", Vector2(size.x * 0.5 - 54, size.y - 55), 16, ACCENT)
-
-func _draw_nitro() -> void:
-	var fill: float = clampf(game.car.nitro, 0.0, 1.0)
-	var color: Color = NITRO if game.car.nitro_active else Color("b6d7db")
-	var label := "SHIFT  NITRO"
-	if game.car.nitro_active:
-		label = "NITRO"
-	elif game.car.mini_turbo_time > 0.0:
-		label = "MINI TURBO"
-		color = ACCENT
-	elif fill <= 0.01:
-		label = "NITRO  EMPTY"
-		color = Color("819ca2")
-	_text(label, Vector2(size.x - 175, size.y - 39), 11, color)
-	var bar := Rect2(size.x - 175, size.y - 29, 144, 5)
-	draw_rect(Rect2(bar.position - Vector2(1, 1), bar.size + Vector2(2, 2)), Color(0.06, 0.14, 0.18, 0.75))
-	draw_rect(bar, Color(0.70, 0.86, 0.87, 0.16))
-	if fill > 0.0:
-		draw_rect(Rect2(bar.position, Vector2(bar.size.x * fill, bar.size.y)), color)
-	for part in range(1, 4):
-		var x: float = bar.position.x + bar.size.x * float(part) / 4.0
-		draw_line(Vector2(x, bar.position.y), Vector2(x, bar.end.y), Color(0.07, 0.17, 0.20, 0.65), 1.0)
 
 func _draw_boost_streaks() -> void:
 	# Six quiet edge strokes leave the road and car completely unobscured.

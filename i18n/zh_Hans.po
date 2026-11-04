@@ -9,3 +9,21 @@ msgstr "WASD 或方向键驾驶，空格手刹，Shift 加速。沿赛道完成�
 
 msgid "山脊竞速"
 msgstr "山脊竞速"
+
+msgid "hud.best"
+msgstr "个人最佳  {time}"
+
+msgid "hud.finished"
+msgstr "完赛  {time}"
+
+msgid "hud.split"
+msgstr "{lap}  {time}"
+
+msgid "hud.lap"
+msgstr "{lap} / 3"
+
+msgid "hud.total"
+msgstr "总计  {time}"
+
+msgid "hud.current"
+msgstr "本圈  {time}"
