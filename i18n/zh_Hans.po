@@ -27,3 +27,30 @@ msgstr "总计  {time}"
 
 msgid "hud.current"
 msgstr "本圈  {time}"
+
+msgid "加速"
+msgstr "加速"
+
+msgid "刹车／倒车"
+msgstr "刹车／倒车"
+
+msgid "向左转向"
+msgstr "向左转向"
+
+msgid "向右转向"
+msgstr "向右转向"
+
+msgid "漂移"
+msgstr "漂移"
+
+msgid "氮气"
+msgstr "氮气"
+
+msgid "返回赛道"
+msgstr "返回赛道"
+
+msgid "开始比赛"
+msgstr "开始比赛"
+
+msgid "hud.formal_controls"
+msgstr "W / ↑ 加速 · S / ↓ 刹车或倒车 · A D / ← → 转向\nSPACE 漂移 · SHIFT 氮气 · R 返回检查点 · Esc 菜单"

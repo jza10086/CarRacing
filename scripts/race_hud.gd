@@ -41,6 +41,8 @@ func _process(delta: float) -> void:
 		%Best.visible = game.best_time > 0
 		%Best.text = hud_text(&"hud.best", {"time":game.format_time(game.best_time)})
 		%Guide.visible = game.state == "menu"
+		if game.controls.context != null:
+			%Guide.text = hud_text(&"hud.formal_controls", {})
 		%SplitTimes.visible = game.state == "finished"
 		%MenuStatus.text = "过发卡，绕灯塔，沿海桥冲向终点。" if game.state == "menu" else ("已暂停" if game.state == "paused" else hud_text(&"hud.finished", {"time": game.format_time(game.rules.total_time)}))
 		if game.state == "finished":

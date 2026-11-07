@@ -49,6 +49,8 @@ var wheel_spin: float = 0.0
 var engine: AudioStreamPlayer
 var track: TrackWorldScript
 var external_input: bool = false
+const Controls = preload("res://games/protocols/godot_party_default_protocol/solo_controls.gd")
+var controls: Controls
 var previous_position: Vector3
 
 func _ready() -> void:
@@ -74,15 +76,16 @@ func _ready() -> void:
 	engine.stream = _engine_wave()
 	engine.volume_db = -26.0
 	add_child(engine)
-	engine.play()
 
 func _physics_process(delta: float) -> void:
 	previous_position = global_position
 	if not external_input:
-		throttle = Input.get_action_strength("car_racing_accelerate") - Input.get_action_strength("car_racing_brake")
-		steering = Input.get_action_strength("car_racing_steer_left") - Input.get_action_strength("car_racing_steer_right")
-		handbrake = Input.is_action_pressed("car_racing_handbrake")
-		nitro_pressed = Input.is_action_pressed("car_racing_nitro")
+		throttle = controls.get_axis(&"car_racing_brake", &"car_racing_accelerate")
+		steering = controls.get_axis(&"car_racing_steer_right", &"car_racing_steer_left")
+		handbrake = controls.is_pressed(&"car_racing_handbrake")
+		nitro_pressed = controls.is_pressed(&"car_racing_nitro")
+	if controls != null and not controls.allowed():
+		clear_boost_and_drift()
 	if not driving_enabled:
 		throttle = 0.0
 		steering = 0.0

@@ -1,5 +1,7 @@
 [gd_scene format=3]
 
+[ext_resource type="PackedScene" path="res://games/protocols/godot_party_default_protocol/audio/game_audio.tscn" id="game_audio"]
+
 [ext_resource type="PackedScene" path="res://games/minigame/godot_party_default_car_racing/scenes/circuit.tscn" id="track"]
 [ext_resource type="PackedScene" path="res://games/minigame/godot_party_default_car_racing/scenes/car.tscn" id="car"]
 [ext_resource type="PackedScene" path="res://games/minigame/godot_party_default_car_racing/scenes/race_hud.tscn" id="hud"]
@@ -53,3 +55,5 @@ current = true
 layer = -2
 
 [node name="RaceHUD" parent="GameHUD" instance=ExtResource("hud")]
+
+[node name="GameAudio" parent="." instance=ExtResource("game_audio")]

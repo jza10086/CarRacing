@@ -102,3 +102,9 @@ GODOT_BIN=/path/to/godot tests/run_tests.sh
 先研究 Godot 官方车辆/角色文档，以及 Truck Town、Godot Recipes、Godot Easy Vehicle Physics，再编写本项目的小型街机控制器；没有直接导入大型车辆框架。外观参考 low-poly 公路赛车的清晰轮廓和克制 UI。
 
 程序代码 MIT；Kenney 模型/贴图 CC0；重命名 Noto Sans CJK 字体子集 SIL OFL 1.1。详见 [ASSET_CREDITS.md](ASSET_CREDITS.md) 与各资源目录的许可证。
+
+## 正式单人接入（G02）
+
+正式场景由协议 SoloRound 显式注入 PartyInput 与翻译，准备阶段不启动模拟；确认开始后才接受操作，结算/取消时显式停止。正式 Esc 打开框架菜单，键盘与按钮遵守同一输入屏蔽；菜单本身不暂停计时。包内 `settings.gd` 声明可改键动作，F6 使用同一默认绑定且不增删全局 InputMap。观战端不运行本机模拟。
+
+发动机通过 GameAudio 路由到本轮 SFX 总线并在结束时停止；发动机自身的动态音量/音高与协议音量相乘。三维画质使用实际 WorldEnvironment/Sun。车轮层级与发动机固定场景化属于 M02 后续工作。
