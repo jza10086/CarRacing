@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddwh0i6nn15tt"
-path="res://.godot/imported/colormap.png-51b47c41f70a9f077c0acf1c35ba78b4.ctex"
+path="res://.godot/imported/colormap.png-f2c5e0b8070b63007c67e798e1966b5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://games/minigame/godot_party_default_car_racing/assets/kenney_car_kit/Textures/colormap.png"
-dest_files=["res://.godot/imported/colormap.png-51b47c41f70a9f077c0acf1c35ba78b4.ctex"]
+source_file="res://games/minigame/gp_car_racing/assets/kenney_car_kit/Textures/colormap.png"
+dest_files=["res://.godot/imported/colormap.png-f2c5e0b8070b63007c67e798e1966b5d.ctex"]
 
 [params]
 

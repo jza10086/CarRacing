@@ -1,6 +1,6 @@
 extends Node3D
 const Controls = preload("res://games/protocols/godot_party_default_protocol/solo_controls.gd")
-const Settings = preload("res://games/minigame/godot_party_default_car_racing/settings.gd")
+const Settings = preload("res://games/minigame/gp_car_racing/settings.gd")
 var controls: Controls = Controls.new(Settings.schema())
 var _active: bool = false
 var _stopped: bool = false
@@ -8,10 +8,10 @@ var _text_source: RefCounted
 
 signal completed(metrics: Dictionary)
 var personal_best: int = 0
-const CarScript = preload("res://games/minigame/godot_party_default_car_racing/scripts/arcade_car.gd")
-const TrackScript = preload("res://games/minigame/godot_party_default_car_racing/scripts/track_world.gd")
-const RulesScript = preload("res://games/minigame/godot_party_default_car_racing/scripts/race_rules.gd")
-const HUDScript = preload("res://games/minigame/godot_party_default_car_racing/scripts/race_hud.gd")
+const CarScript = preload("res://games/minigame/gp_car_racing/scripts/arcade_car.gd")
+const TrackScript = preload("res://games/minigame/gp_car_racing/scripts/track_world.gd")
+const RulesScript = preload("res://games/minigame/gp_car_racing/scripts/race_rules.gd")
+const HUDScript = preload("res://games/minigame/gp_car_racing/scripts/race_hud.gd")
 var track: TrackScript
 var car: CarScript
 var rules: RulesScript

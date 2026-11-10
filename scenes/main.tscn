@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" path="res://games/protocols/godot_party_default_protocol/audio/game_audio.tscn" id="game_audio"]
 
-[ext_resource type="PackedScene" path="res://games/minigame/godot_party_default_car_racing/scenes/circuit.tscn" id="track"]
-[ext_resource type="PackedScene" path="res://games/minigame/godot_party_default_car_racing/scenes/car.tscn" id="car"]
-[ext_resource type="PackedScene" path="res://games/minigame/godot_party_default_car_racing/scenes/race_hud.tscn" id="hud"]
+[ext_resource type="PackedScene" path="res://games/minigame/gp_car_racing/scenes/circuit.tscn" id="track"]
+[ext_resource type="PackedScene" path="res://games/minigame/gp_car_racing/scenes/car.tscn" id="car"]
+[ext_resource type="PackedScene" path="res://games/minigame/gp_car_racing/scenes/race_hud.tscn" id="hud"]
 
-[ext_resource type="Script" path="res://games/minigame/godot_party_default_car_racing/scripts/main.gd" id="1_s1ju4"]
+[ext_resource type="Script" path="res://games/minigame/gp_car_racing/scripts/main.gd" id="1_s1ju4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sm7hh"]
 sky_top_color = Color(0.3882353, 0.70980394, 0.827451, 1)

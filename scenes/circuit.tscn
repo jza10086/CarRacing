@@ -1,7 +1,7 @@
 [gd_scene format=4]
 
-[ext_resource type="Script" path="res://games/minigame/godot_party_default_car_racing/scripts/track_world.gd" id="1_hbfdg"]
-[ext_resource type="PackedScene" path="res://games/minigame/godot_party_default_car_racing/assets/kenney_nature_kit/tree_pineRoundA.glb" id="2_sgak6"]
+[ext_resource type="Script" path="res://games/minigame/gp_car_racing/scripts/track_world.gd" id="1_hbfdg"]
+[ext_resource type="PackedScene" path="res://games/minigame/gp_car_racing/assets/kenney_nature_kit/tree_pineRoundA.glb" id="2_sgak6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s18rf"]
 cull_mode = 2

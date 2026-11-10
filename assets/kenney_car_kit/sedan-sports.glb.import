@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bdabas1mh7mo2"
-path="res://.godot/imported/sedan-sports.glb-148667e364b4677f0e4dece898038f2d.scn"
+path="res://.godot/imported/sedan-sports.glb-f03c4e1cea55e6965eba1ebdd26af48a.scn"
 
 [deps]
 
-source_file="res://games/minigame/godot_party_default_car_racing/assets/kenney_car_kit/sedan-sports.glb"
-dest_files=["res://.godot/imported/sedan-sports.glb-148667e364b4677f0e4dece898038f2d.scn"]
+source_file="res://games/minigame/gp_car_racing/assets/kenney_car_kit/sedan-sports.glb"
+dest_files=["res://.godot/imported/sedan-sports.glb-f03c4e1cea55e6965eba1ebdd26af48a.scn"]
 
 [params]
 

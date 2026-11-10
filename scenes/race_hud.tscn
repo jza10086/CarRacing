@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://games/minigame/godot_party_default_car_racing/scripts/race_hud.gd" id="1_ic0tf"]
-[ext_resource type="FontFile" path="res://games/minigame/godot_party_default_car_racing/assets/fonts/RidgelineInterface.otf" id="2_kwcl8"]
+[ext_resource type="Script" path="res://games/minigame/gp_car_racing/scripts/race_hud.gd" id="1_ic0tf"]
+[ext_resource type="FontFile" path="res://games/minigame/gp_car_racing/assets/fonts/RidgelineInterface.otf" id="2_kwcl8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqu38"]
 content_margin_left = 20.0

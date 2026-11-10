@@ -10,7 +10,7 @@ const CREAM := Color("fff3d7")
 const ACCENT := Color("ffb34b")
 const NITRO := Color("70dcff")
 
-const DefaultText: Translation = preload("res://games/minigame/godot_party_default_car_racing/i18n/zh_Hans.po")
+const DefaultText: Translation = preload("res://games/minigame/gp_car_racing/i18n/zh_Hans.po")
 var i18n: RefCounted
 
 func hud_text(key: StringName, values: Dictionary) -> String:
@@ -19,7 +19,7 @@ func hud_text(key: StringName, values: Dictionary) -> String:
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	font = load("res://games/minigame/godot_party_default_car_racing/assets/fonts/RidgelineInterface.otf")
+	font = load("res://games/minigame/gp_car_racing/assets/fonts/RidgelineInterface.otf")
 	primary = $Primary
 	secondary = $Secondary
 	primary.pressed.connect(func(): game.menu_primary())

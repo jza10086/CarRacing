@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c5wqubkvwa40u"
-path="res://.godot/imported/grandStandCovered.glb-ed3d8723a663b6f587d50fa18f78efe6.scn"
+path="res://.godot/imported/grandStandCovered.glb-569863dd1595378ee51893238ea2db6b.scn"
 
 [deps]
 
-source_file="res://games/minigame/godot_party_default_car_racing/assets/kenney_racing_kit/grandStandCovered.glb"
-dest_files=["res://.godot/imported/grandStandCovered.glb-ed3d8723a663b6f587d50fa18f78efe6.scn"]
+source_file="res://games/minigame/gp_car_racing/assets/kenney_racing_kit/grandStandCovered.glb"
+dest_files=["res://.godot/imported/grandStandCovered.glb-569863dd1595378ee51893238ea2db6b.scn"]
 
 [params]
 
