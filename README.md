@@ -108,3 +108,5 @@ GODOT_BIN=/path/to/godot tests/run_tests.sh
 正式场景由协议 SoloRound 显式注入 PartyInput 与翻译，准备阶段不启动模拟；确认开始后才接受操作，结算/取消时显式停止。正式 Esc 打开框架菜单，键盘与按钮遵守同一输入屏蔽；菜单本身不暂停计时。包内 `settings.gd` 声明可改键动作，F6 使用同一默认绑定且不增删全局 InputMap。观战端不运行本机模拟。
 
 发动机通过 GameAudio 路由到本轮 SFX 总线并在结束时停止；发动机自身的动态音量/音高与协议音量相乘。三维画质使用实际 WorldEnvironment/Sun。车轮层级与发动机固定场景化属于 M02 后续工作。
+
+WASD 或方向键驾驶，空格手刹，Shift 加速。沿赛道完成三圈。
