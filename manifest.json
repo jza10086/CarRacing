@@ -1,11 +1,13 @@
 {
   "manifest_version": 2,
   "core_api_major": 5,
-  "package_version": "1.0.12",
+  "package_version": "1.0.14",
   "id": "gp_car_racing",
   "name": "山脊竞速",
   "kind": "minigame",
-  "supported_systems": ["windows"],
+  "supported_systems": [
+    "windows"
+  ],
   "config_schema": "settings.gd",
   "entry": "party_round.tscn",
   "player_counts": [
@@ -13,7 +15,7 @@
   ],
   "introduction": "WASD 或方向键驾驶，空格手刹，Shift 加速。沿赛道完成三圈。",
   "dependencies": {
-    "godot_party_default_protocol": "1.0.11"
+    "godot_party_default_protocol": "1.0.13"
   },
   "adapters": [
     {
