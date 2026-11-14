@@ -35,4 +35,4 @@ This is an original small arcade controller, **not** an imported vehicle framewo
 
 ## Designed circuit references
 
-The original Lighthouse Circuit layout and the specific lessons from Nadeo, Nintendo, WRC 7 designer Benoit Gomes, and Luke McMillan’s published analysis are documented in [docs/TRACK_DESIGN.md](docs/TRACK_DESIGN.md). Their games, layouts, screenshots and proprietary assets are not included in this repository.
+The original Lighthouse Circuit layout and the specific lessons from Nadeo, Nintendo, WRC 7 designer Benoit Gomes, and Luke McMillan’s published analysis are documented in [docs/TRACK_DESIGN.md](gp_car_racing_track_design.md). Their games, layouts, screenshots and proprietary assets are not included in this repository.

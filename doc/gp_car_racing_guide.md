@@ -9,7 +9,7 @@
 
 单人计时赛，无 AI 对手、无联网功能。重点是清晰的赛道、轻快可控的驾驶和完整的开始—比赛—结算流程，而不是拟真车辆模拟。
 
-![实际游戏画面](docs/gameplay.png)
+![实际游戏画面](../docs/gameplay.png)
 
 ## 运行
 
@@ -54,7 +54,7 @@ godot --path .
 
 **港湾起步 → 礁岸 S → 船坞发卡 → 灯塔长漂 → 防波堤冲刺 → 归港末弯。** 六区的宽度、转角和出口空间都为现有漂移 / 氮气设计，不是给旧环道换装饰。港仓、吊机、船坞、灯塔和跨水海桥构成可辨识的世界地标。没有必跳或必须满氮气才能通过的路段。
 
-赛道设计、一手案例及其具体影响见 [docs/TRACK_DESIGN.md](docs/TRACK_DESIGN.md)。新赛道最佳成绩与旧晴岭记录分开保存。
+赛道设计、一手案例及其具体影响见 [docs/TRACK_DESIGN.md](gp_car_racing_track_design.md)。新赛道最佳成绩与旧晴岭记录分开保存。
 
 ## 当前内容
 
@@ -69,21 +69,7 @@ godot --path .
 
 ## 验证
 
-```sh
-# 导入 + 规则与真实物理测试（使用隔离的临时 user:// 目录）
-GODOT_BIN=/path/to/godot tests/run_tests.sh
-
-# 真正通过加速/刹车/转向 Input action 驾驶三圈，不移动坐标、不改圈数
-/path/to/godot --headless --path . --fixed-fps 60 --script res://tests/drive_laps.gd
-
-# 使用同一正常输入驾驶器验证漂移 → 小涡轮 → 氮气，完整三圈
-/path/to/godot --headless --path . --fixed-fps 60 --script res://tests/drive_laps.gd -- --kart
-
-# 有可用桌面时，保存真实渲染的标题、漂移、氮气、结算及短动画帧
-/path/to/godot --path . --script res://tests/drive_laps.gd -- --kart --capture-dir=/absolute/output/path
-```
-
-测试范围和实际结果见 [docs/TESTING.md](docs/TESTING.md)。脚本测试不等于所有 GPU/操作系统的硬件兼容性测试。云端原生画面在 Mesa llvmpipe 软件渲染器上验证；其帧率不代表用户独立 GPU 表现。
+最近记录与未完成验收见 [gp_car_racing 开发记录](gp_car_racing_development.md)。按本次改动选取必要检查；旧测试命令不作为当前入口。
 
 ## 结构
 
@@ -101,7 +87,7 @@ GODOT_BIN=/path/to/godot tests/run_tests.sh
 
 先研究 Godot 官方车辆/角色文档，以及 Truck Town、Godot Recipes、Godot Easy Vehicle Physics，再编写本项目的小型街机控制器；没有直接导入大型车辆框架。外观参考 low-poly 公路赛车的清晰轮廓和克制 UI。
 
-程序代码 MIT；Kenney 模型/贴图 CC0；重命名 Noto Sans CJK 字体子集 SIL OFL 1.1。详见 [ASSET_CREDITS.md](ASSET_CREDITS.md) 与各资源目录的许可证。
+程序代码 MIT；Kenney 模型/贴图 CC0；重命名 Noto Sans CJK 字体子集 SIL OFL 1.1。详见 [ASSET_CREDITS.md](gp_car_racing_asset_credits.md) 与各资源目录的许可证。
 
 ## 正式单人接入（G02）
 
@@ -110,3 +96,11 @@ GODOT_BIN=/path/to/godot tests/run_tests.sh
 发动机通过 GameAudio 路由到本轮 SFX 总线并在结束时停止；发动机自身的动态音量/音高与协议音量相乘。三维画质使用实际 WorldEnvironment/Sun。车轮层级与发动机固定场景化属于 M02 后续工作。
 
 WASD 或方向键驾驶，空格手刹，Shift 加速。沿赛道完成三圈。
+
+## 包内开发文档
+
+未带 `res://` 的源码路径以本包根目录为基准。
+
+- [Artwork and research credits](gp_car_racing_asset_credits.md)
+- [M02 山脊竞速　A　依赖 G02、G03](gp_car_racing_development.md)
+- [海崖灯塔环线 · Lighthouse Circuit](gp_car_racing_track_design.md)
