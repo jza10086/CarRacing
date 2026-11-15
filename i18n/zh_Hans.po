@@ -54,3 +54,6 @@ msgstr "开始比赛"
 
 msgid "hud.formal_controls"
 msgstr "W / ↑ 加速 · S / ↓ 刹车或倒车 · A D / ← → 转向\nSPACE 漂移 · SHIFT 氮气 · R 返回检查点 · Esc 菜单"
+
+msgid "package.name"
+msgstr "山脊竞速"

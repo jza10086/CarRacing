@@ -31,4 +31,4 @@
 - `harbor_scenery.gd` 原创建模港口、海岸、灯塔及桥；现有 Kenney CC0 车与少量树保留。
 - 桥与所有路面保持 y = 0.12 m，桥下水面降低；没有伪称新增坡道车辆物理。现有 54 m/s 上限、漂移蓄力及氮气数值均未修改。
 - 新纪录单独保存为 `lighthouse_v1`，不拿旧 786 m 晴岭圈速做新赛道最佳成绩。
-- 没有新 AI、联网、道具或近路；具体验证与限制见 [TESTING.md](gp_car_racing_development.md)。
+- 没有新 AI、联网、道具或近路；具体验证与限制见 [TESTING.md](GP_car_racing_development.md)。

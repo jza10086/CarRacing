@@ -54,7 +54,7 @@ godot --path .
 
 **港湾起步 → 礁岸 S → 船坞发卡 → 灯塔长漂 → 防波堤冲刺 → 归港末弯。** 六区的宽度、转角和出口空间都为现有漂移 / 氮气设计，不是给旧环道换装饰。港仓、吊机、船坞、灯塔和跨水海桥构成可辨识的世界地标。没有必跳或必须满氮气才能通过的路段。
 
-赛道设计、一手案例及其具体影响见 [docs/TRACK_DESIGN.md](gp_car_racing_track_design.md)。新赛道最佳成绩与旧晴岭记录分开保存。
+赛道设计、一手案例及其具体影响见 [docs/TRACK_DESIGN.md](GP_car_racing_track_design.md)。新赛道最佳成绩与旧晴岭记录分开保存。
 
 ## 当前内容
 
@@ -69,7 +69,7 @@ godot --path .
 
 ## 验证
 
-最近记录与未完成验收见 [gp_car_racing 开发记录](gp_car_racing_development.md)。按本次改动选取必要检查；旧测试命令不作为当前入口。
+最近记录与未完成验收见 [GP_car_racing 开发记录](GP_car_racing_development.md)。按本次改动选取必要检查；旧测试命令不作为当前入口。
 
 ## 结构
 
@@ -87,7 +87,7 @@ godot --path .
 
 先研究 Godot 官方车辆/角色文档，以及 Truck Town、Godot Recipes、Godot Easy Vehicle Physics，再编写本项目的小型街机控制器；没有直接导入大型车辆框架。外观参考 low-poly 公路赛车的清晰轮廓和克制 UI。
 
-程序代码 MIT；Kenney 模型/贴图 CC0；重命名 Noto Sans CJK 字体子集 SIL OFL 1.1。详见 [ASSET_CREDITS.md](gp_car_racing_asset_credits.md) 与各资源目录的许可证。
+程序代码 MIT；Kenney 模型/贴图 CC0；重命名 Noto Sans CJK 字体子集 SIL OFL 1.1。详见 [ASSET_CREDITS.md](GP_car_racing_asset_credits.md) 与各资源目录的许可证。
 
 ## 正式单人接入（G02）
 
@@ -101,6 +101,6 @@ WASD 或方向键驾驶，空格手刹，Shift 加速。沿赛道完成三圈。
 
 未带 `res://` 的源码路径以本包根目录为基准。
 
-- [Artwork and research credits](gp_car_racing_asset_credits.md)
-- [M02 山脊竞速　A　依赖 G02、G03](gp_car_racing_development.md)
-- [海崖灯塔环线 · Lighthouse Circuit](gp_car_racing_track_design.md)
+- [Artwork and research credits](GP_car_racing_asset_credits.md)
+- [M02 山脊竞速　A　依赖 G02、G03](GP_car_racing_development.md)
+- [海崖灯塔环线 · Lighthouse Circuit](GP_car_racing_track_design.md)

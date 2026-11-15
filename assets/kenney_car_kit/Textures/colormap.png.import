@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://games/minigame/gp_car_racing/assets/kenney_car_kit/Textures/colormap.png"
+source_file="res://games/minigame/GP_car_racing/assets/kenney_car_kit/Textures/colormap.png"
 dest_files=["res://.godot/imported/colormap.png-f2c5e0b8070b63007c67e798e1966b5d.ctex"]
 
 [params]

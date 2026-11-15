@@ -8,7 +8,7 @@ path="res://.godot/imported/pitsOffice.glb-be80bc5b09e663f1ea9d7e2f33300f18.scn"
 
 [deps]
 
-source_file="res://games/minigame/gp_car_racing/assets/kenney_racing_kit/pitsOffice.glb"
+source_file="res://games/minigame/GP_car_racing/assets/kenney_racing_kit/pitsOffice.glb"
 dest_files=["res://.godot/imported/pitsOffice.glb-be80bc5b09e663f1ea9d7e2f33300f18.scn"]
 
 [params]

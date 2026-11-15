@@ -8,7 +8,7 @@ path="res://.godot/imported/rock_largeA.glb-50c870ca43ba5bf92b7a9b9f73dfc631.scn
 
 [deps]
 
-source_file="res://games/minigame/gp_car_racing/assets/kenney_nature_kit/rock_largeA.glb"
+source_file="res://games/minigame/GP_car_racing/assets/kenney_nature_kit/rock_largeA.glb"
 dest_files=["res://.godot/imported/rock_largeA.glb-50c870ca43ba5bf92b7a9b9f73dfc631.scn"]
 
 [params]

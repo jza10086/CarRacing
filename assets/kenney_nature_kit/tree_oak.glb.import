@@ -8,7 +8,7 @@ path="res://.godot/imported/tree_oak.glb-92c354ead5d47c51ba87696d3e31c18c.scn"
 
 [deps]
 
-source_file="res://games/minigame/gp_car_racing/assets/kenney_nature_kit/tree_oak.glb"
+source_file="res://games/minigame/GP_car_racing/assets/kenney_nature_kit/tree_oak.glb"
 dest_files=["res://.godot/imported/tree_oak.glb-92c354ead5d47c51ba87696d3e31c18c.scn"]
 
 [params]

@@ -1,7 +1,7 @@
 class_name ArcadeCar
 extends CharacterBody3D
 
-const TrackWorldScript = preload("res://games/minigame/gp_car_racing/scripts/track_world.gd")
+const TrackWorldScript = preload("res://games/minigame/GP_car_racing/scripts/track_world.gd")
 ## Original kart-inspired arcade handling. Collision stays upright; drift yaw is bounded.
 ## All handling/timing values live here; speed is m/s and charge/timers are seconds.
 const MAX_SPEED: float = 43.0
@@ -20,7 +20,7 @@ const ORANGE_TURBO_DURATION: float = 1.15
 const NITRO_DRAIN: float = 0.25
 const NITRO_RECHARGE: float = 0.10
 const NITRO_RECHARGE_DELAY: float = 0.8
-const EffectsScript = preload("res://games/minigame/gp_car_racing/scripts/kart_effects.gd")
+const EffectsScript = preload("res://games/minigame/GP_car_racing/scripts/kart_effects.gd")
 var throttle: float = 0.0
 var steering: float = 0.0
 # Keep the existing action/property name so saved bindings and QA inputs stay compatible.
@@ -49,7 +49,7 @@ var wheel_spin: float = 0.0
 var engine: AudioStreamPlayer
 var track: TrackWorldScript
 var external_input: bool = false
-const Controls = preload("res://games/protocols/godot_party_default_protocol/solo_controls.gd")
+const Controls = preload("res://games/protocols/GP_default_protocol/solo_controls.gd")
 var controls: Controls
 var previous_position: Vector3
 

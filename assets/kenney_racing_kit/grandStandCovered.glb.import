@@ -8,7 +8,7 @@ path="res://.godot/imported/grandStandCovered.glb-569863dd1595378ee51893238ea2db
 
 [deps]
 
-source_file="res://games/minigame/gp_car_racing/assets/kenney_racing_kit/grandStandCovered.glb"
+source_file="res://games/minigame/GP_car_racing/assets/kenney_racing_kit/grandStandCovered.glb"
 dest_files=["res://.godot/imported/grandStandCovered.glb-569863dd1595378ee51893238ea2db6b.scn"]
 
 [params]
