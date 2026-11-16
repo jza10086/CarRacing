@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cmmhf57o6wf6x"
-path="res://.godot/imported/tree_oak.glb-92c354ead5d47c51ba87696d3e31c18c.scn"
+path="res://.godot/imported/tree_oak.glb-1763393151ff33e669bec5c079317f47.scn"
 
 [deps]
 
 source_file="res://games/minigame/GP_car_racing/assets/kenney_nature_kit/tree_oak.glb"
-dest_files=["res://.godot/imported/tree_oak.glb-92c354ead5d47c51ba87696d3e31c18c.scn"]
+dest_files=["res://.godot/imported/tree_oak.glb-1763393151ff33e669bec5c079317f47.scn"]
 
 [params]
 

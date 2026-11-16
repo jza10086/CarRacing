@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c2hoxhbpg5xh"
-path="res://.godot/imported/RidgelineInterface.otf-d7af8901f2470de6b81a8c08cf25cb96.fontdata"
+path="res://.godot/imported/RidgelineInterface.otf-64741c4d8cd7f142c1fe53a253d08274.fontdata"
 
 [deps]
 
 source_file="res://games/minigame/GP_car_racing/assets/fonts/RidgelineInterface.otf"
-dest_files=["res://.godot/imported/RidgelineInterface.otf-d7af8901f2470de6b81a8c08cf25cb96.fontdata"]
+dest_files=["res://.godot/imported/RidgelineInterface.otf-64741c4d8cd7f142c1fe53a253d08274.fontdata"]
 
 [params]
 

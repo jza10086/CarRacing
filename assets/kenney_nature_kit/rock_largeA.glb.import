@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dda3vcc56i4pf"
-path="res://.godot/imported/rock_largeA.glb-50c870ca43ba5bf92b7a9b9f73dfc631.scn"
+path="res://.godot/imported/rock_largeA.glb-8f7d3b1dead98f3c776cfaec129b23a9.scn"
 
 [deps]
 
 source_file="res://games/minigame/GP_car_racing/assets/kenney_nature_kit/rock_largeA.glb"
-dest_files=["res://.godot/imported/rock_largeA.glb-50c870ca43ba5bf92b7a9b9f73dfc631.scn"]
+dest_files=["res://.godot/imported/rock_largeA.glb-8f7d3b1dead98f3c776cfaec129b23a9.scn"]
 
 [params]
 
